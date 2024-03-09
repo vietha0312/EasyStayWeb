@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\LoaiPhongController;
+use App\Http\Controllers\Backend\PhongController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-//mladfjhf
+Route::prefix('admin')
+    ->as('admin.')
+    ->group(function () {
+        Route::resource('loai_phong', LoaiPhongController::class);
+        Route::resource('phong',PhongController::class);
+    });
