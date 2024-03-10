@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\LoaiPhongController;
 use App\Http\Controllers\Backend\PhongController;
+use App\Http\Controllers\BannerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Route::prefix('admin')
-    ->as('admin.')
-    ->group(function () {
-        Route::resource('loai_phong', LoaiPhongController::class);
-        Route::resource('phong',PhongController::class);
-    });
+	->as('admin.')
+	->group(function () {
+		Route::resource('loai_phong', LoaiPhongController::class);
+		Route::resource('phong', PhongController::class);
+		Route::resource('banners', BannerController::class);
+	});
