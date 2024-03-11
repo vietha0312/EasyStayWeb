@@ -11,7 +11,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Backend\VaiTroController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ExportController;
-use App\Http\Controllers\Backend\LoaiPhongController;
+use App\Http\Controllers\Backend\DonDatController;
 
 /*
 |--------------------------------------------------------------------------
