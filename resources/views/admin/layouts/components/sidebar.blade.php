@@ -62,7 +62,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon bi bi-clipboard-fill"></i>
+                <li class="nav-item"><a href="{{route('admin.user.index')}}" class="nav-link"><i class="nav-icon bi bi-clipboard-fill"></i>
                         <p>
                             Quản lý người dùng
                         </p>
@@ -100,7 +100,7 @@
                             Quản lý khách sạn
                         </p>
                     </a>
-                    
+
                 </li>
 
                 <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-box-seam-fill"></i>
@@ -137,6 +137,22 @@
                     </ul>
                 </li>
 
+                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
+                        <p>
+                            Tải xuống file Excel
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a href="http://127.0.0.1:8000/exportUser" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                                <p>User</p>
+                            </a></li>
+                        <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                                <p>Tạo mới</p>
+                            </a></li>
+
+                    </ul>
+                </li>
                 <!-- <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-tree-fill"></i>
                                 <p>
                                     UI Elements
