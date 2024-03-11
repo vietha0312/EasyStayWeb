@@ -16,6 +16,13 @@
     <label for="">Số điện thoại</label>
     <input type="so_dien_thoai" id="so_dien_thoai" name="so_dien_thoai" class="form-control" value="{{$user->so_dien_thoai}}">
 
+    <label for="">Tên chức vụ</label>
+    <select name="id_vai_tro" id="id_vai_tro" class="form-control" value="{{$user->id_vai_tro}}">
+    @foreach ($vaitro as $id => $ten_chuc_vu)
+        <option value="{{$id}}">{{$ten_chuc_vu}}</option>
+        @endforeach
+    </select>
+
     <button class="btn btn-success mt-3">Sửa</button>
 </form>
 @endsection

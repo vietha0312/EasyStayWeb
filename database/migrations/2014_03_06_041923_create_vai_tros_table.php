@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('vai_tros', function (Blueprint $table) {
             $table->id();
             $table->string('ten_chuc_vu');
-            $table->string('mo_ta');
+            $table->string('mo_ta')->nullable();
             $table->boolean('trang_thai');
             $table->timestamps();
             $table->softDeletes();

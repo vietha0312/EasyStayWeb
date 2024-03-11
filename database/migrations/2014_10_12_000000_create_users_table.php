@@ -19,10 +19,12 @@ return new class extends Migration
             $table->string('password');
             $table->string('dia_chi');
             $table->string('so_dien_thoai');
-            $table->bigInteger('id_vai_tro')->constrained();
+            $table->unsignedBigInteger('id_vai_tro');
+            // $table->foreign('id_vai_tro')->constrained('vai_tros');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('id_vai_tro')->references('id')->on('vai_tros');
         });
     }
 

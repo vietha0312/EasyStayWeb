@@ -61,7 +61,7 @@ class PhongController extends Controller
     public function update(Request $request, Phong $phong)
     {
         $phong->update($request->all());
-        return back()->with('msg','Sửa thành công'); 
+        return back()->with('msg','Sửa thành công');
     }
 
     /**

@@ -13,6 +13,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
@@ -46,8 +47,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    protected function vai_tro(){
-        return $this->belongsTo(VaiTro::class);
+    protected function vaiTro(){
+        return $this->belongsTo(VaiTro::class, 'id_vai_tro', 'id');
     }
 }
 

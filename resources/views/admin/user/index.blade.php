@@ -9,6 +9,7 @@
                 <th>Địa chỉ</th>
                 <th>Số điện thoại</th>
                 <th>Vai trò</th>
+                <th>Hành động</th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +20,7 @@
                 <td>{{$item->email}}</td>
                 <td>{{$item->dia_chi}}</td>
                 <td>{{$item->so_dien_thoai}}</td>
-                <td>{{$item->id_vai_tro}}</td>
+                <td>{{$item->vaitro->ten_chuc_vu}}</td>
                 <td>
                     <form action="{{route('admin.user.destroy',$item)}}" method="post">
                         @csrf
