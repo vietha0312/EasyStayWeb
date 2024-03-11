@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Backend\VaiTroController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ExportController;
+use App\Http\Controllers\Backend\LoaiPhongController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,7 @@ Route::prefix('admin')
         Route::resource ('user', RegisteredUserController::class);
         // Route::resource('danh_gia',DanhGiaController::class);
         Route::resource('vai_tro',VaiTroController::class);
+        Route::resource('don_dat', DonDatController::class);
     });
 
     Route::get('exportUser', [ExportController::class, 'exportUser']);
