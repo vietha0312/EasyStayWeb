@@ -144,7 +144,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="http://127.0.0.1:8000/exportUser" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="exportUser" class="nav-link"><i class="nav-icon bi bi-circle"></i>
                                 <p>User</p>
                             </a></li>
                         <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon bi bi-circle"></i>
