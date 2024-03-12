@@ -44,6 +44,34 @@ class DonDatController extends Controller
         return back()->with('msg', 'Add Success');
     }
 
+    public function edit(Request $request, Don_dat $don_dat){
+        return view(self::PATH_VIEW . __FUNCTION__, compact('don_dat'));
+    }
+
+    public function update(Request $request, Don_dat $don_dat)
+    {
+        $request->validate([
+            'ma_phong' => 'required|max:225',
+            'ngay_dat' => 'date',
+            'khach_hang_id' => 'required|max:225',
+            'payment' => 'required|max:225',
+            'ghi_chu' => 'nullable',
+            'trang_thai' => [
+                'required',
+                Rule::in([
+                    Don_dat::DA_XAC_NHAN,
+                    Don_dat::CHO_XAC_NHAN
+                ])
+            ],
+        ]);
+
+        $don_dat->update($request->all());
+
+        return back()->with('msg', 'Update Success');
+    }
+
+
+
 
 
 
