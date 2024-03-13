@@ -1,28 +1,24 @@
 @extends('admin.layouts.master')
 @section('content')
-    <div>
-        <div class="app-content-header my-3"><!--begin::Container-->
-            <div class="container-fluid"><!--begin::Row-->
+    <div class="container">
+        <div class="app-content-header my-3">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
                         <h3 class="mb-0">Danh sách bài viết</h3>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">
-
                             <li class="breadcrumb-item"><a href="#">Docs</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                Layout
-                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Layout</li>
                         </ol>
                     </div>
-                </div><!--end::Row-->
-            </div><!--end::Container-->
-        </div><!--end::App Content Header--><!--begin::App Content-->
+                </div>
+            </div>
+        </div>
 
-
-        <table class="table">
-            <thead>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
                 <tr>
                     <th>ID</th>
                     <th>Tiêu đề</th>
