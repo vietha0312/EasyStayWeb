@@ -113,7 +113,8 @@
 
                 </li>
 
-                <li class="nav-item"><a href="{{route('admin.khach_san.index')}}" class="nav-link"><i class="nav-icon bi bi-tree-fill"></i>
+                <li class="nav-item"><a href="{{ route('admin.khach_san.index') }}" class="nav-link"><i
+                            class="nav-icon bi bi-tree-fill"></i>
                         <p>
                             Quản lý khách sạn
                         </p>
@@ -141,21 +142,23 @@
                 </li>
 
                 <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
-                    <p>
-                        Quản lý Khuyến mãi
-                        <i class="nav-arrow bi bi-chevron-right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item"><a href="{{ route('admin.khuyen_mai.index') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
-                            <p>Danh sách</p>
-                        </a></li>
-                    <li class="nav-item"><a href="{{ route('admin.khuyen_mai.create') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
-                            <p>Tạo mới</p>
-                        </a></li>
+                        <p>
+                            Quản lý Khuyến mãi
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a href="{{ route('admin.khuyen_mai.index') }}" class="nav-link"><i
+                                    class="nav-icon bi bi-circle"></i>
+                                <p>Danh sách</p>
+                            </a></li>
+                        <li class="nav-item"><a href="{{ route('admin.khuyen_mai.create') }}" class="nav-link"><i
+                                    class="nav-icon bi bi-circle"></i>
+                                <p>Tạo mới</p>
+                            </a></li>
 
-                </ul>
-            </li>
+                    </ul>
+                </li>
 
                 <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
                         <p>
