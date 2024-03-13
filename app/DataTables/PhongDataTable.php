@@ -45,7 +45,7 @@ class PhongDataTable extends DataTable
                 $editBtn = "<a href='" . route('admin.phong.edit', $query->id) . "' class='btn btn-primary'>
                 <i class='bi bi-pen'></i>
                 </a>";
-                $deleteBtn = "<a href='" . route('admin.phong.destroy', $query->id) . "' class='btn btn-danger ms-2 delete-item'>
+                $deleteBtn = "<a href='" . route('admin.phong.destroy', $query->id) . "' class='btn btn-danger ms-2 delete-item '>
                 <i class='bi bi-archive'></i>
                 </a>";
                 return $editBtn . $deleteBtn ;
@@ -102,7 +102,7 @@ class PhongDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(120)
+                  ->width(100)
                   ->addClass('text-center'),
         ];
     }

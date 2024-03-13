@@ -146,6 +146,7 @@ class LoaiPhongController extends Controller
         $loai_phong->trang_thai = $request->trang_thai == 'true' ? 1 : 2;
         $loai_phong->save();
 
-        return response(['message' => 'Trạng thái cập nhật thành công']);
+        return back()->with('msg','Cập nhật thành công');
+        // return response(['message' => 'Trạng thái cập nhật thành công']);
     }
 }
