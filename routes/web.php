@@ -12,6 +12,8 @@ use App\Http\Controllers\Backend\VaiTroController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ExportController;
 use App\Http\Controllers\Backend\DonDatController;
+use App\Http\Controllers\Backend\Phong1Controller;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,24 +41,30 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 Route::prefix('admin')
     ->as('admin.')
     ->group(function () {
         Route::resource('loai_phong', LoaiPhongController::class);
+        Route::resource('phong1', Phong1Controller::class);
         Route::resource('phong', PhongController::class);
-        // Route::resource('anh_phong', AnhPhongController::class);
+        Route::resource('anh_phong', AnhPhongController::class);
         // Route::resource('khach_san', KhachSanController::class);
         // Route::resource('bai_viet', BaiVietController::class);
-        Route::resource ('user', RegisteredUserController::class);
+        Route::resource('user', RegisteredUserController::class);
         // Route::resource('danh_gia',DanhGiaController::class);
-        Route::resource('vai_tro',VaiTroController::class);
+        Route::resource('vai_tro', VaiTroController::class);
         Route::resource('don_dat', DonDatController::class);
+        Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
+        Route::get('exportUser', [ExportController::class, 'exportUser']);
     });
 
-    Route::get('exportUser', [ExportController::class, 'exportUser']);
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
