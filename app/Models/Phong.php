@@ -25,6 +25,7 @@ class Phong extends Model
 
     protected function loai_phong()
     {
+        // return $this->belongsTo('App\Models\Loai_phong','loai_phong_id','id');
         return $this->belongsTo(Loai_phong::class);
     }
 }

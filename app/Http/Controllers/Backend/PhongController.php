@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\DataTables\PhongDataTable;
 use App\Models\Phong;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Loai_phong;
+use Illuminate\Validation\Rule;
 
 class PhongController extends Controller
 {
@@ -13,10 +15,12 @@ class PhongController extends Controller
      * Display a listing of the resource.
      */
     const PATH_VIEW = 'admin.phong.';
-    public function index()
+
+    public function index(PhongDataTable $datatable) 
     {
-        $data = Phong::query()->latest()->paginate(10);
-        return view(self::PATH_VIEW . __FUNCTION__, compact('data'));
+        return $datatable->render('admin.phong.index');
+        // $data = Phong::query()->latest()->paginate(10);
+        // return view(self::PATH_VIEW . __FUNCTION__, compact('data'));
     }
 
     /**
@@ -33,6 +37,17 @@ class PhongController extends Controller
      */
     public function store(Request $request)
     {
+        // $request->validate([
+        //     'ten_phong' => 'required|unique::phongs',
+        //     'loai_phong_id' => [
+        //         Rule::exists('phongs','id')
+        //     ],
+        //     'mo_ta' => 'required',
+        //     'trang_thai' => 'required',
+        //     // 'trang_thai' => [
+        //     //     Rule::in([1,0])
+        //     // ],
+        // ]);
         Phong::query()->create($request->all());
         return back()->with('msg','Thêm thành công');
     }
@@ -60,8 +75,19 @@ class PhongController extends Controller
      */
     public function update(Request $request, Phong $phong)
     {
+        // $request->validate([
+        //     'ten_phong' => 'required|unique::phongs,ten_phong,' . $phong->id,
+        //     'loai_phong_id' => [
+        //         Rule::exists('phongs','id')
+        //     ],  
+        //     'mo_ta' => 'required',
+        //     'trang_thai' => 'required',
+        //     'trang_thai' => [
+        //         Rule::in([1,0])
+        //     ],
+        // ]);
         $phong->update($request->all());
-        return back()->with('msg','Sửa thành công');
+        return back()->with('msg','Cập nhật thành công');
     }
 
     /**

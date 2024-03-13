@@ -21,4 +21,6 @@ class Don_dat extends Model
         'ghi_chu',
         'trang_thai',
     ];
+
+    
 }
