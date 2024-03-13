@@ -70,25 +70,25 @@
 
                 <li class="nav-item"><a href="{{ route('admin.chi_tiet_don_dat.index') }}" class="nav-link"><i class="nav-icon bi bi-box-seam-fill"></i>
                         <p>
-                            Quản lý chi tiết đơn đặt phòng
-                            <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
+                            Quản lý Banner
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                    
                         </p>
                     </a>
-                    <!-- <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="{{ route('admin.chi_tiet_don_dat.index') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon bi bi-circle"></i>
                                 <p>Danh sách</p>
                             </a></li>
-                        <li class="nav-item"><a href="{{ route('admin.chi_tiet_don_dat.create') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Tạo mới</p>
-                            </a></li>
+                        <li class="nav-item"><a href="{{route('admin.banners.create')}}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                       
+                          
 
                     </ul> -->
                 </li>
 
                 <li class="nav-item"><a href="" class="nav-link"><i
                             class="nav-icon bi bi-hand-thumbs-up-fill"></i>
+                
                         <p>
                             Quản lý đánh giá
                         </p>

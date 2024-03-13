@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\hotelController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Backend\ChiTietDonDatController;
 use App\Http\Controllers\Backend\VaiTroController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ExportController;
 use App\Http\Controllers\Backend\DonDatController;
