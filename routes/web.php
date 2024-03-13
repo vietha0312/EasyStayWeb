@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\LoaiPhongController;
 use App\Http\Controllers\Backend\PhongController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\DanhGiaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,4 +27,5 @@ Route::prefix('admin')
 		Route::resource('loai_phong', LoaiPhongController::class);
 		Route::resource('phong', PhongController::class);
 		Route::resource('banners', BannerController::class);
+		Route::resource('danh_gia', DanhGiaController::class);
 	});
