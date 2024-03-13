@@ -72,7 +72,11 @@
                             <label for="trang_thai1">Đang áp dụng</label>
 
                             <input type="radio" name="trang_thai" id="trang_thai2" value="{{App\Models\KhuyenMai::KET_THUC}}">
+<<<<<<< HEAD
                             <label for="trang_thai2">Kết thúc</label>
+=======
+                            <label for="trang_thai2">Kết thúc</label> <br>
+>>>>>>> a96b1387413af07636ee3ceba636c7a99f6f7891
 
                             <button type="submit" class="btn btn-primary">Thêm mới</button>
                         </form>

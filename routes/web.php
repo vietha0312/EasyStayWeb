@@ -15,6 +15,10 @@ use App\Http\Controllers\Backend\ExportController;
 use App\Http\Controllers\Backend\DonDatController;
 use App\Http\Controllers\Backend\Phong1Controller;
 use App\Http\Controllers\Backend\KhuyenMaiController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\Backend\DichVuController;
+>>>>>>> a96b1387413af07636ee3ceba636c7a99f6f7891
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -58,10 +62,15 @@ Route::prefix('admin')
         // Route::resource('danh_gia',DanhGiaController::class);
         Route::resource('vai_tro', VaiTroController::class);
         Route::resource('don_dat', DonDatController::class);
+
         Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
         Route::get('exportUser', [ExportController::class, 'exportUser']);
         Route::resource('chi_tiet_don_dat', ChiTietDonDatController::class);
         Route::resource('khuyen_mai', KhuyenMaiController::class);
+<<<<<<< HEAD
+=======
+        Route::resource('dich_vu', DichVuController::class);
+>>>>>>> a96b1387413af07636ee3ceba636c7a99f6f7891
     });
 
 
