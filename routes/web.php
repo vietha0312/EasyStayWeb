@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ExportController;
 use App\Http\Controllers\Backend\DonDatController;
 use App\Http\Controllers\Backend\Phong1Controller;
+use App\Http\Controllers\Backend\KhuyenMaiController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -58,6 +59,7 @@ Route::prefix('admin')
         Route::resource('don_dat', DonDatController::class);
         Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
         Route::get('exportUser', [ExportController::class, 'exportUser']);
+        Route::resource('khuyen_mai', KhuyenMaiController::class);
     });
 
 
