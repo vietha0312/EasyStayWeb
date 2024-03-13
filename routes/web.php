@@ -58,7 +58,7 @@ Route::prefix('admin')
         // Route::resource('danh_gia',DanhGiaController::class);
         Route::resource('vai_tro', VaiTroController::class);
         Route::resource('don_dat', DonDatController::class);
-        Route::resource('chi_tiet_don_dat', ChiTietDonDatController::class);
+     
         Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
         Route::get('exportUser', [ExportController::class, 'exportUser']);
         Route::resource('khuyen_mai', KhuyenMaiController::class);
