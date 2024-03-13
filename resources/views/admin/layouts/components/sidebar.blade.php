@@ -1,7 +1,8 @@
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"><!--begin::Sidebar Brand-->
     <div class="sidebar-brand"><!--begin::Brand Link-->
         <a href="../index.html" class="brand-link"><!--begin::Brand Image-->
-            <img src="/adminlte/assets/img/AdminLTELogo.png" alt="EasyStay Logo" class="brand-image opacity-75 shadow"><!--end::Brand Image--><!--begin::Brand Text-->
+            <img src="/adminlte/assets/img/AdminLTELogo.png" alt="EasyStay Logo"
+                class="brand-image opacity-75 shadow"><!--end::Brand Image--><!--begin::Brand Text-->
             <span class="brand-text fw-light">EasyStay</span><!--end::Brand Text-->
         </a><!--end::Brand Link-->
     </div><!--end::Sidebar Brand--><!--begin::Sidebar Wrapper-->
@@ -33,10 +34,12 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="{{route('admin.loai_phong.index')}}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="{{ route('admin.loai_phong.index') }}" class="nav-link"><i
+                                    class="nav-icon bi bi-circle"></i>
                                 <p>Danh sách</p>
                             </a></li>
-                        <li class="nav-item"><a href="{{route('admin.loai_phong.create')}}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="{{ route('admin.loai_phong.create') }}" class="nav-link"><i
+                                    class="nav-icon bi bi-circle"></i>
                                 <p>Tạo mới</p>
                             </a></li>
 
@@ -52,17 +55,20 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="{{route('admin.phong.index')}}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="{{ route('admin.phong.index') }}" class="nav-link"><i
+                                    class="nav-icon bi bi-circle"></i>
                                 <p>Danh sách</p>
                             </a></li>
-                        <li class="nav-item"><a href="{{route('admin.phong.create')}}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="{{ route('admin.phong.create') }}" class="nav-link"><i
+                                    class="nav-icon bi bi-circle"></i>
                                 <p>Tạo mới</p>
                             </a></li>
 
                     </ul>
                 </li>
 
-                <li class="nav-item"><a href="{{route('admin.user.index')}}" class="nav-link"><i class="nav-icon bi bi-clipboard-fill"></i>
+                <li class="nav-item"><a href="{{ route('admin.user.index') }}" class="nav-link"><i
+                            class="nav-icon bi bi-clipboard-fill"></i>
                         <p>
                             Quản lý người dùng
                         </p>
@@ -77,17 +83,20 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="{{ route('admin.don_dat.index') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="{{ route('admin.don_dat.index') }}" class="nav-link"><i
+                                    class="nav-icon bi bi-circle"></i>
                                 <p>Danh sách</p>
                             </a></li>
-                        <li class="nav-item"><a href="{{ route('admin.don_dat.create') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="{{ route('admin.don_dat.create') }}" class="nav-link"><i
+                                    class="nav-icon bi bi-circle"></i>
                                 <p>Tạo mới</p>
                             </a></li>
 
                     </ul>
                 </li>
 
-                <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon bi bi-hand-thumbs-up-fill"></i>
+                <li class="nav-item"><a href="" class="nav-link"><i
+                            class="nav-icon bi bi-hand-thumbs-up-fill"></i>
                         <p>
                             Quản lý đánh giá
                         </p>
@@ -95,7 +104,8 @@
 
                 </li>
 
-                <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon bi bi-tree-fill"></i>
+                <li class="nav-item"><a href="{{ route('admin.khach_san.index') }}" class="nav-link"><i
+                            class="nav-icon bi bi-tree-fill"></i>
                         <p>
                             Quản lý khách sạn
                         </p>
@@ -127,10 +137,12 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="exportUser" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="exportUser" class="nav-link"><i
+                                    class="nav-icon bi bi-circle"></i>
                                 <p>User</p>
                             </a></li>
-                        <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="" class="nav-link"><i
+                                    class="nav-icon bi bi-circle"></i>
                                 <p>Tạo mới</p>
                             </a></li>
 
