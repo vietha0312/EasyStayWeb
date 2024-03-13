@@ -7,6 +7,7 @@ use App\Models\Phong;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Loai_phong;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class PhongController extends Controller
@@ -96,6 +97,6 @@ class PhongController extends Controller
     public function destroy(Phong $phong)
     {
         $phong->delete();
-        return back()->with('msg', 'Xóa thành công');
+        return response(['trang_thai' => 'success']);
     }
 }
