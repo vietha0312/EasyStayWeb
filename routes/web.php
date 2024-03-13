@@ -6,7 +6,7 @@ use App\Http\Controllers\Backend\BaiVietController;
 use App\Http\Controllers\Backend\DanhGiaController;
 use App\Http\Controllers\Backend\LoaiPhongController;
 use App\Http\Controllers\Backend\PhongController;
-use App\Http\Controllers\Backend\KhachSanController;
+use App\Http\Controllers\Backend\hotelController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Backend\VaiTroController;
 use Illuminate\Support\Facades\Route;
@@ -48,7 +48,7 @@ Route::prefix('admin')
         Route::resource('loai_phong', LoaiPhongController::class);
         Route::resource('phong', PhongController::class);
         // Route::resource('anh_phong', AnhPhongController::class);
-        // Route::resource('khach_san', KhachSanController::class);
+        Route::resource('khach_san', hotelController::class);
         // Route::resource('bai_viet', BaiVietController::class);
         Route::resource ('user', RegisteredUserController::class);
         // Route::resource('danh_gia',DanhGiaController::class);
