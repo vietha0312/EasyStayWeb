@@ -6,13 +6,15 @@ use App\Http\Controllers\Backend\BaiVietController;
 use App\Http\Controllers\Backend\DanhGiaController;
 use App\Http\Controllers\Backend\LoaiPhongController;
 use App\Http\Controllers\Backend\PhongController;
-use App\Http\Controllers\Backend\KhachSanController;
+use App\Http\Controllers\Backend\hotelController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Backend\ChiTietDonDatController;
 use App\Http\Controllers\Backend\VaiTroController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ExportController;
 use App\Http\Controllers\Backend\DonDatController;
+use App\Http\Controllers\Backend\Phong1Controller;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 Route::prefix('admin')
@@ -48,17 +50,25 @@ Route::prefix('admin')
     ->group(function () {
         Route::resource('loai_phong', LoaiPhongController::class);
         Route::resource('phong', PhongController::class);
-        // Route::resource('anh_phong', AnhPhongController::class);
-        // Route::resource('khach_san', KhachSanController::class);
+        Route::resource('anh_phong', AnhPhongController::class);
+        Route::resource('khach_san', hotelController::class);
         // Route::resource('bai_viet', BaiVietController::class);
-        Route::resource ('user', RegisteredUserController::class);
+        Route::resource('user', RegisteredUserController::class);
         // Route::resource('danh_gia',DanhGiaController::class);
-        Route::resource('vai_tro',VaiTroController::class);
+        Route::resource('vai_tro', VaiTroController::class);
         Route::resource('don_dat', DonDatController::class);
+<<<<<<< HEAD
         Route::resource('chi_tiet_don_dat', ChiTietDonDatController::class);
+=======
+        Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
+>>>>>>> 2801abae54e7b8f3e7cb448ce9fc75093c1c1c62
         Route::get('exportUser', [ExportController::class, 'exportUser']);
     });
 
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
