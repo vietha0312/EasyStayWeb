@@ -2,6 +2,14 @@
 
 @section('content')
     <main class="app-main">
+
+    <div class="app-content-header">
+            @include('admin.layouts.components.content-header', [
+                'name' => 'Đơn đặt phòng',
+                'key' => 'Index',
+            ])
+        </div>
+
         @if (\Session::has('msg'))
             <div class="alert alert-success">
                 {{ \Session::get('msg') }}
@@ -18,12 +26,7 @@
             </div>
         @endif
 
-        <div class="app-content-header">
-            @include('admin.layouts.components.content-header', [
-                'name' => 'Đơn đặt phòng',
-                'key' => 'Index',
-            ])
-        </div>
+        
         <div class="app-content">
             <div class="container-fluid">
                 <div class="row">

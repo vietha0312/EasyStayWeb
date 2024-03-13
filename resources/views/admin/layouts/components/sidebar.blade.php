@@ -85,13 +85,13 @@
                     </ul>
                 </li>
 
-                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-box-seam-fill"></i>
+                <li class="nav-item"><a href="{{ route('admin.chi_tiet_don_dat.index') }}" class="nav-link"><i class="nav-icon bi bi-box-seam-fill"></i>
                         <p>
                             Quản lý chi tiết đơn đặt phòng
-                            <i class="nav-arrow bi bi-chevron-right"></i>
+                            <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <!-- <ul class="nav nav-treeview">
                         <li class="nav-item"><a href="{{ route('admin.chi_tiet_don_dat.index') }}" class="nav-link"><i
                                     class="nav-icon bi bi-circle"></i>
                                 <p>Danh sách</p>
@@ -101,7 +101,7 @@
                                 <p>Tạo mới</p>
                             </a></li>
 
-                    </ul>
+                    </ul> -->
                 </li>
 
                 <li class="nav-item"><a href="" class="nav-link"><i
@@ -135,7 +135,6 @@
                             </a></li>
                         <li class="nav-item"><a href="{{ route('admin.bai_viet.create') }}" class="nav-link"><i
                                     class="nav-icon bi bi-circle"></i>
-<<<<<<< HEAD
                                 <p>Tạo mới</p>
                             </a></li>
 
@@ -155,43 +154,12 @@
                             </a></li>
                         <li class="nav-item"><a href="{{ route('admin.khuyen_mai.create') }}" class="nav-link"><i
                                     class="nav-icon bi bi-circle"></i>
-=======
->>>>>>> a96b1387413af07636ee3ceba636c7a99f6f7891
                                 <p>Tạo mới</p>
                             </a></li>
 
                     </ul>
                 </li>
 
-                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
-                        <p>
-                            Quản lý Khuyến mãi
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-<<<<<<< HEAD
-                        <li class="nav-item"><a href="exportUser" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>User</p>
-                            </a></li>
-                        <li class="nav-item"><a href="" class="nav-link"><i
-=======
-                        <li class="nav-item"><a href="{{ route('admin.khuyen_mai.index') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Danh sách</p>
-                            </a></li>
-                        <li class="nav-item"><a href="{{ route('admin.khuyen_mai.create') }}" class="nav-link"><i
->>>>>>> a96b1387413af07636ee3ceba636c7a99f6f7891
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Tạo mới</p>
-                            </a></li>
-
-                    </ul>
-                </li>
-
-<<<<<<< HEAD
-=======
             <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
                 <p>
                     Quản lý Dịch vụ
@@ -228,7 +196,6 @@
                     </ul>
                 </li>
 
->>>>>>> a96b1387413af07636ee3ceba636c7a99f6f7891
             </ul><!--end::Sidebar Menu-->
         </nav>
     </div><!--end::Sidebar Wrapper-->
