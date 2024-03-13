@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
-use App\Exports\UsersExport;
-use Maatwebsite\Excel\Facades\Excel;
 class RegisteredUserController extends Controller
 {
     /**
@@ -29,7 +27,7 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
         $vai_tro = VaiTro::query()->pluck('ten_chuc_vu','id')->toArray();
-        return view('auth.register' . __FUNCTION__,compact('vai_tro'));
+        return view('auth.register',compact('vai_tro'));
     }
 
     /**
@@ -41,7 +39,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'ten_nguoi_dung' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'dia_chi',
             'so_dien_thoai',
