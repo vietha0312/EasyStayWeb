@@ -52,16 +52,13 @@ Route::prefix('admin')
         Route::resource('phong', PhongController::class);
         Route::resource('anh_phong', AnhPhongController::class);
         Route::resource('khach_san', hotelController::class);
-        // Route::resource('bai_viet', BaiVietController::class);
+        Route::resource('bai_viet', BaiVietController::class);
         Route::resource('user', RegisteredUserController::class);
         // Route::resource('danh_gia',DanhGiaController::class);
         Route::resource('vai_tro', VaiTroController::class);
         Route::resource('don_dat', DonDatController::class);
-<<<<<<< HEAD
         Route::resource('chi_tiet_don_dat', ChiTietDonDatController::class);
-=======
         Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
->>>>>>> 2801abae54e7b8f3e7cb448ce9fc75093c1c1c62
         Route::get('exportUser', [ExportController::class, 'exportUser']);
     });
 
