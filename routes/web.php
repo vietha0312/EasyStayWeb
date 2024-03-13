@@ -3,7 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\AnhPhongController;
 use App\Http\Controllers\Backend\BaiVietController;
-use App\Http\Controllers\Backend\DanhGiaController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\DanhGiaController;
 use App\Http\Controllers\Backend\LoaiPhongController;
 use App\Http\Controllers\Backend\PhongController;
 use App\Http\Controllers\Backend\hotelController;
@@ -30,7 +31,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 
@@ -57,6 +58,8 @@ Route::prefix('admin')
         Route::resource('bai_viet', BaiVietController::class);
         Route::resource('user', RegisteredUserController::class);
         // Route::resource('danh_gia',DanhGiaController::class);
+        Route::resource('banners', BannerController::class);
+		Route::resource('danh_gia', DanhGiaController::class);
         Route::resource('vai_tro', VaiTroController::class);
         Route::resource('don_dat', DonDatController::class);
 
