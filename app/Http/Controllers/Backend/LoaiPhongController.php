@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\DataTables\ChiTietLoaiPhongDataTable;
 use App\DataTables\LoaiPhongDataTable;
 use App\Models\Loai_phong;
 use Illuminate\Http\Request;
@@ -9,6 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Anh_phong;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Support\Facades\Storage;
+
+use function Termwind\render;
 
 class LoaiPhongController extends Controller
 {
@@ -19,7 +22,7 @@ class LoaiPhongController extends Controller
     const PATH_UPLOAD = 'loai_phong';
     public function index(LoaiPhongDataTable $datatable)
     {
-        // $data = Loai_phong::query()->latest()->paginate();
+        // $data = Loai_phong::query()->latest()->paginate(10);
         // return view('admin.loai_phong.index', compact('data'));
         return $datatable->render('admin.loai_phong.index');
     }
@@ -39,7 +42,7 @@ class LoaiPhongController extends Controller
     {
         $request->validate([
             'ten' => 'required|unique:loai_phongs',
-            'anh' => 'required','image',
+            'anh' => 'nullable','image',
             'gia' => 'required',
             'gia_ban_dau' => 'nullable',
             'gioi_han_nguoi' => 'required',
@@ -76,9 +79,14 @@ class LoaiPhongController extends Controller
     /**
      * Display the specified resource.
      */
+    // public function show(ChiTietLoaiPhongDataTable $datatable)
+    // {
+    //     return $datatable->render('admin.loai_phong.show');
+    // }
+
     public function show(Loai_phong $loai_phong)
     {
-        //
+        return view('admin.loai_phong.show', compact('loai_phong'));
     }
 
     /**
@@ -96,7 +104,7 @@ class LoaiPhongController extends Controller
     {
         $request->validate([
             'ten' => 'required|unique:loai_phongs,ten,' . $loai_phong->id,
-            'anh' => 'required','image',
+            'anh' => 'nullable','image',
             'gia' => 'required',
             'gia_ban_dau' => 'nullable',
             'gioi_han_nguoi' => 'required',

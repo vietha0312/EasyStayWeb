@@ -19,6 +19,7 @@ class AnhPhongController extends Controller
     public function index(Request $request, AnhPhongDataTable $datatables)
     {
         $loai_phong = Loai_phong::findOrFail($request->loai_phong);
+        // return view('admin.loai_phong.anh_phong.index',compact('loai_phong'));
         return $datatables->render('admin.loai_phong.anh_phong.index', compact('loai_phong'));
     }
 

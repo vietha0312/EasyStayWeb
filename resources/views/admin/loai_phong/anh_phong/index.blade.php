@@ -29,6 +29,8 @@
                                 <input type="hidden" value="{{ $loai_phong->id }}" name="loai_phong_id">
                             </div>
                             <button type="submit" class="btn btn-primary">Tải lên</button>
+                            <a href="{{route('admin.loai_phong.index')}}" class="btn btn-danger">Quay lại</a>
+
                         </form>
                         {{ $dataTable->table() }}
                     </div>
