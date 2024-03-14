@@ -50,14 +50,34 @@ class LoaiPhongDataTable extends DataTable
                 $anhBtn = "<a href='" . route('admin.anh_phong.index',['loai_phong' =>  $query->id]) . "' class='btn btn-info ms-2'>
                 <i class='bi bi-image'></i>
                 </a>";
+
                 $detailBtn = "<a href='" . route('admin.loai_phong.show', $query->id) . "' class='btn btn-secondary ms-2'>
                 <i class='bi bi-card-list'></i>
                 </a>";
                 $deleteBtn = "<a href='" . route('admin.loai_phong.destroy', $query->id) . "' class='btn btn-danger delete-item ms-2'>
                 <i class='bi bi-archive'></i>
                 </a>";
+                $phongBtn = "<a href='" . route('admin.phong.index',['loai_phong' =>  $query->id]) . "' class='btn btn-warning ms-2'>
+                <i class='bi bi-houses-fill'></i>
+                </a>";
 
-                return $editBtn . $detailBtn . $anhBtn  . $deleteBtn ;
+                // $moreBtn = "
+                // <div class='dropdown d-inline ms-1'>
+                //     <button class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                //     <i class='bi bi-gear'></i>
+                //     </button>
+                //     <ul class='dropdown-menu'>
+                //         <li><a class='dropdown-item' href='" . route('admin.loai_phong.index', ['loai_phong' => $query->id]) . "'>
+                //             <i class='bi bi-image'></i> Image Gallery
+                //         </a></li>
+                //         <li><a class='dropdown-item' href='" . route('admin.loai_phong.index', ['loai_phong' => $query->id]) . "'>
+                //             <i class='bi bi-file'></i> Variants
+                //         </a></li>
+                //     </ul>
+                // </div>  
+                // ";
+
+                return $editBtn . $detailBtn . $anhBtn  . $deleteBtn . $phongBtn ;
             })
             
             ->rawColumns(['ten',' anh', 'gia', 'gia_ban_dau','gioi_han_nguoi','so_luong','mo_ta_ngan','mo_ta_dai','trang_thai', 'action'])

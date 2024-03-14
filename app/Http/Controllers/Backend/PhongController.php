@@ -17,11 +17,10 @@ class PhongController extends Controller
      */
     const PATH_VIEW = 'admin.phong.';
 
-    public function index(PhongDataTable $datatable) 
+    public function index(Request $request, PhongDataTable $datatables)
     {
-        return $datatable->render('admin.phong.index');
-        // $data = Phong::query()->latest()->paginate(10);
-        // return view(self::PATH_VIEW . __FUNCTION__, compact('data'));
+        $loai_phong = Loai_phong::findOrFail($request->loai_phong);
+        return $datatables->render('admin.phong.index', compact('loai_phong'));
     }
 
     /**
