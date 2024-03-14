@@ -65,6 +65,9 @@ Route::prefix('admin')
 
         Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
         Route::get('exportUser', [ExportController::class, 'exportUser']);
+        Route::resource('chi_tiet_don_dat', ChiTietDonDatController::class);
+        Route::resource('khuyen_mai', KhuyenMaiController::class);
+        Route::resource('dich_vu', DichVuController::class);
     });
 
 
