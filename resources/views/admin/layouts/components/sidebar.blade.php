@@ -105,7 +105,7 @@
                             <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
                         </p>
                     </a>
-                    <!-- <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview">
                         <li class="nav-item"><a href="{{ route('admin.chi_tiet_don_dat.index') }}" class="nav-link"><i
                                     class="nav-icon bi bi-circle"></i>
                                 <p>Danh sách</p>
@@ -177,43 +177,6 @@
                     </ul>
                 </li>
 
-                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
-                        <p>
-                            Quản lý Khuyến mãi
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="{{ route('admin.khuyen_mai.index') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Danh sách</p>
-                            </a></li>
-                        <li class="nav-item"><a href="{{ route('admin.bai_viet.create') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Tạo mới</p>
-                            </a></li>
-
-                    </ul>
-                </li>
-
-                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
-                        <p>
-                            Quản lý Khuyến mãi
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="{{ route('admin.khuyen_mai.index') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Danh sách</p>
-                            </a></li>
-                        <li class="nav-item"><a href="{{ route('admin.khuyen_mai.create') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Tạo mới</p>
-                            </a></li>
-
-                    </ul>
-                </li>
 
             <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
                 <p>
@@ -233,22 +196,7 @@
         </li>
 
 
-            <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
-                <p>
-                    Quản lý Dịch vụ
-                    <i class="nav-arrow bi bi-chevron-right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item"><a href="{{ route('admin.dich_vu.index') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
-                        <p>Danh sách</p>
-                    </a></li>
-                <li class="nav-item"><a href="{{ route('admin.dich_vu.create') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
-                        <p>Tạo mới</p>
-                    </a></li>
 
-            </ul>
-        </li>
 
                 <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
                         <p>
