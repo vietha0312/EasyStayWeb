@@ -19,6 +19,7 @@
             </div>
         </div>
     </div> -->
+    
 <main class="app-main">
     <div class="app-content-header">
         @include('admin.layouts.components.content-header', [
@@ -26,6 +27,7 @@
         'key' => 'EasyStay',
         ])
     </div>
+    
     <div class="container">
         <div class="card">
             <div class="card-header">Danh sách</div>

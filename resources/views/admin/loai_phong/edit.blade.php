@@ -64,7 +64,9 @@
         value="{{\App\Models\Loai_phong::HET_PHONG}}">
         <label for="trang_thai2">HẾT PHÒNG</label> <br><br>
 
-        <button class="btn btn-success mt-3">GỬI</button>
+        <button class="btn btn-success">GỬI</button>
+        <a href="{{route('admin.loai_phong.index')}}" class="btn btn-danger">Quay lại</a>
+
     </form>
 </main>
 @endsection

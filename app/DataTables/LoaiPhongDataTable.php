@@ -47,13 +47,17 @@ class LoaiPhongDataTable extends DataTable
                 $editBtn = "<a href='" . route('admin.loai_phong.edit', $query->id) . "' class='btn btn-primary'>
                 <i class='bi bi-pen'></i>
                 </a>";
+                $anhBtn = "<a href='" . route('admin.anh_phong.index',['loai_phong' =>  $query->id]) . "' class='btn btn-info ms-2'>
+                <i class='bi bi-image'></i>
+                </a>";
+                $detailBtn = "<a href='" . route('admin.loai_phong.show', $query->id) . "' class='btn btn-secondary ms-2'>
+                <i class='bi bi-card-list'></i>
+                </a>";
                 $deleteBtn = "<a href='" . route('admin.loai_phong.destroy', $query->id) . "' class='btn btn-danger delete-item ms-2'>
                 <i class='bi bi-archive'></i>
                 </a>";
-                $anhBtn = "<a href='" . route('admin.anh_phong.index',['loai_phong' =>  $query->id]) . "' class='btn btn-secondary ms-2'>
-                <i class='bi bi-image'></i>
-                </a>";
-                return $editBtn . $deleteBtn . $anhBtn;
+
+                return $editBtn . $detailBtn . $anhBtn  . $deleteBtn ;
             })
             
             ->rawColumns(['ten',' anh', 'gia', 'gia_ban_dau','gioi_han_nguoi','so_luong','mo_ta_ngan','mo_ta_dai','trang_thai', 'action'])
@@ -99,20 +103,20 @@ class LoaiPhongDataTable extends DataTable
             
             Column::make('id'),
             Column::make('ten'),
-            Column::make('anh'),
+            // Column::make('anh'),
             Column::make('gia'),
             Column::make('gia_ban_dau'),
-            Column::make('gioi_han_nguoi'),
+            // Column::make('gioi_han_nguoi'),
             Column::make('so_luong'),
-            Column::make('mo_ta_ngan'),
-            Column::make('mo_ta_dai'),
+            // Column::make('mo_ta_ngan'),
+            // Column::make('mo_ta_dai'),
             Column::make('trang_thai'),
             // Column::make('created_at'),
             // Column::make('updated_at'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(160)
+                  ->width(150)
                   ->addClass('text-center'),
         ];
     }
