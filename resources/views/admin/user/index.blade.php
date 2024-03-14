@@ -20,7 +20,7 @@
                 <td>{{$item->email}}</td>
                 <td>{{$item->dia_chi}}</td>
                 <td>{{$item->so_dien_thoai}}</td>
-                <td>{{$item->vaitro->ten_chuc_vu}}</td>
+                <td>{{$item->vaitro->ten_chuc_vu ?? ''}}</td>
                 <td>
                     <form action="{{route('admin.user.destroy',$item)}}" method="post">
                         @csrf
