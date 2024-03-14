@@ -16,7 +16,6 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         Danh sách
-                        <!-- <a href="{{ route('admin.loai_phong.index') }}" class="btn btn-danger">Back</a> -->
                     </div>
 
                     <div class="card-body">

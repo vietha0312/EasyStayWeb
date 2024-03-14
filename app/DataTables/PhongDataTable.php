@@ -60,7 +60,7 @@ class PhongDataTable extends DataTable
      */
     public function query(Phong $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->where('loai_phong_id', request()->loai_phong)->newQuery();
     }
 
     /**
