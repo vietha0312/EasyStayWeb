@@ -86,13 +86,13 @@
                     </ul>
                 </li>
 
-                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-box-seam-fill"></i>
+                <li class="nav-item"><a href="{{ route('admin.chi_tiet_don_dat.index') }}" class="nav-link"><i class="nav-icon bi bi-box-seam-fill"></i>
                         <p>
                             Quản lý chi tiết đơn đặt phòng
-                            <i class="nav-arrow bi bi-chevron-right"></i>
+                            <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <!-- <ul class="nav nav-treeview">
                         <li class="nav-item"><a href="{{ route('admin.chi_tiet_don_dat.index') }}" class="nav-link"><i
                                     class="nav-icon bi bi-circle"></i>
                                 <p>Danh sách</p>
@@ -102,7 +102,7 @@
                                 <p>Tạo mới</p>
                             </a></li>
 
-                    </ul>
+                    </ul> -->
                 </li>
 
                 <li class="nav-item"><a href="{{route('admin.danh_gia.index')}}" class="nav-link"><i
