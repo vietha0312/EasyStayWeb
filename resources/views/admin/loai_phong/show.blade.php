@@ -11,7 +11,9 @@
 
     <div class="container">
         <div class="card">
-            <div class="card-header">Loại phòng: {{$loai_phong->ten}}</div>
+            <div class="card-header">
+                <h5>Loại phòng: {{$loai_phong->ten}}</h5>
+            </div>
             <div class="card-body">
                 <table class="table">
                     <thead>

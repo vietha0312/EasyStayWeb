@@ -26,7 +26,12 @@
         @endif
     </div>
 
-    <form class="mx-3" action="{{route('admin.loai_phong.store')}}" method="post" enctype="multipart/form-data">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">Cập nhật phòng</div>
+
+            <div class="card-body">
+    <form action="{{route('admin.loai_phong.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <label for="ten">Tên</label>
         <input type="text" name="ten" id="ten" class="form-control">
@@ -63,5 +68,8 @@
         <button class="btn btn-success mt-3">GỬI</button>
         <a class="btn btn-danger mt-3" href="{{route('admin.loai_phong.index')}}">Quay lại</a>
     </form>
+    </div>
+        </div>
+    </div>
 </main>
 @endsection

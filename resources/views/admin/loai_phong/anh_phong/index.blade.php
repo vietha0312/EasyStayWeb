@@ -15,11 +15,11 @@
             <div class="">
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                        Danh sách
+                        <h5> Loại phòng: {{ $loai_phong->ten }}</h5>
                     </div>
 
                     <div class="card-body">
-                        <h5>Loại phòng: {{ $loai_phong->ten }}</h5>
+                        <!-- <h5>Loại phòng: {{ $loai_phong->ten }}</h5> -->
                         <form enctype="multipart/form-data" action="{{ route('admin.anh_phong.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">

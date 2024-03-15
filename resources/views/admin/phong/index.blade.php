@@ -13,12 +13,11 @@
             <div class="">
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                        Danh sách
-                        <!-- <a href="{{ route('admin.loai_phong.index') }}" class="btn btn-danger">Back</a> -->
+                        <h5>Loại phòng: {{ $loai_phong->ten }}</h5>
                     </div>
 
                     <div class="card-body">
-                        <h5>Loại phòng: {{ $loai_phong->ten }}</h5>
+
                         <form enctype="multipart/form-data" action="{{ route('admin.phong.store') }}" method="POST">
                             @csrf
                             <label for="ten_phong">Tên phòng</label>

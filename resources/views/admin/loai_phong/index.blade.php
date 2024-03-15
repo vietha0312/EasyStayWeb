@@ -30,7 +30,9 @@
     
     <div class="container">
         <div class="card">
-            <div class="card-header">Danh sách</div>
+            <div class="card-header">
+                <h5>Danh sách</h5>
+            </div>
             <div class="card-body">
                 {{ $dataTable->table() }}
             </div>

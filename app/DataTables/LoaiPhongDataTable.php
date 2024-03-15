@@ -77,7 +77,7 @@ class LoaiPhongDataTable extends DataTable
                 // </div>  
                 // ";
 
-                return $editBtn . $detailBtn . $anhBtn  . $deleteBtn . $phongBtn ;
+                return $editBtn . $detailBtn . $anhBtn . $phongBtn . $deleteBtn ;
             })
             
             ->rawColumns(['ten',' anh', 'gia', 'gia_ban_dau','gioi_han_nguoi','so_luong','mo_ta_ngan','mo_ta_dai','trang_thai', 'action'])
