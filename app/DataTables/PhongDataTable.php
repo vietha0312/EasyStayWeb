@@ -94,7 +94,7 @@ class PhongDataTable extends DataTable
             
             Column::make('id'),
             Column::make('ten_phong'),
-            Column::make('loai_phong_id'),
+            // Column::make('loai_phong_id'),
             Column::make('mo_ta'),
             Column::make('trang_thai'),
             // Column::make('created_at'),

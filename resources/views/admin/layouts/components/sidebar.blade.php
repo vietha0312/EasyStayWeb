@@ -48,7 +48,7 @@
 
                 </li>
 
-                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-box-seam-fill"></i>
+                <!-- <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-box-seam-fill"></i>
                         <p>
                             Quản lý phòng
                             <i class="nav-arrow bi bi-chevron-right"></i>
@@ -65,7 +65,7 @@
                             </a></li>
 
                     </ul>
-                </li>
+                </li> -->
 
                 <li class="nav-item"><a href="{{ route('admin.user.index') }}" class="nav-link"><i
                             class="nav-icon bi bi-clipboard-fill"></i>

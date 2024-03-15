@@ -41,7 +41,7 @@
                                 <input type="file" class="form-control" multiple name="anh[]">
                                 <input type="hidden" value="{{ $loai_phong->id }}" name="loai_phong_id">
                             </div> -->
-                            <button type="submit" class="btn btn-primary">Gửi</button>
+                            <button type="submit" class="btn btn-success">Gửi</button>
                             <a href="{{route('admin.loai_phong.index')}}" class="btn btn-danger">Quay lại</a>
 
                         </form>

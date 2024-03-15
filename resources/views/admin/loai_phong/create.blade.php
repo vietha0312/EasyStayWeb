@@ -61,7 +61,7 @@
         <label for="trang_thai2">HẾT PHÒNG</label> <br>
 
         <button class="btn btn-success mt-3">GỬI</button>
-        <a class="btn btn-primary mt-3" href="{{route('admin.loai_phong.index')}}">Quay lại</a>
+        <a class="btn btn-danger mt-3" href="{{route('admin.loai_phong.index')}}">Quay lại</a>
     </form>
 </main>
 @endsection
