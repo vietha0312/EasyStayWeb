@@ -28,8 +28,8 @@ class PhongController extends Controller
      */
     public function create()
     {
-        $loai_phong = Loai_phong::query()->pluck('ten','id')->toArray();
-        return view(self::PATH_VIEW . __FUNCTION__, compact('loai_phong'));
+        // $loai_phong = Loai_phong::query()->pluck('ten','id')->toArray();
+        // return view(self::PATH_VIEW . __FUNCTION__, compact('loai_phong'));
     }
 
     /**

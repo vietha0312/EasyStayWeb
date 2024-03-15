@@ -1,19 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\DataTables\DanhGiaDataTable;
 use App\Models\DanhGia;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Loai_phong;
 
 class DanhGiaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, DanhGiaDataTable $datatable)
     {
-        $data = DanhGia::all();
-		return view('admin.danh_gia.index', compact('data'));
+        $loai_phong = Loai_phong::findOrFail($request->loai_phong);
+        return $datatable->render('admin.danh_gia.index', compact('loai_phong'));
+        // $data = DanhGia::all();
+		// return view('admin.danh_gia.index', compact('data'));
     }
 
     /**
@@ -61,9 +66,10 @@ class DanhGiaController extends Controller
      */
     public function destroy(string $id)
     {
-        $deleteData = DanhGia::find($id);
+        $deleteData = DanhGia::findOrFail($id);
 		$deleteData->delete();
 
-		return redirect(route('admin.danh_gia.index'))->with('success', 'Ẩn bản ghi thành công.');
+        return response(['trang_thai' => 'success']);
+		// return redirect(route('admin.danh_gia.index'))->with('success', 'Ẩn bản ghi thành công.');
     }
 }

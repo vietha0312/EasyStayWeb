@@ -22,8 +22,6 @@ class LoaiPhongController extends Controller
     const PATH_UPLOAD = 'loai_phong';
     public function index(LoaiPhongDataTable $datatable)
     {
-        // $data = Loai_phong::query()->latest()->paginate(10);
-        // return view('admin.loai_phong.index', compact('data'));
         return $datatable->render('admin.loai_phong.index');
     }
 
@@ -72,8 +70,8 @@ class LoaiPhongController extends Controller
         //     $data['anh'] = Storage::put(self::PATH_UPLOAD, $request->file('anh'));
         // }
         // Loai_phong::query()->create($data);
-        // // toastr('Thêm thành công', 'success');
-        // return back()->with('success','Thêm thành công');
+        return back()->with('success','Thêm thành công');
+        // toastr('Thêm thành công', 'success');
     }
 
     /**

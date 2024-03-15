@@ -13,10 +13,18 @@ return new class extends Migration
     {
         Schema::create('danh_gias', function (Blueprint $table) {
             $table->id();
-            $table->string("noi_dung")->nullable();
+            $table->string('noi_dung')->nullable();
             $table->string('anh')->nullable();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('phong_id');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('loai_phong_id')->constrained();
+            
+            // $table->unsignedBigInteger('user_id');
+            // $table->foreignId('user_id')->references('id')->on('users');
+
+            // $table->unsignedBigInteger('loai_phong_id');
+            // $table->foreignId('loai_phong_id')->references('id')->on('loai_phongs');
+            
+            $table->softDeletes();
             $table->timestamps();
         });
     }

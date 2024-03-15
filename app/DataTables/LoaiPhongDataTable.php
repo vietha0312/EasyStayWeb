@@ -60,6 +60,9 @@ class LoaiPhongDataTable extends DataTable
                 $phongBtn = "<a href='" . route('admin.phong.index',['loai_phong' =>  $query->id]) . "' class='btn btn-warning ms-2'>
                 <i class='bi bi-houses-fill'></i>
                 </a>";
+                $cmBtn =  "<a href='" . route('admin.danh_gia.index',['loai_phong' => $query->id]) . "' class='btn btn-dark ms-2'>
+                <i class='bi bi-chat-dots'></i>
+                </a>";
 
                 // $moreBtn = "
                 // <div class='dropdown d-inline ms-1'>
@@ -77,7 +80,7 @@ class LoaiPhongDataTable extends DataTable
                 // </div>  
                 // ";
 
-                return $editBtn . $detailBtn . $anhBtn . $phongBtn . $deleteBtn ;
+                return $editBtn . $detailBtn . $anhBtn . $phongBtn .$cmBtn. $deleteBtn ;
             })
             
             ->rawColumns(['ten',' anh', 'gia', 'gia_ban_dau','gioi_han_nguoi','so_luong','mo_ta_ngan','mo_ta_dai','trang_thai', 'action'])
