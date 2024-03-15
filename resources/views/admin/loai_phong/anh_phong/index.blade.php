@@ -19,7 +19,6 @@
                     </div>
 
                     <div class="card-body">
-                        <!-- <h5>Loại phòng: {{ $loai_phong->ten }}</h5> -->
                         <form enctype="multipart/form-data" action="{{ route('admin.anh_phong.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">

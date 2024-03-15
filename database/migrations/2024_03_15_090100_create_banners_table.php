@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
             $table->string("anh");
-            $table->string("mo_ta")->nullable();
-            $table->string("trang_thai");
-            $table->timestamps();
+            // $table->string("mo_ta")->nullable();
+            $table->boolean("trang_thai")->default(1);
             $table->softDeletes();
-
+            $table->timestamps();
         });
     }
 

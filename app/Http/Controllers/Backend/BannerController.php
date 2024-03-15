@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\DataTables\BannerDataTable;
 use App\Http\Requests\BannerRequest;
 use App\Models\Banner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\ImageUploadTrait;
+use Illuminate\Contracts\Cache\Store;
 
 class BannerController extends Controller
 {
+	use ImageUploadTrait;
 	/**
 	 * Display a listing of the resource.
 	 */
-	public function index()
+	public function index(Request $request, BannerDataTable $datatable)
 	{
-
-		$data = Banner::all();
-		return view('admin.banner.index', compact('data'));
+		return $datatable->render('admin.banner.index');
+		// $data = Banner::all();
+		// return view('admin.banner.index', compact('data'));
 	}
 
 	/**
@@ -31,27 +35,42 @@ class BannerController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 */
-	public function store(BannerRequest $request)
+	public function store(Request $request)
 	{
-		// Lưu hình ảnh vào thư mục storage
-		$anh = $request->file('anh');
-		$tenAnh = time() . '.' . $anh->getClientOriginalExtension();
+		$request->validate([
+            'anh.*' => ['required', 'image'],
+        ]);
 
-		// Kiểm tra xem ảnh có tồn tại trong hệ thống không
-		if (Storage::exists('banners/' . $tenAnh)) {
-			return redirect()->back()->with('error', 'Hình ảnh đã tồn tại.');
-		}
+        $anh = $this->uploadMultiImage($request, 'anh', 'upload/banner');
 
-		$anh->storeAs('banners', $tenAnh);
+        foreach($anh as $path){
+            $banner = new Banner();
+            $banner->anh = $path;
+            $banner->save();
+        }
 
-		// Tạo bản ghi mới
-		Banner::create([
-			'anh' => $tenAnh,
-			'mo_ta' => $request->mo_ta,
-			'trang_thai' => $request->trang_thai,
-		]);
+        return redirect()->back();
+		
+		//Lưu hình ảnh vào thư mục storage
 
-		return redirect(route('admin.banners.index'))->with('success', 'Đã tạo bản ghi thành công.');
+		// $anh = $request->file('anh');
+		// $tenAnh = time() . '.' . $anh->getClientOriginalExtension();
+
+		// // Kiểm tra xem ảnh có tồn tại trong hệ thống không
+		// if (Storage::exists('banners/' . $tenAnh)) {
+		// 	return redirect()->back()->with('error', 'Hình ảnh đã tồn tại.');
+		// }
+
+		// $anh->storeAs('banners', $tenAnh);
+
+		// // Tạo bản ghi mới
+		// Banner::create([
+		// 	'anh' => $tenAnh,
+		// 	'mo_ta' => $request->mo_ta,
+		// 	'trang_thai' => $request->trang_thai,
+		// ]);
+
+		// return redirect(route('admin.banners.index'))->with('success', 'Đã tạo bản ghi thành công.');
 	}
 
 
@@ -99,11 +118,18 @@ class BannerController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 */
-	public function destroy(string $id)
+	public function destroy(Banner $banner)
 	{
-		$deleteData = Banner::find($id);
-		$deleteData->delete();
+		if(Storage::exists($banner->anh)){
+			Storage::delete($banner->anh);
+		}
+		$banner->delete();
+		return response(['trang_thai' => 'success']);
 
-		return redirect(route('admin.banners.index'))->with('success', 'Xoá bản ghi thành công.');
+
+		// $deleteData = Banner::find($id);
+		// $deleteData->delete();
+
+		// return redirect(route('admin.banners.index'))->with('success', 'Xoá bản ghi thành công.');
 	}
 }
