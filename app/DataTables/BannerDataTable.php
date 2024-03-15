@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Anh_phong;
+use App\Models\Banner;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class AnhPhongDataTable extends DataTable
+class BannerDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -22,31 +22,43 @@ class AnhPhongDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'anhphong.action')
+            ->addColumn('action', 'banner.action')
 
             ->addColumn('anh', function($query){
-                $anh =  "<img src='" . asset($query->anh) . "' width='100px' alt='...'>";
+                $anh =  "<img src='" . asset($query->anh) . "' width='100px' alt='ảnh banner'>";
                 return $anh;
-                
+            })
+
+            ->addColumn('trang_thai', function ($query) {
+                if ($query->trang_thai == 1) {
+                    $button = "<div class='form-check form-switch'>
+                    <input class='form-check-input change-status' data-id='" . $query->id . "'  type='checkbox' role='switch' id='flexSwitchCheckDefault' name='trang_thai' checked>
+                  </div>";
+                } else {
+                    $button = "<div class='form-check form-switch'>
+                    <input class='form-check-input change-status' data-id='" . $query->id . "'  type='checkbox' role='switch' id='flexSwitchCheckDefault' name='trang_thai'>
+                  </div>";
+                }
+                return $button;
             })
 
             ->addColumn('action', function ($query) {
-                $deleteBtn = "<a href='" . route('admin.anh_phong.destroy', $query->id) . "' class='btn btn-danger delete-item'>
+                $deleteBtn = "<a href='" . route('admin.banners.destroy', $query->id) . "' class='btn btn-danger delete-item'>
                 <i class='bi bi-archive'></i>
                 </a>";
                 return $deleteBtn;
             })
 
-            ->rawColumns(['anh', 'loai_phong_id', 'action'])
+            ->rawColumns(['anh','trang_thai', 'action'])
             ->setRowId('id');
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(Anh_phong $model): QueryBuilder
+    public function query(Banner $model): QueryBuilder
     {
-        return $model->where('loai_phong_id', request()->loai_phong)->newQuery();
+        return $model->newQuery();
     }
 
     /**
@@ -55,7 +67,7 @@ class AnhPhongDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('anhphong-table')
+                    ->setTableId('banner-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
@@ -79,7 +91,7 @@ class AnhPhongDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('anh'),
-            // Column::make('loai_phong_id'),
+            Column::make('trang_thai'),
             // Column::make('created_at'),
             // Column::make('updated_at'),
             Column::computed('action')
@@ -95,6 +107,6 @@ class AnhPhongDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'AnhPhong_' . date('YmdHis');
+        return 'Banner_' . date('YmdHis');
     }
 }
