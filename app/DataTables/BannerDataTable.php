@@ -25,8 +25,8 @@ class BannerDataTable extends DataTable
             ->addColumn('action', 'banner.action')
 
             ->addColumn('anh', function($query){
-                $anh =  "<img src='" . asset($query->anh) . "' width='100px' alt='ảnh banner'>";
-                return $anh;
+                return  "<img src='" . asset($query->anh) . "' width='100px' alt='ảnh banner'>";
+            
             })
 
             ->addColumn('trang_thai', function ($query) {

@@ -28,7 +28,9 @@
 
     <div class="container">
         <div class="card">
-            <div class="card-header">Cập nhật phòng</div>
+            <div class="card-header">
+                <h5>Tạo mới loại phòng</h5>
+            </div>
 
             <div class="card-body">
     <form action="{{route('admin.loai_phong.store')}}" method="post" enctype="multipart/form-data">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\DataTables\BaiVietDataTable;
 use App\Models\Bai_viet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,10 +13,11 @@ class BaiVietController extends Controller
     const PATH_VIEW = 'admin.bai_viet.';
     const PATH_UPLOAD = 'bai_viet';
 
-    public function index()
+    public function index( Request $request, BaiVietDataTable $datatable)
     {
-        $data = Bai_viet::latest()->paginate(5);
-        return view(self::PATH_VIEW . 'index', compact('data'));
+        return $datatable->render('admin.bai_viet.index');
+        // $data = Bai_viet::latest()->paginate(5);
+        // return view(self::PATH_VIEW . 'index', compact('data'));
     }
 
     public function create()
@@ -64,6 +66,6 @@ class BaiVietController extends Controller
             Storage::delete($bai_viet->anh);
         }
 
-        return back()->with('msg', 'Xóa thành công');
+        return response(['trang_thai' => 'success']);
     }
 }
