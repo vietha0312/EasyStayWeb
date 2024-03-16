@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\User;
+use App\Models\Bai_viet;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class UserDataTable extends DataTable
+class BaiVietDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -22,33 +22,49 @@ class UserDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'user.action')
+            ->addColumn('action', 'baiviet.action')
 
-            ->addColumn('id_vai_tro', function($query){
-                return $query->vaiTro->ten_chuc_vu;
+            ->addColumn('anh', function($query){
+                return  "<img src='" . asset($query->anh) . "' width='100px' alt='Ảnh mô tả bài viết'>";
+                
+            })
+
+            ->addColumn('trang_thai', function ($query) {
+                if ($query->trang_thai == 1) {
+                    return "Xuất bản";
+                //     $button = "<div class='form-check form-switch'>
+                //     <input class='form-check-input change-status' data-id='" . $query->id . "'  type='checkbox' role='switch' id='flexSwitchCheckDefault' name='trang_thai' checked>
+                //   </div>";
+                } else {
+                    return "Nháp";
+
+                //     $button = "<div class='form-check form-switch'>
+                //     <input class='form-check-input change-status' data-id='" . $query->id . "'  type='checkbox' role='switch' id='flexSwitchCheckDefault' name='trang_thai'>
+                //   </div>";
+                }
+                // return $button;
             })
 
             ->addColumn('action', function ($query) {
 
-                $editBtn = "<a href='" . route('admin.user.edit', $query->id) . "' class='btn btn-primary'>
+                $editBtn = "<a href='" . route('admin.bai_viet.edit', $query->id) . "' class='btn btn-primary'>
                 <i class='bi bi-pen'></i>
                 </a>";
 
-                $deleteBtn = "<a href='" . route('admin.user.destroy', $query->id) . "' class='btn btn-danger delete-item ms-2'>
+                $deleteBtn = "<a href='" . route('admin.bai_viet.destroy', $query->id) . "' class='btn btn-danger delete-item ms-2'>
                 <i class='bi bi-archive'></i>
                 </a>";
                 return $editBtn . $deleteBtn;
             })
 
-            ->rawColumns(['id_vai_tro', 'action'])
-
+            ->rawColumns(['anh', 'action'])
             ->setRowId('id');
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(User $model): QueryBuilder
+    public function query(Bai_viet $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -59,7 +75,7 @@ class UserDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('user-table')
+                    ->setTableId('baiviet-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
@@ -82,11 +98,10 @@ class UserDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('ten_nguoi_dung'),
-            Column::make('email'),
-            Column::make('dia_chi'),
-            Column::make('so_dien_thoai'),
-            Column::make('id_vai_tro'),
+            Column::make('tieu_de'),
+            Column::make('anh'),
+            Column::make('noi_dung'),
+            Column::make('trang_thai'),
             // Column::make('created_at'),
             // Column::make('updated_at'),
             Column::computed('action')
@@ -102,6 +117,6 @@ class UserDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'User_' . date('YmdHis');
+        return 'BaiViet_' . date('YmdHis');
     }
 }

@@ -1,5 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
+
 <main class="app-main">
     <div class="app-content-header">
         @include('admin.layouts.components.content-header', [
@@ -20,7 +21,6 @@
         <a href="{{route('admin.loai_phong.index')}}" class="btn btn-danger mt-3">Quay lại</a>
     </div>
 </main>
-
 
 @endsection
 

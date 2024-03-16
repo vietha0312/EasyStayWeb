@@ -38,11 +38,10 @@ return [
         
         'local2' => [
             'driver' => 'local',
-            'root' => public_path('uploads'),
-            'url' => env('APP_URL').'/uploads',
+            'root' => public_path('upload'),
+            'url' => env('APP_URL').'/upload',
             'throw' => false,
         ],
-
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

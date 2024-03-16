@@ -118,17 +118,15 @@
                     </ul>
                 </li>
 
-                <li class="nav-item"><a href="{{route('admin.danh_gia.index')}}" class="nav-link"><i
+                <!-- <li class="nav-item"><a href="{{route('admin.danh_gia.index')}}" class="nav-link"><i
                             class="nav-icon bi bi-hand-thumbs-up-fill"></i>
                 
                         <p>
                             Quản lý đánh giá
                         </p>
                     </a>
-                    
-                   
+                </li> -->
 
-                </li>
 
                 <li class="nav-item"><a href="{{ route('admin.khach_san.index') }}" class="nav-link"><i
                             class="nav-icon bi bi-tree-fill"></i>
