@@ -11,11 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('don_dats', function (Blueprint $table) {
+        Schema::create('dat_phongs', function (Blueprint $table) {
             $table->id();
-            $table->string('ma_phong', 225);
-            $table->date('ngay_dat');
-            $table->bigInteger('khach_hang_id');
+            $table->bigInteger('id_khach_hang');
+            $table->bigInteger('id_loai_phong');
+            $table->string('ten_khach_hang', 225);
+            $table->string('email');
+            $table->string('sdt');
+            $table->string('thoi_gian_den');
+            $table->string('thoi_gian_di');
+            $table->string('so_luong_nguoi');
+            $table->string('so_luong_phong');
+            $table->bigInteger('id_dich_vu');
+            $table->string('tong_tien');
             $table->string('payment', 225);
             $table->string('ghi_chu', 225);
             $table->boolean('trang_thai')->default(0);
@@ -29,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('don_dats');
+        Schema::dropIfExists('dat_phongs');
     }
 };
