@@ -19,7 +19,7 @@ class KhuyenMai extends Model
    
 protected $fillable = [
     'ten_khuyen_mai',
-    'phong_id',
+    'loai_phong_id',
     'ma_giam_gia',
     'loai_giam_gia',
     'gia_tri_giam',
@@ -30,9 +30,9 @@ protected $fillable = [
     'trang_thai',
 ];
 
-public function phong()
+public function loai_phong()
 {
-    return $this->belongsTo(Phong::class);
+    return $this->belongsTo(Loai_phong::class);
 }
 
 }

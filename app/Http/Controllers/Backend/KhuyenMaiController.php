@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\DataTables\KhuyenMaiDataTable;
 use App\Models\KhuyenMai;
 use Illuminate\Http\Request;
 use App\Models\Phong;
 use App\Http\Controllers\Controller;
-
-
+use App\Models\Loai_phong;
 
 class KhuyenMaiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, KhuyenMaiDataTable $datatables)
     {
-        //
-        $khuyenMaiList = KhuyenMai::all();
-        return view('admin.khuyen_mai.index', compact('khuyenMaiList'));
+        return $datatables->render('admin.khuyen_mai.index');
+        // $khuyenMaiList = KhuyenMai::all();
+        // return view('admin.khuyen_mai.index', compact('khuyenMaiList'));
     }
 
     /**
@@ -27,8 +27,8 @@ class KhuyenMaiController extends Controller
     public function create()
     {
         //
-        $phongList = Phong::all();
-        return view('admin.khuyen_mai.create', compact('phongList'));
+        $loai_phongs = Loai_phong::all();
+        return view('admin.khuyen_mai.create', compact('loai_phongs'));
     }
 
     /**
@@ -40,7 +40,7 @@ class KhuyenMaiController extends Controller
  $data=$request->all();
     $request->validate([
         'ten_khuyen_mai' => 'required|string|max:255',
-        'phong_id' => 'required|integer|exists:phongs,id',
+        'loai_phong_id' => 'required|integer|exists:phongs,id',
         'ma_giam_gia' => 'required|string|max:255|unique:khuyen_mais,ma_giam_gia',
         'loai_giam_gia' => 'required|boolean',
         'gia_tri_giam' => 'required|numeric',
@@ -72,8 +72,8 @@ class KhuyenMaiController extends Controller
     {
         //
         
-        $phongList = Phong::all();
-        return view('admin.khuyen_mai.edit', compact('khuyenMai','phongList'));
+        $loai_phongs = Loai_phong::all();
+        return view('admin.khuyen_mai.edit', compact('khuyenMai','loai_phongs'));
     }
 
     /**
@@ -87,7 +87,7 @@ class KhuyenMaiController extends Controller
     $request->validate([
         'ten_khuyen_mai' => 'required|string|max:255',
         'ma_giam_gia' => 'required|string|max:255|unique:khuyen_mais,ma_giam_gia,' . $khuyenMai->id,
-        'phong_id' => 'required|integer|exists:phongs,id',
+        'loai_phong_id' => 'required|integer|exists:phongs,id',
         'loai_giam_gia' => 'required|boolean',
         'gia_tri_giam' => 'required|numeric',
         'so_luong' => 'required|integer',
@@ -109,6 +109,8 @@ class KhuyenMaiController extends Controller
         //
         $khuyenMai->delete();
       
-        return back()->with('msg','Xóa thành công');
+        // return back()->with('msg','Xóa thành công');
+        return response(['trang_thai' => 'success']);
+
     }
 }

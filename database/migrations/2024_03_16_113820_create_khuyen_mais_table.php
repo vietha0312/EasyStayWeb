@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('khuyen_mais', function (Blueprint $table) {
             $table->id();
             $table->string('ten_khuyen_mai', 255);
-            $table->foreignId('phong_id')->constrained('phongs')->onDelete('cascade');
+            $table->foreignId('loai_phong_id')->constrained('loai_phongs')->onDelete('cascade');
             $table->string('ma_giam_gia', 255);
             $table->boolean('loai_giam_gia');
             $table->decimal('gia_tri_giam');
