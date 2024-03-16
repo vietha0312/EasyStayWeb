@@ -29,20 +29,15 @@ class BaiVietDataTable extends DataTable
                 
             })
 
+            
             ->addColumn('trang_thai', function ($query) {
+                $active = "<span class='badge text-bg-success'>Xuất bản</span>";
+                $inActive = "<span class='badge text-bg-danger'>Nháp</span>";
                 if ($query->trang_thai == 1) {
-                    return "Xuất bản";
-                //     $button = "<div class='form-check form-switch'>
-                //     <input class='form-check-input change-status' data-id='" . $query->id . "'  type='checkbox' role='switch' id='flexSwitchCheckDefault' name='trang_thai' checked>
-                //   </div>";
+                    return $active;
                 } else {
-                    return "Nháp";
-
-                //     $button = "<div class='form-check form-switch'>
-                //     <input class='form-check-input change-status' data-id='" . $query->id . "'  type='checkbox' role='switch' id='flexSwitchCheckDefault' name='trang_thai'>
-                //   </div>";
+                    return $inActive;
                 }
-                // return $button;
             })
 
             ->addColumn('action', function ($query) {
@@ -57,7 +52,7 @@ class BaiVietDataTable extends DataTable
                 return $editBtn . $deleteBtn;
             })
 
-            ->rawColumns(['anh', 'action'])
+            ->rawColumns(['anh', 'trang_thai', 'action'])
             ->setRowId('id');
     }
 
