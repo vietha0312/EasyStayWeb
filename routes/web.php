@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\PhongController;
 use App\Http\Controllers\Backend\hotelController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Backend\ChiTietDonDatController;
+use App\Http\Controllers\Backend\DatPhongController;
 use App\Http\Controllers\Backend\VaiTroController;
 
 use Illuminate\Support\Facades\Route;
@@ -62,11 +63,11 @@ Route::prefix('admin')
         Route::resource('banners', BannerController::class);
 		Route::resource('danh_gia', DanhGiaController::class);
         Route::resource('vai_tro', VaiTroController::class);
-        Route::resource('don_dat', DonDatController::class);
+        Route::resource('dat_phong', DatPhongController::class);
      
         Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
         Route::get('exportUser', [ExportController::class, 'exportUser']);
-        Route::resource('chi_tiet_don_dat', ChiTietDonDatController::class);
+        
         Route::resource('khuyen_mai', KhuyenMaiController::class);
         Route::resource('dich_vu', DichVuController::class);
 
