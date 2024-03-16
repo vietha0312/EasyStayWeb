@@ -41,7 +41,9 @@
 
                     <label class="mt-3" for="anh">Ảnh</label>
                     <input type="file" name="anh" id="anh" class="form-control" value="{{$loai_phong->anh}}">
-                    <img width="150px" src="{{Storage::url($loai_phong->anh)}}" alt=""> <br>
+                    @if ($loai_phong->anh)
+                    <img class="mt-3" width="150px" src="{{ Storage::url($loai_phong->anh) }}" alt="">
+                    @endif <br>
 
                     <label class="mt-3" for="anh">Giá</label>
                     <input type="text" name="gia" id="gia" class="form-control" value="{{$loai_phong->gia}}">

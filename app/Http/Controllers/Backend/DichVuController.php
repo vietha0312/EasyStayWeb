@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\DataTables\DichVuDataTable;
 use App\Models\DichVu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,11 +12,11 @@ class DichVuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, DichVuDataTable $datatable)
     {
-        //
-        $dichVuList = DichVu::all();
-        return view('admin.dich_vu.index', compact('dichVuList'));
+        return $datatable->render('admin.dich_vu.index');
+        // $dichVuList = DichVu::all();
+        // return view('admin.dich_vu.index', compact('dichVuList'));
     }
 
     /**
@@ -92,6 +93,7 @@ class DichVuController extends Controller
         //
         $dichVu->delete();
       
-        return back()->with('msg','Xóa thành công');
+        return response(['trang_thai' => 'success']);
+
     }
 }
