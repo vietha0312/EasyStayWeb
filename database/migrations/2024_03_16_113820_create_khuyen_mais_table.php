@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('ma_giam_gia', 255);
             $table->boolean('loai_giam_gia');
             $table->decimal('gia_tri_giam');
-            $table->string('mo_ta', 255);
+            // $table->string('mo_ta', 255);
             $table->integer('so_luong');
             $table->dateTime('ngay_bat_dau');
             $table->dateTime('ngay_ket_thuc');

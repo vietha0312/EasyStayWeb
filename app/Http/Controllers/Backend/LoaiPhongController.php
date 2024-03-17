@@ -8,7 +8,9 @@ use App\Models\Loai_phong;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Anh_phong;
+use App\Models\Phong;
 use App\Traits\ImageUploadTrait;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 use function Termwind\render;
@@ -22,7 +24,11 @@ class LoaiPhongController extends Controller
     const PATH_UPLOAD = 'loai_phong';
     public function index(LoaiPhongDataTable $datatable)
     {
-        return $datatable->render('admin.loai_phong.index');
+        $so_luong = Phong::select('Loai_phongs.ten', DB::raw('COUNT(phongs.id) as so_luong'))
+        ->join('Loai_phongs', 'Phongs.loai_phong_id', '=', 'Loai_phongs.id')
+        ->groupBy('Loai_phongs.ten')
+        ->get();
+        return $datatable->with('so_luong',$so_luong)->render('admin.loai_phong.index');
     }
 
     /**
@@ -149,10 +155,8 @@ class LoaiPhongController extends Controller
 
     public function changeStatus(Request $request){
         $loai_phong = Loai_phong::findOrFail($request->id);
-        $loai_phong->trang_thai = $request->trang_thai == 'true' ? 1 : 2;
+        $loai_phong->trang_thai = $request->trang_thai == 'true' ? 0 : 1;
         $loai_phong->save();
-
-        return back()->with('msg','Cập nhật thành công');
-        // return response(['message' => 'Trạng thái cập nhật thành công']);
+        return response(['message' => 'Trạng thái cập nhật thành công']);
     }
 }

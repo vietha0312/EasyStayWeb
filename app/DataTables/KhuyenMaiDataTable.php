@@ -109,7 +109,7 @@ class KhuyenMaiDataTable extends DataTable
             Column::make('ma_giam_gia'),
             Column::make('loai_giam_gia'),
             Column::make('gia_tri_giam'),
-            Column::make('mo_ta'),
+            // Column::make('mo_ta'),
             Column::make('so_luong'),
             Column::make('ngay_bat_dau'),
             Column::make('ngay_ket_thuc'),
