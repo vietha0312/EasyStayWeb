@@ -71,8 +71,8 @@
                     <!-- </div> -->
 
                     <!-- <div class="form-group"> -->
-                    <label class="mt-3" for="mo_ta">Mô tả</label>
-                    <textarea class="form-control" id="mo_ta" name="mo_ta" rows="4" placeholder="Nhập mô tả cho khuyến mãi"></textarea>
+                    <!-- <label class="mt-3" for="mo_ta">Mô tả</label> -->
+                    <!-- <textarea class="form-control" id="mo_ta" name="mo_ta" rows="4" placeholder="Nhập mô tả cho khuyến mãi"></textarea> -->
                     <!-- </div> -->
 
 

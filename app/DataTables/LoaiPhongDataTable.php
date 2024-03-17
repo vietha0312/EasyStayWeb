@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Loai_phong;
+use App\Models\Phong;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -24,12 +25,17 @@ class LoaiPhongDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', 'loai_phong.action')
 
+            
+            ->addColumn('so_luong', function($query){
+                $so_luong = $this->so_luong->where('ten',$query->ten)->first();
+                return $so_luong ? $so_luong->so_luong : 0;
+            })
+            
             ->addColumn('anh', function($query){
                 // $image =  "<img src='" . asset($query->anh) . "' width='100px' alt='...'>";
                 // return $image;
                 
             })
-
             ->addColumn('trang_thai', function ($query) {
                 if ($query->trang_thai == 1) {
                     $button = "<div class='form-check form-switch'>
@@ -85,6 +91,10 @@ class LoaiPhongDataTable extends DataTable
             
             ->rawColumns(['ten',' anh', 'gia', 'gia_ban_dau','gioi_han_nguoi','so_luong','mo_ta_ngan','mo_ta_dai','trang_thai', 'action'])
             ->setRowId('id');
+    }
+
+    public function query1(Phong $model){
+        return $model->newQuery();
     }
 
     /**
