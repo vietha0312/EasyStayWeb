@@ -92,11 +92,6 @@ class LoaiPhongDataTable extends DataTable
             ->rawColumns(['ten',' anh', 'gia', 'gia_ban_dau','gioi_han_nguoi','so_luong','mo_ta_ngan','mo_ta_dai','trang_thai', 'action'])
             ->setRowId('id');
     }
-
-    public function query1(Phong $model){
-        return $model->newQuery();
-    }
-
     /**
      * Get the query source of dataTable.
      */
@@ -149,7 +144,7 @@ class LoaiPhongDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(150)
+                  ->width(140)
                   ->addClass('text-center'),
         ];
     }

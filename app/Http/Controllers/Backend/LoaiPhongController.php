@@ -8,6 +8,7 @@ use App\Models\Loai_phong;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Anh_phong;
+use App\Models\DanhGia;
 use App\Models\Phong;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Support\Facades\DB;

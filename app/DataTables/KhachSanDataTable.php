@@ -82,6 +82,8 @@ class KhachSanDataTable extends DataTable
             Column::make('logo'),
             Column::make('so_dien_thoai'),
             Column::make('email'),
+            Column::make('facebook'),
+            Column::make('instagram'),
             Column::make('dia_chi'),
             // Column::make('created_at'),
             // Column::make('updated_at'),
