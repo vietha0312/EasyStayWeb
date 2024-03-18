@@ -84,7 +84,7 @@
                                     value="{{ $khach_san->instagram }}">
                             </div>
 
-                            <button type="submit" class="btn btn-success mt-3">GỬI</button>
+                            <button type="submit" class="btn btn-success mt-3">Gửi</button>
                             <a class="btn btn-danger mt-3" href="{{route('admin.khach_san.index')}}">Quay lại</a>
 
                         </form>

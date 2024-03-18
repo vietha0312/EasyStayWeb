@@ -41,7 +41,7 @@ class BannerController extends Controller
             'anh.*' => ['required', 'image'],
         ]);
 
-        $anh = $this->uploadMultiImage($request, 'anh', 'upload/banner');
+        $anh = $this->uploadMultiImage($request, 'anh', 'uploads/banner');
 
         foreach($anh as $path){
             $banner = new Banner();

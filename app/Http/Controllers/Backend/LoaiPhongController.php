@@ -57,26 +57,27 @@ class LoaiPhongController extends Controller
             'trang_thai' => 'required',
 
         ]);
-        $anh = $this->uploadImage($request, 'anh', 'uploads');
+        // $anh = $this->uploadImage($request, 'anh', 'upload');
 
-        $loai_phong = new Loai_phong();
-        $loai_phong->ten = $request->ten;
-        $loai_phong->anh = $anh;
-        $loai_phong->gia = $request->gia;
-        $loai_phong->gia_ban_dau = $request->gia_ban_dau;
-        $loai_phong->gioi_han_nguoi = $request->gioi_han_nguoi;
-        $loai_phong->so_luong = $request->so_luong;
-        $loai_phong->mo_ta_ngan = $request->mo_ta_ngan;
-        $loai_phong->mo_ta_dai = $request->mo_ta_dai;
-        $loai_phong->trang_thai = $request->trang_thai;
-        $loai_phong->deleted_at = $request->delete_at;
-        $loai_phong->save();
-        return back()->with('msg','Thêm thành công');
-        // $data = $request->except('anh');
-        // if($request->hasFile('anh')){
-        //     $data['anh'] = Storage::put(self::PATH_UPLOAD, $request->file('anh'));
-        // }
-        // Loai_phong::query()->create($data);
+        // $loai_phong = new Loai_phong();
+        // $loai_phong->ten = $request->ten;
+        // $loai_phong->anh = $anh;
+        // $loai_phong->gia = $request->gia;
+        // $loai_phong->gia_ban_dau = $request->gia_ban_dau;
+        // $loai_phong->gioi_han_nguoi = $request->gioi_han_nguoi;
+        // $loai_phong->so_luong = $request->so_luong;
+        // $loai_phong->mo_ta_ngan = $request->mo_ta_ngan;
+        // $loai_phong->mo_ta_dai = $request->mo_ta_dai;
+        // $loai_phong->trang_thai = $request->trang_thai;
+        // $loai_phong->deleted_at = $request->delete_at;
+        // $loai_phong->save();
+        // return back()->with('msg','Thêm thành công');
+
+        $data = $request->except('anh');
+        if($request->hasFile('anh')){
+            $data['anh'] = Storage::put(self::PATH_UPLOAD, $request->file('anh'));
+        }
+        Loai_phong::query()->create($data);
         return back()->with('success','Thêm thành công');
         // toastr('Thêm thành công', 'success');
     }

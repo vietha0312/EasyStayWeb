@@ -41,7 +41,7 @@ class AnhPhongController extends Controller
             'anh.*' => ['required', 'image'],
         ]);
 
-        $anh = $this->uploadMultiImage($request, 'anh', 'upload/anh_phong');
+        $anh = $this->uploadMultiImage($request, 'anh', 'uploads/anh_phong');
 
         foreach($anh as $path){
             $anh_phong = new Anh_phong();

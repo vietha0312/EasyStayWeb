@@ -42,7 +42,7 @@
                     <label class="mt-3" for="anh">Ảnh</label>
                     <input type="file" name="anh" id="anh" class="form-control" value="{{$loai_phong->anh}}">
                     @if ($loai_phong->anh)
-                    <img class="mt-3" width="150px" src="{{ Storage::url($loai_phong->anh) }}" alt="">
+                    <img class="mt-3" width="150px" src="{{ Storage::url($loai_phong->anh) }}" alt="Ảnh phòng">
                     @endif <br>
 
                     <label class="mt-3" for="anh">Giá</label>
