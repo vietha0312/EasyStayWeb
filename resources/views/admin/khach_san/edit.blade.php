@@ -73,6 +73,16 @@
                                 <input type="text" name="dia_chi" id="dia_chi" class="form-control"
                                     value="{{ $khach_san->dia_chi }}">
                             </div>
+                            <div class="form-group mt-3">
+                                <label for="facebook">Facebook</label>
+                                <input type="text" name="facebook" id="facebook" class="form-control"
+                                    value="{{ $khach_san->facebook }}">
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="instagram">Instagram</label>
+                                <input type="text" name="instagram" id="instagram" class="form-control"
+                                    value="{{ $khach_san->instagram }}">
+                            </div>
 
                             <button type="submit" class="btn btn-success mt-3">GỬI</button>
                             <a class="btn btn-danger mt-3" href="{{route('admin.khach_san.index')}}">Quay lại</a>

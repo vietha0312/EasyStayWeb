@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('so_dien_thoai');
             $table->string('email');
             $table->string('dia_chi');
+            $table->string('facebook');
+            $table->string('instagram');
             $table->timestamps();
 
         });
