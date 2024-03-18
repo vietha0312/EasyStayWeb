@@ -53,40 +53,46 @@ class LoaiPhongDataTable extends DataTable
                 $editBtn = "<a href='" . route('admin.loai_phong.edit', $query->id) . "' class='btn btn-primary'>
                 <i class='bi bi-pen'></i>
                 </a>";
-                $anhBtn = "<a href='" . route('admin.anh_phong.index',['loai_phong' =>  $query->id]) . "' class='btn btn-info ms-2'>
-                <i class='bi bi-image'></i>
-                </a>";
+                // $anhBtn = "<a href='" . route('admin.anh_phong.index',['loai_phong' =>  $query->id]) . "' class='btn btn-info ms-2'>
+                // <i class='bi bi-image'></i>
+                // </a>";
 
-                $detailBtn = "<a href='" . route('admin.loai_phong.show', $query->id) . "' class='btn btn-secondary ms-2'>
-                <i class='bi bi-card-list'></i>
-                </a>";
+                // $detailBtn = "<a href='" . route('admin.loai_phong.show', $query->id) . "' class='btn btn-secondary ms-2'>
+                // <i class='bi bi-card-list'></i>
+                // </a>";
                 $deleteBtn = "<a href='" . route('admin.loai_phong.destroy', $query->id) . "' class='btn btn-danger delete-item ms-2'>
                 <i class='bi bi-archive'></i>
                 </a>";
-                $phongBtn = "<a href='" . route('admin.phong.index',['loai_phong' =>  $query->id]) . "' class='btn btn-warning ms-2'>
-                <i class='bi bi-houses-fill'></i>
-                </a>";
-                $cmBtn =  "<a href='" . route('admin.danh_gia.index',['loai_phong' => $query->id]) . "' class='btn btn-dark ms-2'>
-                <i class='bi bi-chat-dots'></i>
-                </a>";
+                // $phongBtn = "<a href='" . route('admin.phong.index',['loai_phong' =>  $query->id]) . "' class='btn btn-warning ms-2'>
+                // <i class='bi bi-houses-fill'></i>
+                // </a>";
+                // $cmBtn =  "<a href='" . route('admin.danh_gia.index',['loai_phong' => $query->id]) . "' class='btn btn-dark ms-2'>
+                // <i class='bi bi-chat-dots'></i>
+                // </a>";
 
-                // $moreBtn = "
-                // <div class='dropdown d-inline ms-1'>
-                //     <button class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
-                //     <i class='bi bi-gear'></i>
-                //     </button>
-                //     <ul class='dropdown-menu'>
-                //         <li><a class='dropdown-item' href='" . route('admin.loai_phong.index', ['loai_phong' => $query->id]) . "'>
-                //             <i class='bi bi-image'></i> Image Gallery
-                //         </a></li>
-                //         <li><a class='dropdown-item' href='" . route('admin.loai_phong.index', ['loai_phong' => $query->id]) . "'>
-                //             <i class='bi bi-file'></i> Variants
-                //         </a></li>
-                //     </ul>
-                // </div>  
-                // ";
+                $moreBtn = "
+                <div class='dropdown d-inline ms-1'>
+                    <button class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                    <i class='bi bi-list-ul'></i>
+                    </button>
+                    <ul class='dropdown-menu'>
+                        <li><a class='dropdown-item' href='" . route('admin.anh_phong.index', ['loai_phong' => $query->id]) . "'>
+                        <i class='bi bi-image'></i> Ảnh phòng
+                        </a></li>
+                        <li><a class='dropdown-item' href='" . route('admin.loai_phong.show', ['loai_phong' => $query->id]) . "'>
+                        <i class='bi bi-card-list'></i> Chi tiết loại phòng
+                        </a></li>
+                        <li><a class='dropdown-item' href='" . route('admin.phong.index', ['loai_phong' => $query->id]) . "'>
+                        <i class='bi bi-houses-fill'></i> Phòng
+                        </a></li>
+                        <li><a class='dropdown-item' href='" . route('admin.danh_gia.index', ['loai_phong' => $query->id]) . "'>
+                        <i class='bi bi-chat-dots'></i> Đánh giá
+                        </a></li>
+                    </ul>
+                </div>  
+                ";
 
-                return $editBtn . $detailBtn . $anhBtn . $phongBtn . $cmBtn. $deleteBtn ;
+                return $editBtn . $deleteBtn . $moreBtn ;
             })
             
             ->rawColumns(['so_luong','anh','trang_thai', 'action'])
@@ -144,7 +150,7 @@ class LoaiPhongDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(140)
+                  ->width(160)
                   ->addClass('text-center'),
         ];
     }
