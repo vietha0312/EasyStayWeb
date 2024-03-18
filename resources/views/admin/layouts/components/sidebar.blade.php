@@ -1,17 +1,16 @@
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"><!--begin::Sidebar Brand-->
     <div class="sidebar-brand"><!--begin::Brand Link-->
         <a href="../index.html" class="brand-link"><!--begin::Brand Image-->
-            <img src="/adminlte/assets/img/AdminLTELogo.png" alt="EasyStay Logo"
-                class="brand-image opacity-75 shadow"><!--end::Brand Image--><!--begin::Brand Text-->
+            <img src="/adminlte/assets/img/AdminLTELogo.png" alt="EasyStay Logo" class="brand-image opacity-75 shadow"><!--end::Brand Image--><!--begin::Brand Text-->
             <span class="brand-text fw-light">EasyStay</span><!--end::Brand Text-->
         </a><!--end::Brand Link-->
     </div><!--end::Sidebar Brand--><!--begin::Sidebar Wrapper-->
     <div class="sidebar-wrapper">
         <nav class="mt-2"><!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
-                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-speedometer"></i>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-speedometer2"></i>
                         <p>
-                            Tổng quan
+                            Tổng Quan
                             <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
                         </p>
                     </a>
@@ -27,19 +26,17 @@
                                     </a></li>
                             </ul> -->
 
-                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-table"></i>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-bookmark-dash"></i>
                         <p>
-                            Quản lý loại phòng
+                            Quản Lý Loại Phòng
                             <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="{{ route('admin.loai_phong.index') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="{{ route('admin.loai_phong.index') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
                                 <p>Danh sách</p>
                             </a></li>
-                        <li class="nav-item"><a href="{{ route('admin.loai_phong.create') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="{{ route('admin.loai_phong.create') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
                                 <p>Tạo mới</p>
                             </a></li>
 
@@ -67,51 +64,76 @@
                     </ul>
                 </li> -->
 
-                <li class="nav-item"><a href="{{ route('admin.user.index') }}" class="nav-link"><i
-                            class="nav-icon bi bi-clipboard-fill"></i>
+                <li class="nav-item"><a href="{{ route('admin.user.index') }}" class="nav-link"><i class="bi bi-person"></i>
                         <p>
-                            Quản lý người dùng
+                            Quản Lý Người Dùng
                         </p>
                     </a>
 
                 </li>
 
-
-                <li class="nav-item"><a href="{{ route('admin.banners.index') }}" class="nav-link"><i class="nav-icon bi bi-box-seam-fill"></i>
+                <li class="nav-item"><a class="nav-link"><i class="bi bi-house-check"></i>
                         <p>
-                            Quản lý Banner
-                       
-                            <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
-                    
-                        </p>
-                    </a>
-                    <!-- <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Danh sách</p>
-                            </a></li>
-                        <li class="nav-item"><a href="" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Tạo mới</p>
-                            </a></li>
-                          
-
-                    </ul> -->
-                </li>
-
-                <li class="nav-item"><a  class="nav-link"><i class="nav-icon bi bi-box-seam-fill"></i>
-                        <p>
-                            Quản lý đặt phòng
+                            Quản Lý Đặt Phòng
                             <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="{{ route('admin.dat_phong.index') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="{{ route('admin.dat_phong.index') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
                                 <p>Danh sách</p>
                             </a></li>
-                        <li class="nav-item"><a href="{{ route('admin.dat_phong.create') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="{{ route('admin.dat_phong.create') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                                <p>Tạo mới</p>
+                            </a></li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-ticket-perforated"></i>
+                        <p>
+                            Quản Lý Khuyến Mãi
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a href="{{ route('admin.khuyen_mai.index') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                                <p>Danh sách</p>
+                            </a></li>
+                        <li class="nav-item"><a href="{{ route('admin.khuyen_mai.create') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                                <p>Tạo mới</p>
+                            </a></li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-postcard"></i>
+                        <p>
+                            Quản Lý Bài Viết
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a href="{{ route('admin.bai_viet.index') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                                <p>Danh sách</p>
+                            </a></li>
+                        <li class="nav-item"><a href="{{ route('admin.bai_viet.create') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                                <p>Tạo mới</p>
+                            </a></li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-briefcase-fill"></i>
+                        <p>
+                            Quản Lý Dịch Vụ
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a href="{{ route('admin.dich_vu.index') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                                <p>Danh sách</p>
+                            </a></li>
+                        <li class="nav-item"><a href="{{ route('admin.dich_vu.create') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
                                 <p>Tạo mới</p>
                             </a></li>
 
@@ -128,87 +150,47 @@
                 </li> -->
 
 
-                <li class="nav-item"><a href="{{ route('admin.khach_san.index') }}" class="nav-link"><i
-                            class="nav-icon bi bi-tree-fill"></i>
+                <li class="nav-item"><a href="{{ route('admin.khach_san.index') }}" class="nav-link"><i class="bi bi-info-circle"></i>
                         <p>
-                            Quản lý khách sạn
+                            Quản Lý Khách Sạn
                         </p>
                     </a>
 
                 </li>
 
-                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
+                <li class="nav-item"><a href="{{ route('admin.banners.index') }}" class="nav-link"><i class="bi bi-images"></i>
                         <p>
-                            Quản lý Bài viết
-                            <i class="nav-arrow bi bi-chevron-right"></i>
+                            Quản Bý Banner
+
+                            <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
+
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="{{ route('admin.bai_viet.index') }}" class="nav-link"><i
+                    <!-- <ul class="nav nav-treeview">
+                        <li class="nav-item"><a href="" class="nav-link"><i
                                     class="nav-icon bi bi-circle"></i>
                                 <p>Danh sách</p>
                             </a></li>
-                        <li class="nav-item"><a href="{{ route('admin.bai_viet.create') }}" class="nav-link"><i
+                        <li class="nav-item"><a href="" class="nav-link"><i
                                     class="nav-icon bi bi-circle"></i>
                                 <p>Tạo mới</p>
                             </a></li>
+                          
 
-                    </ul>
+                    </ul> -->
                 </li>
 
-                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
-                        <p>
-                            Quản lý Khuyến mãi
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="{{ route('admin.khuyen_mai.index') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Danh sách</p>
-                            </a></li>
-                        <li class="nav-item"><a href="{{ route('admin.khuyen_mai.create') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Tạo mới</p>
-                            </a></li>
-
-                    </ul>
-                </li>
-
-
-            <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
-                <p>
-                    Quản lý Dịch vụ
-                    <i class="nav-arrow bi bi-chevron-right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item"><a href="{{ route('admin.dich_vu.index') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
-                        <p>Danh sách</p>
-                    </a></li>
-                <li class="nav-item"><a href="{{ route('admin.dich_vu.create') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
-                        <p>Tạo mới</p>
-                    </a></li>
-
-            </ul>
-        </li>
-
-
-
-
-                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon bi bi-pencil-square"></i>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-box-arrow-down"></i>
                         <p>
                             Tải xuống file Excel
                             <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="exportUser" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="exportUser" class="nav-link"><i class="nav-icon bi bi-circle"></i>
                                 <p>User</p>
                             </a></li>
-                        <li class="nav-item"><a href="" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon bi bi-circle"></i>
                                 <p>Tạo mới</p>
                             </a></li>
 
