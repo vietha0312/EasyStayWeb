@@ -62,7 +62,7 @@ class KhuyenMaiDataTable extends DataTable
                 return $editBtn . $deleteBtn;
             })
 
-            ->rawColumns(['loai_giam_gia', 'gia_tri_giam', 'phong_id','trang_thai', 'action'])
+            ->rawColumns(['loai_giam_gia', 'gia_tri_giam', 'loai_phong_id','trang_thai', 'action'])
 
             ->setRowId('id');
     }

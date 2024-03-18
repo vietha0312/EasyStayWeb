@@ -34,7 +34,7 @@
                         <td>{{ $loai_phong->id }}</td>
                         <td>{{ $loai_phong->ten }}</td>
                         <td>
-                            <img src="{{Storage::url($loai_phong->anh)}}" alt="">
+                            <img width="150px" src="{{Storage::url($loai_phong->anh)}}" alt="">
                         </td>
                         <td>{{ $loai_phong->gia }}</td>
                         <td>{{ $loai_phong->gia_ban_dau }}</td>

@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\Hotel;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
@@ -25,7 +26,7 @@ class KhachSanDataTable extends DataTable
             ->addColumn('action', 'khachsan.action')
 
             ->addColumn('logo', function($query){
-                return  "<img src='" . asset($query->logo) . "' width='100px' alt='ảnh logo'>";
+                return  "<img src='" . Storage::url($query->logo) . "' width='100px' alt='ảnh logo'>";
             
             })
 

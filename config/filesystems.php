@@ -38,8 +38,8 @@ return [
         
         'local2' => [
             'driver' => 'local',
-            'root' => public_path('upload'),
-            'url' => env('APP_URL').'/upload',
+            'root' => public_path('uploads'),
+            'url' => env('APP_URL').'/uploads',
             'throw' => false,
         ],
         'public' => [

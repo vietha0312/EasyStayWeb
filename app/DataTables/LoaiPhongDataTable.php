@@ -5,6 +5,7 @@ namespace App\DataTables;
 use App\Models\Loai_phong;
 use App\Models\Phong;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
@@ -32,8 +33,7 @@ class LoaiPhongDataTable extends DataTable
             })
             
             ->addColumn('anh', function($query){
-                // $image =  "<img src='" . asset($query->anh) . "' width='100px' alt='...'>";
-                // return $image;
+                return  "<img src='" . Storage::url($query->anh) . "' width='100px' alt='ảnh logo'>";
                 
             })
             ->addColumn('trang_thai', function ($query) {
@@ -86,10 +86,10 @@ class LoaiPhongDataTable extends DataTable
                 // </div>  
                 // ";
 
-                return $editBtn . $detailBtn . $anhBtn . $phongBtn .$cmBtn. $deleteBtn ;
+                return $editBtn . $detailBtn . $anhBtn . $phongBtn . $cmBtn. $deleteBtn ;
             })
             
-            ->rawColumns(['ten',' anh', 'gia', 'gia_ban_dau','gioi_han_nguoi','so_luong','mo_ta_ngan','mo_ta_dai','trang_thai', 'action'])
+            ->rawColumns(['so_luong','anh','trang_thai', 'action'])
             ->setRowId('id');
     }
     /**
@@ -131,7 +131,7 @@ class LoaiPhongDataTable extends DataTable
             
             Column::make('id'),
             Column::make('ten'),
-            // Column::make('anh'),
+            Column::make('anh'),
             Column::make('gia'),
             Column::make('gia_ban_dau'),
             // Column::make('gioi_han_nguoi'),

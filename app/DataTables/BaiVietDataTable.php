@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\Bai_viet;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
@@ -25,7 +26,7 @@ class BaiVietDataTable extends DataTable
             ->addColumn('action', 'baiviet.action')
 
             ->addColumn('anh', function($query){
-                return  "<img src='" . asset($query->anh) . "' width='100px' alt='Ảnh mô tả bài viết'>";
+                return  "<img src='" . Storage::url($query->anh) . "' width='100px' alt='ảnh bài viết'>";
                 
             })
 

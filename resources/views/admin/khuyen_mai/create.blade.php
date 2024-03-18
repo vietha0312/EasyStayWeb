@@ -62,12 +62,12 @@
                     <label for="loai_giam_gia1">Theo phần trăm</label>
 
                     <input type="radio" name="loai_giam_gia" id="loai_giam_gia2" value="{{App\Models\KhuyenMai::GIAM_THEO_VND}}">
-                    <label for="loai_giam_gia2">Theo tiền VND</label>
+                    <label for="loai_giam_gia2">Theo tiền VND</label> <br>
                     <!-- </div> -->
 
                     <!-- <div class="form-group"> -->
                     <label class="mt-3" for="gia_tri_giam">Giá trị giảm</label>
-                    <input type="number" class="form-control" id="gia_tri_giam" name="gia_tri_giam" placeholder="Nhập giá trị giảm" required>
+                    <input type="number" class="form-control" id="gia_tri_giam" name="gia_tri_giam" placeholder="Nhập giá trị giảm" required> 
                     <!-- </div> -->
 
                     <!-- <div class="form-group"> -->
