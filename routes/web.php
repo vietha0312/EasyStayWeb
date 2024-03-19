@@ -9,13 +9,11 @@ use App\Http\Controllers\Backend\LoaiPhongController;
 use App\Http\Controllers\Backend\PhongController;
 use App\Http\Controllers\Backend\hotelController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Backend\ChiTietDonDatController;
 use App\Http\Controllers\Backend\DatPhongController;
 use App\Http\Controllers\Backend\VaiTroController;
-
+use App\Http\Controllers\Backend\ChiTietDatPhongController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ExportController;
-use App\Http\Controllers\Backend\DonDatController;
 use App\Http\Controllers\Backend\KhuyenMaiController;
 use App\Http\Controllers\Backend\DichVuController;
 
@@ -64,10 +62,10 @@ Route::prefix('admin')
 		Route::resource('danh_gia', DanhGiaController::class);
         Route::resource('vai_tro', VaiTroController::class);
         Route::resource('dat_phong', DatPhongController::class);
-     
+        Route::resource('chi_tiet_dat_phong', ChiTietDatPhongController::class);
         Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
         Route::get('exportUser', [ExportController::class, 'exportUser']);
-        
+
         Route::resource('khuyen_mai', KhuyenMaiController::class);
         Route::resource('dich_vu', DichVuController::class);
 

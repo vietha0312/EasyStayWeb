@@ -72,21 +72,20 @@
 
                 </li>
 
-                <li class="nav-item"><a class="nav-link"><i class="bi bi-house-check"></i>
+                <li class="nav-item"><a href="{{ route('admin.dat_phong.index') }}" class="nav-link"><i class="bi bi-house-check"></i>
                         <p>
                             Quản Lý Đặt Phòng
                             <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="{{ route('admin.dat_phong.index') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
-                                <p>Danh sách</p>
-                            </a></li>
-                        <li class="nav-item"><a href="{{ route('admin.dat_phong.create') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
-                                <p>Tạo mới</p>
-                            </a></li>
+                </li>
 
-                    </ul>
+                <li class="nav-item"><a href="{{ route('admin.chi_tiet_dat_phong.index') }}" class="nav-link"><i class="bi bi-house-check"></i>
+                        <p>
+                            Chi Tiết Đặt Phòng
+                            <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
+                        </p>
+                    </a>
                 </li>
 
                 <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-ticket-perforated"></i>
@@ -142,7 +141,7 @@
 
                 <!-- <li class="nav-item"><a href="{{route('admin.danh_gia.index')}}" class="nav-link"><i
                             class="nav-icon bi bi-hand-thumbs-up-fill"></i>
-                
+
                         <p>
                             Quản lý đánh giá
                         </p>
@@ -175,7 +174,7 @@
                                     class="nav-icon bi bi-circle"></i>
                                 <p>Tạo mới</p>
                             </a></li>
-                          
+
 
                     </ul> -->
                 </li>

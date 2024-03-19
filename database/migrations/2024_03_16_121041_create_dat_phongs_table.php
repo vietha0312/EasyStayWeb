@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreign('khach_hang_id')->references('id')->on('users');
             $table->unsignedBigInteger('loai_phong_id');
             $table->foreign('loai_phong_id')->references('id')->on('loai_phongs');
-            $table->string('ten_khach_hang', 225);
-            $table->string('email');
-            $table->string('so_dien_thoai');
+            // $table->string('ten_khach_hang', 225);
+            // $table->string('email');
+            // $table->string('so_dien_thoai');
             $table->datetime('thoi_gian_den');
             $table->datetime('thoi_gian_di');
             $table->integer('so_luong_nguoi');
