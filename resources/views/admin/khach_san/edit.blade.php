@@ -74,6 +74,11 @@
                                     value="{{ $khach_san->dia_chi }}">
                             </div>
                             <div class="form-group mt-3">
+                                <label for="mo_ta">Mô tả</label>
+                                <input type="text" name="mo_ta" id="mo_ta" class="form-control"
+                                    value="{{ $khach_san->mo_ta }}">
+                            </div>
+                            <div class="form-group mt-3">
                                 <label for="facebook">Facebook</label>
                                 <input type="text" name="facebook" id="facebook" class="form-control"
                                     value="{{ $khach_san->facebook }}">
@@ -82,6 +87,11 @@
                                 <label for="instagram">Instagram</label>
                                 <input type="text" name="instagram" id="instagram" class="form-control"
                                     value="{{ $khach_san->instagram }}">
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="twitter">Twitter</label>
+                                <input type="text" name="twitter" id="twitter" class="form-control"
+                                    value="{{ $khach_san->twitter }}">
                             </div>
 
                             <button type="submit" class="btn btn-success mt-3">Gửi</button>

@@ -30,9 +30,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-	return view('welcome');
-});
+// Route::get('/', function () {
+// 	return view('client.layouts.master');
+// });
+
+Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'home'])->name('home');
 
 
 Route::get('/dashboard', function () {
@@ -71,9 +73,6 @@ Route::prefix('admin')
 
 
     });
-
-
-
 
 
 Auth::routes();

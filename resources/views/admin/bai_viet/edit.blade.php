@@ -46,6 +46,9 @@
                             <input type="file" name="anh" id="anh" class="form-control" value="{{ $bai_viet->anh }}"> <br>
                             <img width="150px" src="{{ Storage::url($bai_viet->anh) }}" alt="ảnh miêu tả bài viết"> <br>
 
+                            <label class="mb-3" for="mo_ta_ngan" class="form-label">Mô tả ngắn:</label>
+                            <textarea name="mo_ta_ngan" id="mo_ta_ngan" cols="20" rows="5" class="form-control">{{ $bai_viet->mo_ta_ngan }}</textarea>
+
                             <label class="mt-3" for="noi_dung">Nội dung</label>
                             <textarea id="noi_dung2" name="noi_dung" class="form-control">{{ $bai_viet->noi_dung }}</textarea>
 
