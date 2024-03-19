@@ -17,9 +17,11 @@ return new class extends Migration
             $table->string('logo');
             $table->string('so_dien_thoai');
             $table->string('email');
+            $table->text('mo_ta');
             $table->string('dia_chi');
             $table->string('facebook');
             $table->string('instagram');
+            $table->string('twitter');
             $table->timestamps();
 
         });

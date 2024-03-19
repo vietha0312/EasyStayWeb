@@ -96,6 +96,7 @@ class BaiVietDataTable extends DataTable
             Column::make('id'),
             Column::make('tieu_de'),
             Column::make('anh'),
+            Column::make('mo_ta_ngan'),
             Column::make('noi_dung'),
             Column::make('trang_thai'),
             // Column::make('created_at'),
