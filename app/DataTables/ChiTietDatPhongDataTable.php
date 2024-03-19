@@ -23,15 +23,16 @@ class ChiTietDatPhongDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', 'chitietdatphong.action')
-            ->addColumn('id_dat_phong', function($query){
+            ->addColumn('dat_phong_id', function($query){
                 return $query->dat_phong->id;
             })
-            ->addColumn('id_phong', function($query){
-                return $query->phong->ten;
+            ->addColumn('phong_id', function($query){
+                return $query->phong->ten_phong;
             })
             ->addColumn('dich_vu_id', function($query){
-                return $query->dich_vu->ten;
+                return $query->dich_vu->ten_dich_vu;
             })
+
             ->setRowId('id');
     }
 
@@ -77,11 +78,11 @@ class ChiTietDatPhongDataTable extends DataTable
             Column::make('don_gia'),
             Column::make('dich_vu_id'),
             Column::make('thanh_tien'),
-            Column::computed('action')
-            ->exportable(false)
-            ->printable(false)
-            ->width(128)
-            ->addClass('text-center'),
+            // Column::computed('action')
+            // ->exportable(false)
+            // ->printable(false)
+            // ->width(128)
+            // ->addClass('text-center'),
         ];
     }
 

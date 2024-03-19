@@ -23,7 +23,6 @@ class DatPhongDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', 'datphong.action')
-
             ->addColumn('ten_khach_hang', function($query){
                 return $query->user->ten_nguoi_dung;
             })
@@ -40,15 +39,32 @@ class DatPhongDataTable extends DataTable
                 return $query->dich_vu->ten_dich_vu;
             })
             ->addColumn('action', function ($query) {
-
                 $editBtn = "<a href='" . route('admin.dat_phong.edit', $query->id) . "' class='btn btn-primary'>
                 <i class='bi bi-pen'></i>
                 </a>";
+                // $anhBtn = "<a href='" . route('admin.anh_phong.index',['loai_phong' =>  $query->id]) . "' class='btn btn-info ms-2'>
+                // <i class='bi bi-image'></i>
+                // </a>";
 
+                // $detailBtn = "<a href='" . route('admin.loai_phong.show', $query->id) . "' class='btn btn-secondary ms-2'>
+                // <i class='bi bi-card-list'></i>
+                // </a>";
                 $deleteBtn = "<a href='" . route('admin.dat_phong.destroy', $query->id) . "' class='btn btn-danger delete-item ms-2'>
                 <i class='bi bi-archive'></i>
                 </a>";
-                return $editBtn . $deleteBtn;
+                // $phongBtn = "<a href='" . route('admin.phong.index',['loai_phong' =>  $query->id]) . "' class='btn btn-warning ms-2'>
+                // <i class='bi bi-houses-fill'></i>
+                // </a>";
+                // $cmBtn =  "<a href='" . route('admin.danh_gia.index',['loai_phong' => $query->id]) . "' class='btn btn-dark ms-2'>
+                // <i class='bi bi-chat-dots'></i>
+                // </a>";
+                $detailBtn = "<a href='" . route('admin.dat_phong.show', ['dat_phong' => $query->id]) . "' class='btn btn-secondary ms-2'>
+                <i class='bi bi-list-ul'></i>
+                </a>";
+
+
+
+                return $editBtn . $deleteBtn . $detailBtn ;
             })
 
             ->rawColumns(['ten_khach_hang','loai_phong_id','email','so_dien_thoai','dich_vu_id','action'])
@@ -92,16 +108,15 @@ class DatPhongDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            // Column::make('user_id'),
-            Column::make('loai_phong_id'),
+            Column::make('user_id'),
             Column::make('ten_khach_hang'),
             Column::make('email'),
             Column::make('so_dien_thoai'),
-            Column::make('thoi_gian_den'),
-            Column::make('thoi_gian_di'),
-            Column::make('so_dien_thoai'),
+            Column::make('loai_phong_id'),
             Column::make('so_luong_nguoi'),
             Column::make('so_luong_phong'),
+            Column::make('thoi_gian_den'),
+            Column::make('thoi_gian_di'),
             Column::make('dich_vu_id'),
             Column::make('tong_tien'),
             Column::make('payment'),

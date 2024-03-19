@@ -45,7 +45,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', function () {
+    //     // Kiểm tra xem người dùng đã đăng nhập hay chưa
+    //     if (auth()->check()) {
+    //         // Người dùng đã đăng nhập, trả về view của trang profile
+    //         return view('profile');
+    //     } else {
+    //         // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
+    //         return redirect('/login');
+    //     }
+    // });
 });
+
+
+
 
 require __DIR__ . '/auth.php';
 

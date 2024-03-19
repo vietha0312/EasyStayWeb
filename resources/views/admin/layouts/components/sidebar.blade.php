@@ -80,14 +80,6 @@
                     </a>
                 </li>
 
-                <li class="nav-item"><a href="{{ route('admin.chi_tiet_dat_phong.index') }}" class="nav-link"><i class="bi bi-house-check"></i>
-                        <p>
-                            Chi Tiết Đặt Phòng
-                            <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
-                        </p>
-                    </a>
-                </li>
-
                 <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-ticket-perforated"></i>
                         <p>
                             Quản Lý Khuyến Mãi

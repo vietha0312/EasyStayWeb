@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\DataTables\DatPhongDataTable;
+use App\DataTables\ChiTietDatPhongDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\DatPhong;
 use Illuminate\Http\Request;
@@ -38,9 +39,10 @@ class DatPhongController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(DatPhong $datPhong)
+    public function show(DatPhong $datPhong, ChiTietDatPhongDataTable $datatables)
     {
         //
+        return $datatables->render('admin.dat_phong.show', compact('datPhong'));
     }
 
     /**

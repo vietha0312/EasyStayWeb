@@ -19,10 +19,10 @@ class ChiTietDatPhong extends Model
         'dich_vu_id',
         'thanh_tien',
     ];
-    protected function loai_phong()
+    protected function phong()
     {
         // return $this->belongsTo('App\Models\Loai_phong','loai_phong_id','id');
-        return $this->belongsTo(Loai_phong::class);
+        return $this->belongsTo(Phong::class);
     }
     protected function dat_phong()
     {
