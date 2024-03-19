@@ -3,6 +3,8 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>EasyStay</title><!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Layout | AdminLTE 4">
@@ -23,8 +25,32 @@
 
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
 
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    {{-- Bootstrap Icon --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
 
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    {{-- Toastr css --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css">
+
+    <!-- ///// -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!--Bootstrap 5  -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head><!--end::Head--><!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"><!--begin::App Wrapper-->
@@ -36,12 +62,15 @@
 
         {{-- Jquery --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        
+
         {{-- Toastr js --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
         {{-- Sweet Alert --}}
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!-- ckeditor -->
+        <script src="assets/libs/%40ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
 
         <!-- <script>
             @if ($errors->any())
@@ -51,52 +80,66 @@
             @endif
         </script> -->
 
+        <script>
+            $(document).ready(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+
+                $('body').on('click', '.delete-item', function(event) {
+                    event.preventDefault();
+                    let deleteUrl = $(this).attr('href');
+
+                    Swal.fire({
+                        title: 'Bạn chắc chắn xóa ?',
+                        text: "Bạn sẽ không thể khôi phục lại!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Xóa'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+
+                            $.ajax({
+                                type: 'DELETE',
+                                url: deleteUrl,
+                                success: function(data) {
+                                    console.log(data);
+                                    if (data.trang_thai == 'success') {
+                                        Swal.fire(
+                                            'Xóa thành công!',
+                                            data.message,
+                                            'success'
+                                        )
+                                        window.location.reload();
+                                    } else if (data.trang_thai == 'error') {
+                                        Swal.fire(
+                                            'Không thể xóa!',
+                                            data.message,
+                                            'error'
+                                        )
+                                    }
+                                },
+                                error: function(xhr, trang_thai, error) {
+                                    console.log(error);
+                                }
+                            })
+                        }
+                    })
+                })
+
+            })
+        </script>
+
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
 
-        <script type="text/javascript">
-            $(document).ready(function() {
-                load_gallery();
 
-                function load_gallery() {
-                    var pro_id = $('pro_id').val();
-                    var _token = $('input[name="_token"]').val();
-                    $.ajax({
-                        url: "{{url('/select-gallery')}}",
-                        method: "POST",
-                        data: {
-                            pro_id: pro_id,
-                            _token: _token
-                        },
-                        success: function(data) {
-                            $('#fallery_load').html(data);
-                        }
-                    });
-                }
-
-                $('#file').change(function() {
-                    var error = '';
-                    var files = $('#file')[0].files;
-
-                    if (files.length > 5) {
-                        error += '<p>Bạn chọn tối đa chỉ được 5 ảnh</p>';
-                    } else if (files.length == '') {
-                        error += '<p>Bạn không được bỏ trống ảnh</p>';
-                    } else if (files.size > 2000000) {
-                        error += '<p>File ảnh không được lớn hơn 2MB</p>';
-                    }
-                    if (error == '') {
-
-                    } else {
-                        $('#file').val('');
-                        $('$error_gallery').html('<span class="text-danger">' + error + '</span>');
-                        return false;
-                    }
-
-                });
-            });
-        </script>
 
     </div><!--end::App Wrapper--><!--begin::Script--><!--begin::Third Party Plugin(OverlayScrollbars)-->
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script><!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
@@ -127,6 +170,7 @@
         });
     </script><!--end::OverlayScrollbars Configure--><!--end::Script-->
     @stack('js')
+    @stack('scripts')
 </body><!--end::Body-->
 
 </html>

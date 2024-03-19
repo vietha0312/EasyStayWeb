@@ -1,46 +1,66 @@
 @extends('admin.layouts.master')
+
 @section('content')
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Tên</th>
-            <th>Ảnh</th>
-            <th>Giá</th>
-            <th>Giá ban đầu</th>
-            <th>Giới hạn người</th>
-            <th>Số lượng</th>
-            <th>Mô tả ngắn</th>
-            <th>Mô tả dài</th>
-            <th>Trạng thái</th>
-            <th>Hành động</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($data as $item )
-        <tr>
-            <td>{{$item->id}}</td>
-            <td>{{$item->ten}}</td>
-            <td>
-                <img width="150px" src="{{Storage::url($item->anh)}}" alt="">
-            </td>
-            <td>{{$item->gia}}</td>
-            <td>{{$item->gia_ban_dau}}</td>
-            <td>{{$item->gioi_han_nguoi}}</td>
-            <td>{{$item->so_luong}}</td>
-            <td>{{$item->mo_ta_ngan}}</td>
-            <td>{{$item->mo_ta_dai}}</td>
-            <td>{{$item->trang_thai}}</td>
-            <td>
-            <form action="{{route('admin.loai_phong.destroy',$item)}}" method="post">
-                        @csrf
-                        @method('delete')
-                        <a class="btn btn-warning" href="{{route('admin.loai_phong.edit',$item)}}">SỬA</a>
-                        <button type="submit" onclick="return confirm('Bạn có muốn xóa không ?')" class="btn btn-danger">XÓA</button>
-                    </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+<!-- <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h4 class="">All Product</h4>
+                        <a href="{{ route('admin.loai_phong.create') }}" class="btn btn-success">
+                            <i class="bi bi-plus"></i>
+                            Tạo mới</a>
+                    </div>
+
+                    <div class="card-body">
+                        {{ $dataTable->table() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    
+<main class="app-main">
+    <div class="app-content-header">
+        @include('admin.layouts.components.content-header', [
+        'name' => 'Loại phòng',
+        'key' => 'EasyStay',
+        ])
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h5>Danh sách</h5>
+            </div>
+            <div class="card-body">
+                {{ $dataTable->table() }}
+            </div>
+        </div>
+    </div>
+</main>
 @endsection
+@push('scripts')
+{{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+<script>
+    $(document).ready(function() {
+        $('body').on('click', '.change-status', function() {
+            let isChecked = $(this).is(':checked')
+            console.log(isChecked);
+
+            let id = $(this).data('id')
+            $.ajax({
+                url: "{{ route('admin.loai_phong.change-status') }}",
+                method: 'PUT',
+                data: {
+                    status: isChecked,
+                    id: id
+                },
+                success: function(data) {
+                    toastr.success(data.message);
+                }
+            })
+        })
+    })
+</script>
+@endpush

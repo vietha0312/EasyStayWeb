@@ -35,19 +35,13 @@ return [
             'root' => storage_path('app'),
             'throw' => false,
         ],
-        'local' => [
-            'driver' => 'local',
-            'root' => storage_path('app'),
-            'throw' => false,
-        ],
         
         'local2' => [
             'driver' => 'local',
-            'root' => public_path('upload'),
-            'url' => env('APP_URL').'/upload',
+            'root' => public_path('uploads'),
+            'url' => env('APP_URL').'/uploads',
             'throw' => false,
         ],
-
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

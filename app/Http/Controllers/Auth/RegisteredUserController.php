@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\DataTables\UserDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\VaiTro;
@@ -19,10 +20,11 @@ class RegisteredUserController extends Controller
      * Display the registration view.
      */
 
-    public function index()
+    public function index(Request $request, UserDataTable $datatable )
     {
-        $data=User::query()->latest()->paginate(10);
-        return view('admin.user.' . __FUNCTION__,compact('data'));
+        return $datatable->render('admin.user.index');
+        // $data=User::query()->latest()->paginate(10);
+        // return view('admin.user.' . __FUNCTION__,compact('data'));
     }
     public function create(): View
     {
@@ -85,7 +87,7 @@ class RegisteredUserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return back()->with('msg','Xóa thành công');
+        return response(['trang_thai' => 'success']);
     }
 
 }

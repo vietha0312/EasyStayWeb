@@ -13,6 +13,10 @@ class Hotel extends Model
         'logo',
         'so_dien_thoai',
         'email',
+        'mo_ta',
         'dia_chi',
+        'facebook',
+        'instagram',
+        'twitter',
     ];
 }
