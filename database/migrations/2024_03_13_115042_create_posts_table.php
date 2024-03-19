@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('tieu_de');
             $table->string('anh');
+            $table->string('mo_ta_ngan');
             $table->string('noi_dung');
             $table->boolean('trang_thai')->default(0);
             $table->softDeletes();

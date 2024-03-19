@@ -24,14 +24,6 @@ class DichVuDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', 'dichvu.action')
 
-            // ->addColumn('trang_thai', function ($query) {
-            //     if ($query->trang_thai == 1) {
-            //         return "Hoạt động";
-            //     } else {
-            //         return "Ngừng hoạt động";
-            //     }
-            // })
-
             ->addColumn('trang_thai', function ($query) {
                 $active = "<span class='badge text-bg-success'>Hoạt động</span>";
                 $inActive = "<span class='badge text-bg-danger'>Ngừng hoạt động</span>";
