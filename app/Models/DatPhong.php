@@ -28,7 +28,7 @@ class DatPhong extends Model
         'ghi_chu',
         'trang_thai'
     ];
-    public function user()
+    protected function user()
     {
         return $this->belongsTo(User::class);
     }

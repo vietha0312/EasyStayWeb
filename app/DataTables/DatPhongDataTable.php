@@ -51,7 +51,7 @@ class DatPhongDataTable extends DataTable
                 return $editBtn . $deleteBtn;
             })
 
-            ->rawColumns(['khach_hang_id','loai_phong_id','email','so_dien_thoai','dich_vu_id','action'])
+            ->rawColumns(['ten_khach_hang','loai_phong_id','email','so_dien_thoai','dich_vu_id','action'])
             ->setRowId('id');
     }
 
@@ -92,10 +92,11 @@ class DatPhongDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('khach_hang_id'),
+            // Column::make('user_id'),
             Column::make('loai_phong_id'),
             Column::make('ten_khach_hang'),
             Column::make('email'),
+            Column::make('so_dien_thoai'),
             Column::make('thoi_gian_den'),
             Column::make('thoi_gian_di'),
             Column::make('so_dien_thoai'),

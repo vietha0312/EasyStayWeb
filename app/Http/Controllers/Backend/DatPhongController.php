@@ -15,8 +15,8 @@ class DatPhongController extends Controller
     const PATH_VIEW = 'admin.dat_phong.';
 
     public function index(Request $request, DatPhongDataTable $datatables){
-        $datphong = DatPhong::query()->latest()->paginate(7);
-        return $datatables->render(self::PATH_VIEW. __FUNCTION__, compact('datphong'));
+        // $datphong = DatPhong::query()->latest()->paginate(7);
+        return $datatables->render(self::PATH_VIEW. __FUNCTION__);
     }
     public function create()
     {
