@@ -18,7 +18,7 @@ use App\Http\Controllers\Backend\ExportController;
 use App\Http\Controllers\Backend\DonDatController;
 use App\Http\Controllers\Backend\KhuyenMaiController;
 use App\Http\Controllers\Backend\DichVuController;
-
+use App\Http\Controllers\Frontend\ChiTietLoaiPhongController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'home'])->name('home');
-
+Route::get('chi_tiet_loai_phong/{$id}', [ChiTietLoaiPhongController::class,'detail'])->name('client.pages.chitiet');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
