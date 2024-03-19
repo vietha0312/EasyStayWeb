@@ -65,8 +65,8 @@
                             <ul class="list-none">
                                 <li class="inline-flex mb-0"><a href="{{$khach_san->facebook}}" class="text-slate-300 hover:text-red-500"><i data-feather="facebook" class="size-4 align-middle" title="facebook"></i></a></li>
                                 <li class="inline-flex ms-2 mb-0"><a href="{{$khach_san->instagram}}" class="text-slate-300 hover:text-red-500"><i data-feather="instagram" class="size-4 align-middle" title="instagram"></i></a></li>
-                                <!-- <li class="inline-flex ms-2 mb-0"><a href="#!" class="text-slate-300 hover:text-red-500"><i data-feather="twitter" class="size-4 align-middle" title="twitter"></i></a></li> -->
-                                <li class="inline-flex ms-2 mb-0"><a href="{{$khach_san->so_dien_thoai}}" class="text-slate-300 hover:text-red-500"><i data-feather="phone" class="size-4 align-middle" title="phone"></i></a></li>
+                                <li class="inline-flex ms-2 mb-0"><a href="{{$khach_san->twitter}}" class="text-slate-300 hover:text-red-500"><i data-feather="twitter" class="size-4 align-middle" title="twitter"></i></a></li>
+                                <li class="inline-flex ms-2 mb-0"><a href=" tel:+{{$khach_san->so_dien_thoai}}" class="text-slate-300 hover:text-red-500"><i data-feather="phone" class="size-4 align-middle" title="phone"></i></a></li>
                             </ul><!--end icon-->
                         </li>
                     </ul>
@@ -244,7 +244,7 @@
                         </ul>
                     </li>
 
-                    <li><a href="contact.html" class="sub-menu-item">Liên hệ</a></li>
+                    <li><a href="#" class="sub-menu-item">Liên hệ</a></li>
                 </ul><!--end navigation menu-->
             </div><!--end navigation-->
         </div><!--end container-->
@@ -349,7 +349,7 @@
                     <div class="text-center">
                         <p class="mb-0">© <script>
                                 document.write(new Date().getFullYear())
-                            </script> Travosy. Design with <i class="mdi mdi-heart text-red-600"></i> by <a href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.</p>
+                            </script> EasyStay. Bản quyền thuộc về <i class="mdi mdi-heart text-red-600"></i> by <a href="#" target="_blank" class="text-reset">EasyStay</a>.</p>
                     </div>
                 </div><!--end grid-->
             </div><!--end container-->
