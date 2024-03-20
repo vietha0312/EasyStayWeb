@@ -142,6 +142,9 @@
                                         </li>
                                         <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
                                         <li>
+
+
+
                                         <form method="POST" action="' . url('logout') . '">
                                             ' . csrf_field() . '
                                             <button type="submit" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white">

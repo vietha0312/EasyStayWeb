@@ -62,4 +62,14 @@ class VaiTroController extends Controller
         $vai_tro->delete();
         return back()->with('msg', 'Xóa thành công');
     }
+    public function phanQuyen(){
+        $data = VaiTro::query();
+        return $data;
+
+    }
+    // if($data->ten_chuc_vu === 'Admin') {
+    //     echo '<li>
+    //             <a href="'. url('admin') .'" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white"><i data-feather="settings" class="size-4 me-2"></i>Cài đặt Admin</a>
+    //         </li>';
+    // }
 }

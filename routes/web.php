@@ -87,5 +87,12 @@ Route::prefix('admin')
 
     });
 
+    Route::prefix('client')
+    ->as('client.')
+    ->group(function () {
+        Route::get('phanQuyen', [VaiTroController::class, 'phanQuyen']);
+
+
+    });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

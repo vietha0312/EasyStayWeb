@@ -13,7 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 class RegisteredUserController extends Controller
 {
     /**
@@ -76,15 +78,35 @@ class RegisteredUserController extends Controller
     }
     public function update(Request $request, User $user)
     {
-        // $request->validate([
-        //     'ten_nguoi_dung' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        //     'dia_chi',
-        //     'so_dien_thoai',
-        // ]);
-        $user->update($request->all());
-        return back()->with('msg','Sửa thành công');
+        $request->validate([
+            'ten_nguoi_dung' => ['required', 'string', 'max:255'],
+            'email' =>[
+                'required',
+                'string',
+                'lowercase',
+                'email',
+                'max:255',
+                Rule::unique('users', 'email')->ignore($user->id)
+            ],
+            'dia_chi'=>['nullable', 'string'],
+            'so_dien_thoai'=> ['string', 'regex:/^([0-9\s\-\+\(\)]*)$/'],
+            'gioi_tinh'=>['nullable', 'string'],
+            'ngay_sinh'=>['nullable', 'date', 'before:today'],
+            'anh'=>['nullable', 'image', 'max:2048'],
+        ]);
+        $data = $request->except('anh');
+        if ($request->hasFile('anh')) {
+            $data['anh'] = Storage::put('user', $request->file('anh'));
+
+            $oldAnh = $user->anh;
+            if($request->hasFile('anh') && (Storage::exists($oldAnh))){
+                Storage::delete($oldAnh);
+            }
+        }
+        $user->update($data);
+
+        // Chuyển hướng trở lại trang trước với thông báo thành công
+        return back()->with('msg', 'Sửa thành công');
     }
 
     /**
@@ -93,6 +115,9 @@ class RegisteredUserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+        if(Storage::exists($user->anh)){
+            Storage::delete($user->anh);
+        }
         return response(['trang_thai' => 'success']);
     }
 
