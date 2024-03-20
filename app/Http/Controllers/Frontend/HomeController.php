@@ -16,8 +16,7 @@ class HomeController extends Controller{
         $banners = Banner::where('trang_thai',1)->get();
         $bai_viets = Bai_viet::where('trang_thai',1)->get();
 
-        // dd($banners);
-        return view('client.pages.home', compact('loai_phongs','khach_sans','banners','bai_viets'));
+        return view('client.pages.home',compact('loai_phongs','khach_sans','banners','bai_viets'));
     }
 }
 ?>

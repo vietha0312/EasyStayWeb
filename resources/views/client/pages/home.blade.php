@@ -6,15 +6,15 @@
        
         <div class="swiper-container absolute end-0 top-0 w-full h-full">
             <div class="swiper-wrapper">
+                @foreach ($banners as $key => $banner )
                 <div class="swiper-slide flex items-center overflow-hidden">
-                @foreach ($banners as $banner )
-                    <div class="slide-inner absolute end-0 top-0 w-full h-full slide-bg-image flex items-center bg-center;" data-background="assets/images/bg/2.jpg">
+                    <div class="slide-inner absolute end-0 top-0 w-full h-full slide-bg-image flex items-center bg-center carousel-item {{ $key == 0 ? 'active' : '' }};" data-background="{{asset($banner->anh)}}">
                         <div class="absolute inset-0 bg-black/70"></div>
                         <div class="container relative">
                             <div class="grid grid-cols-1">
                                 <div class="text-center">
                                     <img src="assets/images/map-plane.png" class="mx-auto w-[300px]" alt="ảnh banner">
-                                    <h1 class="font-bold text-white lg:leading-normal leading-normal text-4xl lg:text-6xl mb-6 mt-5">Find Your Best <br> Travels Package</h1>
+                                    <h1 class="font-bold text-white lg:leading-normal leading-normal text-4xl lg:text-6xl mb-6 mt-5">Find Your Best <br> Hotels Package</h1>
                                     <p class="text-white/70 text-xl max-w-xl mx-auto">Cần một nơi dừng chân cho một chuyến đi? Chúng tôi sẽ mang đến cho các bạn nơi nghỉ dưỡng với những trải nghiệm tốt nhất!</p>
 
                                     <div class="mt-6">
@@ -23,11 +23,9 @@
                                 </div>
                             </div><!--end grid-->
                         </div><!--end container-->
-                    </div><!-- end slide-inner -->
-                    @endforeach
-                    
+                    </div>
                 </div> <!-- end swiper-slide -->
-                
+                @endforeach                  
             </div>
             <!-- end swiper-wrapper -->
 
