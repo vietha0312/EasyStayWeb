@@ -34,7 +34,7 @@ class DichVuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
         $data=$request->all();
          $request->validate([
             'ten_dich_vu' => 'required',

@@ -7,13 +7,14 @@ use App\Models\Bai_viet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class BaiVietController extends Controller
 {
     const PATH_VIEW = 'admin.bai_viet.';
     const PATH_UPLOAD = 'bai_viet';
 
-    public function index( Request $request, BaiVietDataTable $datatable)
+    public function index(Request $request, BaiVietDataTable $datatable)
     {
         return $datatable->render('admin.bai_viet.index');
         // $data = Bai_viet::latest()->paginate(5);
@@ -27,13 +28,27 @@ class BaiVietController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'tieu_de' => 'required|max:225',
+            'anh' => 'nullable|image|max:1080',
+            'mo_ta_ngan' => 'nullable|max:225',
+            'noi_dung' => 'required|max:225',
+            'trang_thai' => [
+                Rule::in([
+                    Bai_viet::XUAT_BAN,
+                    Bai_viet::NHAP
+                ])
+            ],
+        ]);
+
         $data = $request->except('anh');
 
         if ($request->hasFile('anh')) {
             $data['anh'] = Storage::put(self::PATH_UPLOAD, $request->file('anh'));
         }
 
-        Bai_viet::create($data);
+        Bai_viet::query()->create($data);
+
         return back()->with('msg', 'Thêm thành công');
     }
 
@@ -44,11 +59,25 @@ class BaiVietController extends Controller
 
     public function update(Request $request, Bai_viet $bai_viet)
     {
+
+        $request->validate([
+            'tieu_de' => 'required|max:225',
+            'anh' => 'nullable|image|max:1080',
+            'mo_ta_ngan' => 'nullable|max:225',
+            'noi_dung' => 'required|max:225',
+            'trang_thai' => [
+                Rule::in([
+                    Bai_viet::XUAT_BAN,
+                    Bai_viet::NHAP
+                ])
+            ],
+        ]);
+
         $data = $request->except('anh');
 
         if ($request->hasFile('anh')) {
             $data['anh'] = Storage::put(self::PATH_UPLOAD, $request->file('anh'));
-            
+
             if (Storage::exists($bai_viet->anh)) {
                 Storage::delete($bai_viet->anh);
             }
