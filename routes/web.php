@@ -40,7 +40,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
- Route::get('chi_tiet_loai_phong/{$id}', [ChiTietLoaiPhongController::class,'detail'])->name('client.pages.chitiet');
+ Route::get('chi_tiet_loai_phong/{id}', [ChiTietLoaiPhongController::class,'detail'])->name('client.pages.chitietloaiphong');
  Route::get('loai_phong',[ChiTietLoaiPhongController::class, 'allRoom'])->name('clients.pages.loai_phong');
 
 Route::middleware('auth')->group(function () {
