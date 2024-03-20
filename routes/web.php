@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ExportController;
 use App\Http\Controllers\Backend\KhuyenMaiController;
 use App\Http\Controllers\Backend\DichVuController;
+use App\Http\Controllers\Backend\ThongKeController;
 use App\Http\Controllers\Frontend\ChiTietLoaiPhongController;
 use Illuminate\Support\Facades\Auth;
 
@@ -68,6 +69,7 @@ require __DIR__ . '/auth.php';
 Route::prefix('admin')
     ->as('admin.')
     ->group(function () {
+        Route::resource('tong_quan', ThongKeController::class);
         Route::resource('loai_phong', LoaiPhongController::class);
         Route::resource('phong', PhongController::class);
         Route::resource('anh_phong', AnhPhongController::class);
