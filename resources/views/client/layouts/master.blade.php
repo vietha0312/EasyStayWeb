@@ -150,7 +150,7 @@
                 <ul class="navigation-menu justify-end nav-light">
 
 
-                    <li class="has-submenu parent-parent-menu-item"><a href="javascript:void(0)"> Listing </a><span class="menu-arrow"></span>
+                    <!-- <li class="has-submenu parent-parent-menu-item"><a href="javascript:void(0)"> Listing </a><span class="menu-arrow"></span>
                         <ul class="submenu">
                             <li class="has-submenu parent-menu-item">
                                 <a href="javascript:void(0)">Tour Grid </a><span class="submenu-arrow"></span>
@@ -178,9 +178,9 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
 
-                    <li class="has-submenu parent-parent-menu-item">
+                    <!-- <li class="has-submenu parent-parent-menu-item">
                         <a href="javascript:void(0)">Pages</a><span class="menu-arrow"></span>
                         <ul class="submenu">
                             <li><a href="aboutus.html" class="sub-menu-item">Về chúng tôi</a></li>
@@ -231,22 +231,24 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
 
-                    <li class="has-submenu parent-menu-item">
+                    <!-- <li class="has-submenu parent-menu-item">
                         <a href="javascript:void(0)">Blog</a><span class="menu-arrow"></span>
                         <ul class="submenu">
                             <li><a href="blogs.html" class="sub-menu-item"> Blogs</a></li>
                             <li><a href="blog-standard.html" class="sub-menu-item"> Blog Standard</a></li>
                             <li><a href="blog-detail.html" class="sub-menu-item"> Blog Detail</a></li>
                         </ul>
-                    </li>
+                    </li> -->
 
                     <li><a href="{{'loai_phong'}}" class="sub-menu-item">Loại phòng</a></li>
 
+                    <li><a href="" class="sub-menu-item">Đặt phòng</a></li>
+
                     <li><a href="{{'tin_tuc'}}" class="sub-menu-item">Tin tức</a></li>
 
-                    <li><a href="#" class="sub-menu-item">Liên hệ</a></li>
+                    <li><a href="{{'lien-he'}}" class="sub-menu-item">Liên hệ</a></li>
                 </ul><!--end navigation menu-->
             </div><!--end navigation-->
         </div><!--end container-->

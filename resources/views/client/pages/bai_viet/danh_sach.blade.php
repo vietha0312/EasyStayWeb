@@ -21,7 +21,7 @@
     <div class="container relative">
         <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
             @foreach ($baiviets as $baiviet )
-            <div class="group relative overflow-hidden">
+            <div class="group relative overflow-hidden" >
                 <div class="relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
                     <img src="{{Storage::url($baiviet->anh)}}" class="group-hover:scale-110 group-hover:rotate-3 duration-500" alt="">
                     <div class="absolute top-0 start-0 p-4 opacity-0 group-hover:opacity-100 duration-500">
@@ -39,7 +39,7 @@
                     <p class="text-slate-400 mt-2">{{$baiviet->mo_ta_ngan}}</p>
 
                     <div class="mt-3">
-                        <a href="blog-detail.html" class="hover:text-red-500 inline-flex items-center">Chi tiết<i data-feather="chevron-right" class="size-4 ms-1"></i></a>
+                        <a href="" class="hover:text-red-500 inline-flex items-center">Chi tiết<i data-feather="chevron-right" class="size-4 ms-1"></i></a>
                     </div>
                 </div>
             </div><!--end content-->
