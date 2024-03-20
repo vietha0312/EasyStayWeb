@@ -41,9 +41,12 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'ten_nguoi_dung' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'dia_chi',
+            'dia_chi' => ['nullable'],
+            'gioi_tinh' => ['nullable'],
+            'ngay_sinh' => ['nullable'],
+            'anh'=>['nullable'],
             'so_dien_thoai',
         ]);
 
@@ -51,7 +54,10 @@ class RegisteredUserController extends Controller
             'ten_nguoi_dung' => $request->ten_nguoi_dung,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'dia_chi' => $request->dia_chi,
+            'dia_chi' => null,
+            'gioi_tinh' => null,
+            'ngay_sinh' => null,
+            'anh'=>null,
             'so_dien_thoai' => $request->so_dien_thoai,
             'id_vai_tro' => 1,
         ]);
