@@ -1,13 +1,13 @@
 @extends('client.layouts.master')
 @section('content')
-<body class="dark:bg-slate-900">    
-    {{$detail->anh}}    
+    {{$detail->ten}}
+   <img src="" alt="">  
         <section class="relative md:pb-24 pb-16 mt-20">
             <div class="container-fluid relative">
                 <div class="md:flex mt-4">
                     <div class="lg:w-1/2 md:w-1/2 p-1">
                         <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                            <img src="{{$datail->anh}}" alt="">
+                            <img src="" alt="">
                             <div class="absolute inset-0 group-hover:bg-slate-900/70 duration-500 ease-in-out"></div>
                             <div class="absolute top-1/2 -translate-y-1/2 start-0 end-0 text-center opacity-0 group-hover:opacity-100 duration-500">
                                 <a href="assets/images/listing/1.jpg" class="inline-flex justify-center items-center size-9 bg-red-500 text-white rounded-full lightbox"><i data-feather="camera" class="size-4 align-middle"></i></a>
