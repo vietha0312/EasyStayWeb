@@ -37,16 +37,20 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'home'])->name('home');
-Route::get('chi_tiet_loai_phong/{$id}', [ChiTietLoaiPhongController::class,'detail'])->name('client.pages.chitiet');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+ Route::get('chi_tiet_loai_phong/{$id}', [ChiTietLoaiPhongController::class,'detail'])->name('client.pages.chitiet');
+ Route::get('loai_phong',[ChiTietLoaiPhongController::class, 'allRoom'])->name('clients.pages.loai_phong');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+   
 });
 
 require __DIR__ . '/auth.php';
