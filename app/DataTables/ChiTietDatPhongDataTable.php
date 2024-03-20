@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\User;
+use App\Models\ChiTietDatPhong;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class UserDataTable extends DataTable
+class ChiTietDatPhongDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -22,25 +22,16 @@ class UserDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'user.action')
-
-            ->addColumn('id_vai_tro', function($query){
-                return $query->vaiTro->ten_chuc_vu;
+            ->addColumn('action', 'chitietdatphong.action')
+            ->addColumn('dat_phong_id', function($query){
+                return $query->dat_phong->id;
             })
-
-            ->addColumn('action', function ($query) {
-
-                $editBtn = "<a href='" . route('admin.user.edit', $query->id) . "' class='btn btn-primary'>
-                <i class='bi bi-pen'></i>
-                </a>";
-
-                $deleteBtn = "<a href='" . route('admin.user.destroy', $query->id) . "' class='btn btn-danger delete-item ms-2'>
-                <i class='bi bi-archive'></i>
-                </a>";
-                return $editBtn . $deleteBtn;
+            ->addColumn('phong_id', function($query){
+                return $query->phong->ten_phong;
             })
-
-            ->rawColumns(['id_vai_tro', 'action'])
+            ->addColumn('dich_vu_id', function($query){
+                return $query->dich_vu->ten_dich_vu;
+            })
 
             ->setRowId('id');
     }
@@ -48,7 +39,7 @@ class UserDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(User $model): QueryBuilder
+    public function query(ChiTietDatPhong $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -59,7 +50,7 @@ class UserDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('user-table')
+                    ->setTableId('chitietdatphong-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
@@ -82,21 +73,16 @@ class UserDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('ten_nguoi_dung'),
-            Column::make('email'),
-            Column::make('dia_chi'),
-            Column::make('gioi_tinh'),
-            Column::make('ngay_sinh'),
-            Column::make('so_dien_thoai'),
-            Column::make('anh'),
-            Column::make('id_vai_tro'),
-            // Column::make('created_at'),
-            // Column::make('updated_at'),
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(120)
-                  ->addClass('text-center'),
+            Column::make('phong_id'),
+            Column::make('dat_phong_id'),
+            Column::make('don_gia'),
+            Column::make('dich_vu_id'),
+            Column::make('thanh_tien'),
+            // Column::computed('action')
+            // ->exportable(false)
+            // ->printable(false)
+            // ->width(128)
+            // ->addClass('text-center'),
         ];
     }
 
@@ -105,6 +91,6 @@ class UserDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'User_' . date('YmdHis');
+        return 'ChiTietDatPhong_' . date('YmdHis');
     }
 }
