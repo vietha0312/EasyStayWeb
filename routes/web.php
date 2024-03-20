@@ -40,8 +40,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
- Route::get('chi_tiet_loai_phong/{id}', [ChiTietLoaiPhongController::class,'detail'])->name('client.pages.chitietloaiphong');
- Route::get('loai_phong',[ChiTietLoaiPhongController::class, 'allRoom'])->name('clients.pages.loai_phong');
+ Route::get('chi_tiet_loai_phong/{id}', [ChiTietLoaiPhongController::class,'detail'])->name('client.pages.loai_phong.chitietloaiphong');
+ Route::get('loai_phong',[ChiTietLoaiPhongController::class, 'allRoom'])->name('clients.pages.loai_phong.loai_phong');
+
+ Route::get('tin_tuc', [App\Http\Controllers\Frontend\BaiVietController::class,'list'])->name('client.pages.bai_viet.danh_sach');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
