@@ -9,16 +9,14 @@ use App\Http\Controllers\Backend\LoaiPhongController;
 use App\Http\Controllers\Backend\PhongController;
 use App\Http\Controllers\Backend\hotelController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Backend\ChiTietDonDatController;
 use App\Http\Controllers\Backend\DatPhongController;
 use App\Http\Controllers\Backend\VaiTroController;
-
+use App\Http\Controllers\Backend\ChiTietDatPhongController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ExportController;
-use App\Http\Controllers\Backend\DonDatController;
 use App\Http\Controllers\Backend\KhuyenMaiController;
 use App\Http\Controllers\Backend\DichVuController;
-
+use App\Http\Controllers\Frontend\ChiTietLoaiPhongController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -38,16 +36,31 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'home'])->name('home');
 
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+ Route::get('chi_tiet_loai_phong/{$id}', [ChiTietLoaiPhongController::class,'detail'])->name('client.pages.chitiet');
+ Route::get('loai_phong',[ChiTietLoaiPhongController::class, 'allRoom'])->name('clients.pages.loai_phong');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', function () {
+    //     // Kiểm tra xem người dùng đã đăng nhập hay chưa
+    //     if (auth()->check()) {
+    //         // Người dùng đã đăng nhập, trả về view của trang profile
+    //         return view('profile');
+    //     } else {
+    //         // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
+    //         return redirect('/login');
+    //     }
+    // });
 });
+
+
+
 
 require __DIR__ . '/auth.php';
 
@@ -66,10 +79,10 @@ Route::prefix('admin')
 		Route::resource('danh_gia', DanhGiaController::class);
         Route::resource('vai_tro', VaiTroController::class);
         Route::resource('dat_phong', DatPhongController::class);
-     
+        Route::resource('chi_tiet_dat_phong', ChiTietDatPhongController::class);
         Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
         Route::get('exportUser', [ExportController::class, 'exportUser']);
-        
+
         Route::resource('khuyen_mai', KhuyenMaiController::class);
         Route::resource('dich_vu', DichVuController::class);
 

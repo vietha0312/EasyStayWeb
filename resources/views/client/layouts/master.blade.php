@@ -44,7 +44,6 @@
         <div class="container relative">
             <div class="grid grid-cols-1">
                 <div class="flex items-center justify-between">
-                    @foreach ($khach_sans as $khach_san )
                     <ul class="list-none">
                         <li class="inline-flex items-center">
                             <i data-feather="clock" class="text-red-500 size-4"></i>
@@ -52,25 +51,24 @@
                         </li>
                         <li class="inline-flex items-center ms-2">
                             <i data-feather="map-pin" class="text-red-500 size-4"></i>
-                            <span class="ms-2 text-slate-300">{{$khach_san->dia_chi}}</span>
+                            <span class="ms-2 text-slate-300">Hà Nội, Việt Nam</span>
                         </li>
                     </ul>
 
                     <ul class="list-none">
                         <li class="inline-flex items-center">
                             <i data-feather="mail" class="text-red-500 size-4"></i>
-                            <a href="mailto:contact@example.com" class="ms-2 text-slate-300 hover:text-slate-200">{{$khach_san->email}}</a>
+                            <a href="mailto:contact@example.com" class="ms-2 text-slate-300 hover:text-slate-200"></a>
                         </li>
                         <li class="inline-flex items-center ms-2">
                             <ul class="list-none">
-                                <li class="inline-flex mb-0"><a href="{{$khach_san->facebook}}" class="text-slate-300 hover:text-red-500"><i data-feather="facebook" class="size-4 align-middle" title="facebook"></i></a></li>
-                                <li class="inline-flex ms-2 mb-0"><a href="{{$khach_san->instagram}}" class="text-slate-300 hover:text-red-500"><i data-feather="instagram" class="size-4 align-middle" title="instagram"></i></a></li>
-                                <li class="inline-flex ms-2 mb-0"><a href="{{$khach_san->twitter}}" class="text-slate-300 hover:text-red-500"><i data-feather="twitter" class="size-4 align-middle" title="twitter"></i></a></li>
-                                <li class="inline-flex ms-2 mb-0"><a href=" tel:+{{$khach_san->so_dien_thoai}}" class="text-slate-300 hover:text-red-500"><i data-feather="phone" class="size-4 align-middle" title="phone"></i></a></li>
+                                <li class="inline-flex mb-0"><a href="" class="text-slate-300 hover:text-red-500"><i data-feather="facebook" class="size-4 align-middle" title="facebook"></i></a></li>
+                                <li class="inline-flex ms-2 mb-0"><a href="" class="text-slate-300 hover:text-red-500"><i data-feather="instagram" class="size-4 align-middle" title="instagram"></i></a></li>
+                                <li class="inline-flex ms-2 mb-0"><a href="" class="text-slate-300 hover:text-red-500"><i data-feather="twitter" class="size-4 align-middle" title="twitter"></i></a></li>
+                                <li class="inline-flex ms-2 mb-0"><a href=" tel:+" class="text-slate-300 hover:text-red-500"><i data-feather="phone" class="size-4 align-middle" title="phone"></i></a></li>
                             </ul><!--end icon-->
                         </li>
                     </ul>
-                    @endforeach
                 </div>
             </div>
         </div><!--end container-->
@@ -80,15 +78,15 @@
     <nav id="topnav" class="defaultscroll is-sticky tagline-height">
         <div class="container relative">
             <!-- Logo container-->
-            @foreach ($khach_sans as $khach_san )
+
             <a class="logo" href="#">
                 <span class="inline-block dark:hidden">
-                    <img src="{{$khach_san->logo}}" class="h-7 l-dark" alt="ảnh logo">
-                    <img src="{{$khach_san->logo}}" class="h-7 l-light" alt="ảnh logo">
+                    <img src="{{'/'}}" class="h-7 l-dark" alt="ảnh logo">
+                    <img src="{{'/'}}" class="h-7 l-light" alt="ảnh logo">
                 </span>
-                <img src="{{$khach_san->logo}}" class="hidden dark:inline-block" alt="ảnh logo">
+                <img src="{{'/'}}" class="hidden dark:inline-block" alt="ảnh logo">
             </a>
-            @endforeach
+           
             <!-- End Logo container-->
 
             <!-- Start Mobile Toggle -->
@@ -243,6 +241,10 @@
                             <li><a href="blog-detail.html" class="sub-menu-item"> Blog Detail</a></li>
                         </ul>
                     </li>
+
+                    <li><a href="{{'loai_phong'}}" class="sub-menu-item">Loại phòng</a></li>
+
+                    <li><a href="#" class="sub-menu-item">Tin tức</a></li>
 
                     <li><a href="#" class="sub-menu-item">Liên hệ</a></li>
                 </ul><!--end navigation menu-->
