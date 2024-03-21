@@ -266,7 +266,7 @@
 
                     <li><a href="{{'tin_tuc'}}" class="sub-menu-item">Tin tức</a></li>
 
-                    <li><a href="{{'lien-he'}}" class="sub-menu-item">Liên hệ</a></li>
+                    <li><a href="{{'lien_he'}}" class="sub-menu-item">Liên hệ</a></li>
                 </ul><!--end navigation menu-->
             </div><!--end navigation-->
         </div><!--end container-->
