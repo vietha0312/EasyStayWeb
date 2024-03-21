@@ -20,7 +20,6 @@
 <section class="relative md:py-24 py-16">
     <div class="container relative">
         <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
-            @foreach ($baiviets as $baiviet )
             <div class="group relative overflow-hidden" >
                 <div class="relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
                     <img src="{{Storage::url($baiviet->anh)}}" class="group-hover:scale-110 group-hover:rotate-3 duration-500" alt="">
@@ -43,7 +42,6 @@
                     </div>
                 </div>
             </div><!--end content-->
-            @endforeach
 
         </div><!--end grid-->
     </div>

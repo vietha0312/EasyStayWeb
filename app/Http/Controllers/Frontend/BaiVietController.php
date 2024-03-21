@@ -8,16 +8,17 @@ use Illuminate\Http\Request;
 
 
 class BaiVietController extends Controller{
-    public function list(){
-        $baiviets = Bai_viet::all();
-        return view('client.pages.bai_viet.danh_sach', compact('baiviets'));
+    public function index(){
+        $baiviet = Bai_viet::all();
+        // dd($baiviet);
+        return view('client.pages.bai_viet.index', compact('baiviet'));
     }
 
-    public function detailNews(string $id){
-        $detail = Bai_viet::where('trang_thai',1)->where('id',$id)->first();
+    public function show(Bai_viet $bai_viet){
+        // $detail = Bai_viet::where('trang_thai',1)->where('id',$id)->first();
         $khach_sans = Hotel::all();
         $baiviets = Bai_viet::all();
-        return view('client.pages.bai_viet.chi_tiet',compact('detail','khach_sans','baiviets'));
+        return view('client.pages.bai_viet.show', compact('bai_viet','khach_sans','baiviets'));
     }
 }
 ?>

@@ -45,8 +45,9 @@ Route::get('/dashboard', function () {
 Route::get('chi_tiet_loai_phong/{id}', [ChiTietLoaiPhongController::class, 'detail'])->name('client.pages.loai_phong.chitietloaiphong');
 Route::get('loai_phong', [ChiTietLoaiPhongController::class, 'allRoom'])->name('clients.pages.loai_phong.loai_phong');
 
-Route::get('tin_tuc', [App\Http\Controllers\Frontend\BaiVietController::class, 'list'])->name('client.pages.bai_viet.danh_sach');
-Route::get('chi_tiet_tin_tuc/{id}', [App\Http\Controllers\Frontend\BaiVietController::class, 'detailNews'])->name('client.pages.bai_viet.chi_tiet');
+// Route::get('tin_tuc', [App\Http\Controllers\Frontend\BaiVietController::class, 'list'])->name('client.pages.bai_viet.danh_sach');
+// Route::get('chi_tiet_tin_tuc/{id}', [App\Http\Controllers\Frontend\BaiVietController::class, 'detailNews'])->name('client.pages.bai_viet.chi_tiet');
+Route::resource('tin_tuc',App\Http\Controllers\Frontend\BaiVietController::class);
 
 Route::get('lien_he', [LienHeController::class,'contact'])->name('client.pages.lien_he');
 
