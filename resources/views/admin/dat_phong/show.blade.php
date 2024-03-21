@@ -19,7 +19,7 @@
                 {{ $dataTable->table() }}
             </div>
         </div>
-        <a href="{{route('admin.loai_phong.index')}}" class="btn btn-danger mt-3">Quay lại</a>
+        <a href="{{route('admin.dat_phong.index')}}" class="btn btn-danger mt-3">Quay lại</a>
     </div>
 
 </main>

@@ -24,4 +24,8 @@ class Loai_phong extends Model
         'mo_ta_dai',
         'trang_thai',
     ];
+
+    public function anhPhong(){
+        return $this->hasMany('App\Models\Anh_phong');
+    }
 }
