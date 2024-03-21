@@ -46,9 +46,9 @@ Route::get('chi_tiet_loai_phong/{id}', [ChiTietLoaiPhongController::class, 'deta
 Route::get('loai_phong', [ChiTietLoaiPhongController::class, 'allRoom'])->name('clients.pages.loai_phong.loai_phong');
 
 Route::get('tin_tuc', [App\Http\Controllers\Frontend\BaiVietController::class, 'list'])->name('client.pages.bai_viet.danh_sach');
-Route::get('/chi_tiet_tin_tuc/{id}', [App\Http\Controllers\Frontend\BaiVietController::class, 'detailNews'])->name('client.pages.bai_viet.chi_tiet');
+Route::get('chi_tiet_tin_tuc/{id}', [App\Http\Controllers\Frontend\BaiVietController::class, 'detailNews'])->name('client.pages.bai_viet.chi_tiet');
 
-Route::get('lien-he', [LienHeController::class,'contact'])->name('client.pages.lien_he');
+Route::get('lien_he', [LienHeController::class,'contact'])->name('client.pages.lien_he');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -75,6 +75,9 @@ require __DIR__ . '/auth.php';
 Route::prefix('admin')
     ->as('admin.')
     ->group(function () {
+
+        // Route::resource('tong_quan', ThongKeController::class);
+
         Route::resource('loai_phong', LoaiPhongController::class);
         Route::resource('phong', PhongController::class);
         Route::resource('anh_phong', AnhPhongController::class);
@@ -96,7 +99,5 @@ Route::prefix('admin')
         Route::resource('lien_he', LienHeController::class);
     });
 
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

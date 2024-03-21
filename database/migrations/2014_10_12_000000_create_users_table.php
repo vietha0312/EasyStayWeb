@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('anh');
-            $table->string('dia_chi');
+            $table->string('anh')->nullable();
+            $table->string('dia_chi')->nullable();
             $table->string('so_dien_thoai');
-            $table->string('gioi_tinh');
-            $table->date('ngay_sinh');
+            $table->string('gioi_tinh')->nullable();
+            $table->date('ngay_sinh')->nullable();
             $table->unsignedBigInteger('id_vai_tro');
             // $table->foreign('id_vai_tro')->constrained('vai_tros');
             $table->rememberToken();

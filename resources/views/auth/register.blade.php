@@ -39,12 +39,6 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <!-- Địa chỉ -->
-        <div class="mt-4">
-            <x-input-label for="dia_chi" :value="__('Địa chỉ')" />
-            <x-text-input id="dia_chi" class="block mt-1 w-full" type="text" name="dia_chi" :value="old('dia_chi')"/>
-        </div>
-
         <!-- Số điện thoại -->
         <div class="mt-4">
             <x-input-label for="so_dien_thoai" :value="__('Số điện thoại')" />

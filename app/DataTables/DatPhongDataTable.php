@@ -35,9 +35,9 @@ class DatPhongDataTable extends DataTable
             ->addColumn('so_dien_thoai', function($query){
                 return $query->user->so_dien_thoai;
             })
-            ->addColumn('dich_vu_id', function($query){
-                return $query->dich_vu->ten_dich_vu;
-            })
+            // ->addColumn('dich_vu_id', function($query){
+            //     return $query->dich_vu->ten_dich_vu;
+            // })
             ->addColumn('action', function ($query) {
                 $editBtn = "<a href='" . route('admin.dat_phong.edit', $query->id) . "' class='btn btn-primary'>
                 <i class='bi bi-pen'></i>
@@ -67,7 +67,7 @@ class DatPhongDataTable extends DataTable
                 return $editBtn . $deleteBtn . $detailBtn ;
             })
 
-            ->rawColumns(['ten_khach_hang','loai_phong_id','email','so_dien_thoai','dich_vu_id','action'])
+            ->rawColumns(['ten_khach_hang','loai_phong_id','email','so_dien_thoai','action'])
             ->setRowId('id');
     }
 
@@ -108,24 +108,24 @@ class DatPhongDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('user_id'),
+            // Column::make('user_id'),
             Column::make('ten_khach_hang'),
             Column::make('email'),
             Column::make('so_dien_thoai'),
             Column::make('loai_phong_id'),
-            Column::make('so_luong_nguoi'),
-            Column::make('so_luong_phong'),
-            Column::make('thoi_gian_den'),
-            Column::make('thoi_gian_di'),
-            Column::make('dich_vu_id'),
+            // Column::make('so_luong_nguoi'),
+            // Column::make('so_luong_phong'),
+            // Column::make('thoi_gian_den'),
+            // Column::make('thoi_gian_di'),
+            // Column::make('dich_vu_id'),
             Column::make('tong_tien'),
-            Column::make('payment'),
-            Column::make('ghi_chu'),
+            // Column::make('payment'),
+            // Column::make('ghi_chu'),
             Column::make('trang_thai'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)
-            ->width(128)
+            ->width(160)
             ->addClass('text-center'),
         ];
     }

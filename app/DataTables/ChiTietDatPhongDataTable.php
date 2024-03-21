@@ -32,7 +32,7 @@ class ChiTietDatPhongDataTable extends DataTable
             ->addColumn('dich_vu_id', function($query){
                 return $query->dich_vu->ten_dich_vu;
             })
-
+            ->rawColumns(['phong_id','dich_vu_id'])
             ->setRowId('id');
     }
 
@@ -73,11 +73,17 @@ class ChiTietDatPhongDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('phong_id'),
             Column::make('dat_phong_id'),
+            Column::make('phong_id'),
             Column::make('don_gia'),
             Column::make('dich_vu_id'),
+            Column::make('so_luong_nguoi'),
+            Column::make('so_luong_phong'),
+            Column::make('thoi_gian_den'),
+            Column::make('thoi_gian_di'),
+            Column::make('payment'),
             Column::make('thanh_tien'),
+            Column::make('ghi_chu'),
             // Column::computed('action')
             // ->exportable(false)
             // ->printable(false)
