@@ -32,7 +32,7 @@ class BaiVietController extends Controller
             'tieu_de' => 'required|max:225',
             'anh' => 'nullable|image|max:1080',
             'mo_ta_ngan' => 'nullable|max:225',
-            'noi_dung' => 'required|max:225',
+            'noi_dung' => 'required',
             'trang_thai' => [
                 Rule::in([
                     Bai_viet::XUAT_BAN,
@@ -64,7 +64,7 @@ class BaiVietController extends Controller
             'tieu_de' => 'required|max:225',
             'anh' => 'nullable|image|max:1080',
             'mo_ta_ngan' => 'nullable|max:225',
-            'noi_dung' => 'required|max:225',
+            'noi_dung' => 'required',
             'trang_thai' => [
                 Rule::in([
                     Bai_viet::XUAT_BAN,
