@@ -75,7 +75,6 @@ require __DIR__ . '/auth.php';
 Route::prefix('admin')
     ->as('admin.')
     ->group(function () {
-        Route::resource('tong_quan', ThongKeController::class);
         Route::resource('loai_phong', LoaiPhongController::class);
         Route::resource('phong', PhongController::class);
         Route::resource('anh_phong', AnhPhongController::class);
@@ -93,6 +92,8 @@ Route::prefix('admin')
 
         Route::resource('khuyen_mai', KhuyenMaiController::class);
         Route::resource('dich_vu', DichVuController::class);
+
+        Route::resource('lien_he', LienHeController::class);
     });
 
 
