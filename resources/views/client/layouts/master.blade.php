@@ -16,15 +16,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="<?= env('APP_URL') ?>/assets/images/favicon.ico">
 
     <!-- Css -->
-    <link href="assets/libs/swiper/css/swiper.min.css" rel="stylesheet">
-    <link href="assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
-    <link href="assets/libs/js-datepicker/datepicker.min.css" rel="stylesheet">
+    <link href="<?= env('APP_URL') ?>/assets/libs/swiper/css/swiper.min.css" rel="stylesheet">
+    <link href="<?= env('APP_URL') ?>/assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
+    <link href="<?= env('APP_URL') ?>/assets/libs/js-datepicker/datepicker.min.css" rel="stylesheet">
     <!-- Main Css -->
-    <link href="assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/tailwind.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= env('APP_URL') ?>/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= env('APP_URL') ?>/assets/css/tailwind.min.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -393,12 +393,12 @@
 
 
     <!-- JAVASCRIPTS -->
-    <script src="assets/libs/swiper/js/swiper.min.js"></script>
-    <script src="assets/libs/tiny-slider/min/tiny-slider.js"></script>
-    <script src="assets/libs/js-datepicker/datepicker.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/plugins.init.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="<?= env('APP_URL') ?>/assets/libs/swiper/js/swiper.min.js"></script>
+    <script src="<?= env('APP_URL') ?>/assets/libs/tiny-slider/min/tiny-slider.js"></script>
+    <script src="<?= env('APP_URL') ?>/assets/libs/js-datepicker/datepicker.min.js"></script>
+    <script src="<?= env('APP_URL') ?>/assets/libs/feather-icons/feather.min.js"></script>
+    <script src="<?= env('APP_URL') ?>/assets/js/plugins.init.js"></script>
+    <script src="<?= env('APP_URL') ?>/assets/js/app.js"></script>
     <!-- JAVASCRIPTS -->
 </body>
 
