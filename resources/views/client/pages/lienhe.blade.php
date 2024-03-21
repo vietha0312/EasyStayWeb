@@ -13,7 +13,8 @@
             <ul class="tracking-[0.5px] mb-0 inline-block">
                 <li
                     class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white">
-                    <a href="index.html">EasyStay</a></li>
+                    <a href="index.html">EasyStay</a>
+                </li>
                 <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i
                         class="mdi mdi-chevron-right"></i></li>
                 <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white"
@@ -36,8 +37,7 @@
                         <div class="bg-white dark:bg-slate-900 rounded-md shadow dark:shadow-gray-800 p-6">
                             <h3 class="mb-6 text-2xl leading-normal font-semibold">Liên hệ !</h3>
 
-                            <form method="post" name="myForm" id="myForm" onsubmit="return validateForm()"
-                                enctype="multipart/form-data">
+                            <form method="post" action="{{ route('admin.lien_he.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <p class="mb-0" id="error-msg"></p>
                                 <div id="simple-msg"></div>
@@ -71,7 +71,8 @@
                                             placeholder="Ý kiến :"></textarea>
                                     </div>
                                 </div>
-                                <button type="submit" id="submit" name="send"
+
+                                <button type="submit"
                                     class="py-2 px-5 inline-block tracking-wide align-middle duration-500 text-base text-center bg-red-500 text-white rounded-md mt-2">Gửi
                                     phản hồi</button>
                             </form>
@@ -177,20 +178,23 @@
         </span>
     </div>
 
-<!-- Google Map -->
-<div class="container-fluid relative ">
-    <div class="grid grid-cols-1">
-        <div class="w-full leading-[0] border-0">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8671732908642!2d105.74461987448129!3d21.038000087462674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345550b525aa03%3A0x3fdefc40f69a023a!2zVHLGsOG7nW5nIENhbyDEkOG6s25nIEZQVA!5e0!3m2!1svi!2s!4v1710989478110!5m2!1svi!2s" style="border:0" class="w-full h-[500px]" allowfullscreen;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </div><!--end grid-->
-</div><!--end container-->
-<!-- Google Map -->
+    <!-- Google Map -->
+    <div class="container-fluid relative ">
+        <div class="grid grid-cols-1">
+            <div class="w-full leading-[0] border-0">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8671732908642!2d105.74461987448129!3d21.038000087462674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345550b525aa03%3A0x3fdefc40f69a023a!2zVHLGsOG7nW5nIENhbyDEkOG6s25nIEZQVA!5e0!3m2!1svi!2s!4v1710989478110!5m2!1svi!2s"
+                    style="border:0" class="w-full h-[500px]" allowfullscreen;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div><!--end grid-->
+    </div><!--end container-->
+    <!-- Google Map -->
 
 
     <!-- <div class="fixed top-1/2 -right-11 z-50 hidden sm:block">
-                <a href="https://1.envato.market/travosy" target="_blank" class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold"><i class="mdi mdi-cart-outline me-1"></i> Download</a>
-            </div> -->
+                        <a href="https://1.envato.market/travosy" target="_blank" class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold"><i class="mdi mdi-cart-outline me-1"></i> Download</a>
+                    </div> -->
     <!-- Switcher -->
 
     <!-- LTR & RTL Mode Code -->

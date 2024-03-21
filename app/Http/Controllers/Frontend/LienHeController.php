@@ -29,14 +29,15 @@ class LienHeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max;225',
-            'email' => 'required|max;225',
-            'subject' => 'required|max;225',
-            'comments' => 'nullable|max;225'
+            'name' => 'required|max:225',
+            'email' => 'required|max:225',
+            'subject' => 'required|max:225',
+            'comments' => 'nullable|max:225'
         ]);
 
-        LienHe::query()->create();
+        LienHe::query()->create($request->all());
 
+        return redirect()->route('client.pages.lien_he');
         
     }
 }

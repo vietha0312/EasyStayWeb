@@ -15,16 +15,20 @@
     <meta name="version" content="1.0.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- favicon -->
-    <link rel="shortcut icon" href="<?= env('APP_URL') ?>/assets/images/favicon.ico">
+     <!-- favicon -->
+     <link rel="shortcut icon" href="{{ asset('adminlte/assets/images/favicon.ico') }}">
 
-    <!-- Css -->
-    <link href="<?= env('APP_URL') ?>/assets/libs/swiper/css/swiper.min.css" rel="stylesheet">
-    <link href="<?= env('APP_URL') ?>/assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
-    <link href="<?= env('APP_URL') ?>/assets/libs/js-datepicker/datepicker.min.css" rel="stylesheet">
-    <!-- Main Css -->
-    <link href="<?= env('APP_URL') ?>/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
-    <link href="<?= env('APP_URL') ?>/assets/css/tailwind.min.css" rel="stylesheet" type="text/css">
+     <!-- Css -->
+     <link href="/assets/libs/swiper/css/swiper.min.css" rel="stylesheet">
+     <link href="/assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
+     <link href="/assets/libs/js-datepicker/datepicker.min.css" rel="stylesheet">
+     <!-- Main Css -->
+     <link href="/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+     <link href="/assets/css/tailwind.min.css" rel="stylesheet" type="text/css">
+
+
+
+ 
 
 </head>
 
@@ -168,98 +172,7 @@
                 <ul class="navigation-menu justify-end nav-light">
 
 
-                    <!-- <li class="has-submenu parent-parent-menu-item"><a href="javascript:void(0)"> Listing </a><span class="menu-arrow"></span>
-                        <ul class="submenu">
-                            <li class="has-submenu parent-menu-item">
-                                <a href="javascript:void(0)">Tour Grid </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="grid.html" class="sub-menu-item">Grid</a></li>
-                                    <li><a href="grid-left-sidebar.html" class="sub-menu-item">Grid Left Sidebar</a></li>
-                                    <li><a href="grid-right-sidebar.html" class="sub-menu-item">Grid Right Sidebar</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has-submenu parent-menu-item">
-                                <a href="javascript:void(0)">Tour List </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="list.html" class="sub-menu-item">List</a></li>
-                                    <li><a href="list-left-sidebar.html" class="sub-menu-item">List Left Sidebar</a></li>
-                                    <li><a href="list-right-sidebar.html" class="sub-menu-item">List Right Sidebar</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has-submenu parent-menu-item">
-                                <a href="javascript:void(0)"> Tour Detail </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="tour-detail-one.html" class="sub-menu-item">Tour Detail One</a></li>
-                                    <li><a href="tour-detail-two.html" class="sub-menu-item">Tour Detail Two</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li> -->
-
-                    <!-- <li class="has-submenu parent-parent-menu-item">
-                        <a href="javascript:void(0)">Pages</a><span class="menu-arrow"></span>
-                        <ul class="submenu">
-                            <li><a href="aboutus.html" class="sub-menu-item">Về chúng tôi</a></li>
-
-                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> My Account</a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="user-profile.html" class="sub-menu-item">User Account</a></li>
-                                    <li><a href="user-billing.html" class="sub-menu-item">Billing</a></li>
-                                    <li><a href="user-payment.html" class="sub-menu-item">Payment</a></li>
-                                    <li><a href="user-invoice.html" class="sub-menu-item">Invoice</a></li>
-                                    <li><a href="user-social.html" class="sub-menu-item">Social</a></li>
-                                    <li><a href="user-notification.html" class="sub-menu-item">Notification</a></li>
-                                    <li><a href="user-setting.html" class="sub-menu-item">Setting</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has-submenu parent-menu-item">
-                                <a href="javascript:void(0)"> Helpcenter </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="helpcenter.html" class="sub-menu-item">Overview</a></li>
-                                    <li><a href="helpcenter-faqs.html" class="sub-menu-item">FAQs</a></li>
-                                    <li><a href="helpcenter-guides.html" class="sub-menu-item">Guides</a></li>
-                                    <li><a href="helpcenter-support.html" class="sub-menu-item">Support</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Auth Pages </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="login.html" class="sub-menu-item"> Login</a></li>
-                                    <li><a href="signup.html" class="sub-menu-item"> Signup</a></li>
-                                    <li><a href="forgot-password.html" class="sub-menu-item"> Forgot Password</a></li>
-                                    <li><a href="lock-screen.html" class="sub-menu-item"> Lock Screen</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Utility </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="terms.html" class="sub-menu-item">Terms of Services</a></li>
-                                    <li><a href="privacy.html" class="sub-menu-item">Privacy Policy</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Special </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="comingsoon.html" class="sub-menu-item"> Coming Soon</a></li>
-                                    <li><a href="maintenance.html" class="sub-menu-item"> Maintenance</a></li>
-                                    <li><a href="404.html" class="sub-menu-item"> 404!</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li> -->
-
-                    <!-- <li class="has-submenu parent-menu-item">
-                        <a href="javascript:void(0)">Blog</a><span class="menu-arrow"></span>
-                        <ul class="submenu">
-                            <li><a href="blogs.html" class="sub-menu-item"> Blogs</a></li>
-                            <li><a href="blog-standard.html" class="sub-menu-item"> Blog Standard</a></li>
-                            <li><a href="blog-detail.html" class="sub-menu-item"> Blog Detail</a></li>
-                        </ul>
-                    </li> -->
-
+                
                     <li><a href="{{'loai_phong'}}" class="sub-menu-item">Loại phòng</a></li>
 
                     <li><a href="" class="sub-menu-item">Đặt phòng</a></li>
@@ -411,12 +324,12 @@
 
 
     <!-- JAVASCRIPTS -->
-    <script src="<?= env('APP_URL') ?>/assets/libs/swiper/js/swiper.min.js"></script>
-    <script src="<?= env('APP_URL') ?>/assets/libs/tiny-slider/min/tiny-slider.js"></script>
-    <script src="<?= env('APP_URL') ?>/assets/libs/js-datepicker/datepicker.min.js"></script>
-    <script src="<?= env('APP_URL') ?>/assets/libs/feather-icons/feather.min.js"></script>
-    <script src="<?= env('APP_URL') ?>/assets/js/plugins.init.js"></script>
-    <script src="<?= env('APP_URL') ?>/assets/js/app.js"></script>
+    <script src="/assets/libs/swiper/js/swiper.min.js"></script>
+    <script src="/assets/libs/tiny-slider/min/tiny-slider.js"></script>
+    <script src="/assets/libs/js-datepicker/datepicker.min.js"></script>
+    <script src="/assets/libs/feather-icons/feather.min.js"></script>
+    <script src="/assets/js/plugins.init.js"></script>
+    <script src="/assets/js/app.js"></script>
     <!-- JAVASCRIPTS -->
 </body>
 
