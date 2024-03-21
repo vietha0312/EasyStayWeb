@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use App\DataTables\AnhPhongDataTable;
 use App\Models\Anh_phong;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Loai_phong;
 use App\Traits\ImageUploadTrait;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Redirect;
 
 
 class AnhPhongController extends Controller
@@ -16,8 +20,11 @@ class AnhPhongController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, AnhPhongDataTable $datatables)
+    public function index(Request $request, AnhPhongDataTable $datatables, User $user): RedirectResponse
     {
+        if (! Gate::allows('view', $user)) {
+                return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+            }
         $loai_phong = Loai_phong::findOrFail($request->loai_phong);
         // return view('admin.loai_phong.anh_phong.index',compact('loai_phong'));
         return $datatables->render('admin.loai_phong.anh_phong.index', compact('loai_phong'));
@@ -28,15 +35,18 @@ class AnhPhongController extends Controller
      */
     public function create()
     {
-        
+
 
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user): RedirectResponse
     {
+        if (! Gate::allows('delete', $user)) {
+                return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+            }
         $request->validate([
             'anh.*' => ['required', 'image'],
         ]);
@@ -80,13 +90,16 @@ class AnhPhongController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, User $user): RedirectResponse
     {
+        if (! Gate::allows('delete', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $anh_phong = Anh_phong::findOrFail($id);
         $this->deleteImage($anh_phong->anh);
         $anh_phong->delete();
         // return back();
-        
+
         return response(['trang_thai' => 'success']);
     }
 }

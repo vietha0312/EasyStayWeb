@@ -6,8 +6,12 @@ use App\DataTables\KhuyenMaiDataTable;
 use App\Models\KhuyenMai;
 use Illuminate\Http\Request;
 use App\Models\Phong;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Models\Loai_phong;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Redirect;
 
 class KhuyenMaiController extends Controller
 {
@@ -16,6 +20,7 @@ class KhuyenMaiController extends Controller
      */
     public function index(Request $request, KhuyenMaiDataTable $datatables)
     {
+
         return $datatables->render('admin.khuyen_mai.index');
         // $khuyenMaiList = KhuyenMai::all();
         // return view('admin.khuyen_mai.index', compact('khuyenMaiList'));
@@ -34,8 +39,11 @@ class KhuyenMaiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user): RedirectResponse
     {
+        if (! Gate::allows('create', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         //
  $data=$request->all();
     $request->validate([
@@ -51,7 +59,7 @@ class KhuyenMaiController extends Controller
         'mo_ta' => 'nullable|string',
     ]);
 
-    
+
     KhuyenMai::query()->create($data);
     return redirect()->route('admin.khuyen_mai.index')->with('success', 'Tạo khuyến mãi thành công!');
 
@@ -70,8 +78,9 @@ class KhuyenMaiController extends Controller
      */
     public function edit(KhuyenMai $khuyenMai)
     {
+
         //
-        
+
         $loai_phongs = Loai_phong::all();
         return view('admin.khuyen_mai.edit', compact('khuyenMai','loai_phongs'));
     }
@@ -79,8 +88,11 @@ class KhuyenMaiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, User $user): RedirectResponse
     {
+        if (! Gate::allows('update', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         //
         $khuyenMai = KhuyenMai::findOrFail($id);
 
@@ -104,11 +116,14 @@ class KhuyenMaiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(KhuyenMai $khuyenMai)
+    public function destroy(KhuyenMai $khuyenMai, User $user): RedirectResponse
     {
+        if (! Gate::allows('delete', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         //
         $khuyenMai->delete();
-      
+
         // return back()->with('msg','Xóa thành công');
         return response(['trang_thai' => 'success']);
 

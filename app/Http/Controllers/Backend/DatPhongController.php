@@ -10,12 +10,19 @@ use Illuminate\Http\Request;
 use App\Models\DichVu;
 use App\Models\User;
 use App\Models\Loai_phong;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Redirect;
 
 class DatPhongController extends Controller
 {
     const PATH_VIEW = 'admin.dat_phong.';
 
-    public function index(Request $request, DatPhongDataTable $datatables){
+    public function index(Request $request, DatPhongDataTable $datatables , User $user): RedirectResponse
+    {
+        if (! Gate::allows('view-A&NV', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         // $datphong = DatPhong::query()->latest()->paginate(7);
         return $datatables->render(self::PATH_VIEW. __FUNCTION__);
     }
@@ -30,8 +37,11 @@ class DatPhongController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request , User $user): RedirectResponse
     {
+        if (! Gate::allows('create-A&NV', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         // DatPhong::query()->create($request->all());
         // return back()->with('msg','Thêm thành công');
     }
@@ -59,8 +69,11 @@ class DatPhongController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DatPhong $datPhong)
+    public function update(Request $request, DatPhong $datPhong, User $user): RedirectResponse
     {
+        if (! Gate::allows('update-A&NV', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         // $request->validate([
         //     'ten_phong' => 'required|unique::phongs,ten_phong,' . $datPhong->id,
         //     'loai_phong_id' => [
@@ -79,8 +92,11 @@ class DatPhongController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DatPhong $datPhong)
+    public function destroy(DatPhong $datPhong, User $user): RedirectResponse
     {
+        if (! Gate::allows('delete-A&NV', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $datPhong->delete();
         return response(['trang_thai' => 'success']);
     }

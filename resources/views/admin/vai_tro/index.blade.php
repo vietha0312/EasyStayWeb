@@ -1,5 +1,10 @@
 @extends('admin.layouts.master')
 @section('content')
+@if(session('error'))
+<script>
+    alert("{{ session('error') }}");
+</script>
+@endif
 <table class="table">
     <thead>
         <tr>

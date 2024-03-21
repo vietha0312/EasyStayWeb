@@ -11,18 +11,21 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
+
 class RegisteredUserController extends Controller
 {
     /**
      * Display the registration view.
      */
 
-    public function index(Request $request, UserDataTable $datatable )
+    public function index(Request $request, UserDataTable $datatable)
     {
         return $datatable->render('admin.user.index');
         // $data=User::query()->latest()->paginate(10);
@@ -76,8 +79,11 @@ class RegisteredUserController extends Controller
         $vaitro = VaiTro::query()->pluck('ten_chuc_vu','id')->toArray();
         return view('admin.user.'. __FUNCTION__,compact('vaitro','user'));
     }
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user): RedirectResponse
     {
+        if (! Gate::allows('update', $user)) {
+                return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $request->validate([
             'ten_nguoi_dung' => ['required', 'string', 'max:255'],
             'email' =>[
@@ -112,8 +118,11 @@ class RegisteredUserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(User $user): RedirectResponse
     {
+        if (! Gate::allows('delete', $user)) {
+                return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+            }
         $user->delete();
         if(Storage::exists($user->anh)){
             Storage::delete($user->anh);

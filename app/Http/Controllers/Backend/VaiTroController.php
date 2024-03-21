@@ -5,13 +5,19 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\VaiTro;
-
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Redirect;
 class VaiTroController extends Controller
 {
     //
     const PATH_VIEW = 'admin.vai_tro.';
-    public function index()
+    public function index(User $user): RedirectResponse
     {
+        if (! Gate::allows('create', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $data = VaiTro::query()->latest()->paginate(10);
         return view(self::PATH_VIEW . __FUNCTION__, compact('data'));
     }
@@ -23,8 +29,11 @@ class VaiTroController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user): RedirectResponse
     {
+        if (! Gate::allows('create', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         VaiTro::query()->create($request->all());
         return back()->with('msg','Thêm thành công');
     }
@@ -48,8 +57,11 @@ class VaiTroController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, VaiTro $vai_tro)
+    public function update(Request $request, VaiTro $vai_tro, User $user): RedirectResponse
     {
+        if (! Gate::allows('update', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $vai_tro->update($request->all());
         return back()->with('msg','Sửa thành công');
     }
@@ -57,19 +69,13 @@ class VaiTroController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(VaiTro $vai_tro)
+    public function destroy(VaiTro $vai_tro, User $user): RedirectResponse
     {
+        if (! Gate::allows('delete', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $vai_tro->delete();
         return back()->with('msg', 'Xóa thành công');
     }
-    public function phanQuyen(){
-        $data = VaiTro::query();
-        return $data;
 
-    }
-    // if($data->ten_chuc_vu === 'Admin') {
-    //     echo '<li>
-    //             <a href="'. url('admin') .'" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white"><i data-feather="settings" class="size-4 me-2"></i>Cài đặt Admin</a>
-    //         </li>';
-    // }
 }

@@ -4,17 +4,23 @@ namespace App\Http\Controllers\Backend;
 
 use App\DataTables\BaiVietDataTable;
 use App\Models\Bai_viet;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Redirect;
 class BaiVietController extends Controller
 {
     const PATH_VIEW = 'admin.bai_viet.';
     const PATH_UPLOAD = 'bai_viet';
 
-    public function index( Request $request, BaiVietDataTable $datatable)
+    public function index( Request $request, BaiVietDataTable $datatable, User $user): RedirectResponse
     {
+        if (! Gate::allows('view', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         return $datatable->render('admin.bai_viet.index');
         // $data = Bai_viet::latest()->paginate(5);
         // return view(self::PATH_VIEW . 'index', compact('data'));
@@ -25,8 +31,11 @@ class BaiVietController extends Controller
         return view(self::PATH_VIEW . 'create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request , User $user): RedirectResponse
     {
+        if (! Gate::allows('create', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $data = $request->except('anh');
 
         if ($request->hasFile('anh')) {
@@ -42,13 +51,16 @@ class BaiVietController extends Controller
         return view(self::PATH_VIEW . 'edit', compact('bai_viet'));
     }
 
-    public function update(Request $request, Bai_viet $bai_viet)
+    public function update(Request $request, Bai_viet $bai_viet , User $user): RedirectResponse
     {
+        if (! Gate::allows('update', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $data = $request->except('anh');
 
         if ($request->hasFile('anh')) {
             $data['anh'] = Storage::put(self::PATH_UPLOAD, $request->file('anh'));
-            
+
             if (Storage::exists($bai_viet->anh)) {
                 Storage::delete($bai_viet->anh);
             }
@@ -58,8 +70,11 @@ class BaiVietController extends Controller
         return back()->with('msg', 'Cập nhật thành công');
     }
 
-    public function destroy(Bai_viet $bai_viet)
+    public function destroy(Bai_viet $bai_viet , User $user): RedirectResponse
     {
+        if (! Gate::allows('delete', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $bai_viet->delete();
 
         if (Storage::exists($bai_viet->anh)) {
