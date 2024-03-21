@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
@@ -16,7 +17,7 @@ class BaiVietController extends Controller
     const PATH_VIEW = 'admin.bai_viet.';
     const PATH_UPLOAD = 'bai_viet';
 
-    public function index( Request $request, BaiVietDataTable $datatable, User $user): RedirectResponse
+    public function index( Request $request, BaiVietDataTable $datatable)
     {
         if (! Gate::allows('view', $user)) {
             return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
@@ -33,16 +34,14 @@ class BaiVietController extends Controller
 
     public function store(Request $request , User $user): RedirectResponse
     {
-        if (! Gate::allows('create', $user)) {
-            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
-        }
         $data = $request->except('anh');
 
         if ($request->hasFile('anh')) {
             $data['anh'] = Storage::put(self::PATH_UPLOAD, $request->file('anh'));
         }
 
-        Bai_viet::create($data);
+        Bai_viet::query()->create($data);
+
         return back()->with('msg', 'Thêm thành công');
     }
 
@@ -53,9 +52,6 @@ class BaiVietController extends Controller
 
     public function update(Request $request, Bai_viet $bai_viet , User $user): RedirectResponse
     {
-        if (! Gate::allows('update', $user)) {
-            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
-        }
         $data = $request->except('anh');
 
         if ($request->hasFile('anh')) {

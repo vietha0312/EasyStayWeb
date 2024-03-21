@@ -33,7 +33,7 @@ class LoaiPhongDataTable extends DataTable
             })
             
             ->addColumn('anh', function($query){
-                return  "<img src='" . Storage::url($query->anh) . "' width='100px' alt='ảnh logo'>";
+                return  "<img src='" . Storage::url($query->anh) . "' width='100px' alt='ảnh phòng'>";
                 
             })
             ->addColumn('trang_thai', function ($query) {

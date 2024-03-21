@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ExportController;
 use App\Http\Controllers\Backend\KhuyenMaiController;
 use App\Http\Controllers\Backend\DichVuController;
-
+use App\Http\Controllers\Backend\ThongKeController;
+use App\Http\Controllers\Frontend\ChiTietLoaiPhongController;
+use App\Http\Controllers\Frontend\LienHeController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -36,10 +38,17 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'home'])->name('home');
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/home', function () {
-    return view('home');
-})->middleware(['auth', 'verified'])->name('home');
+Route::get('chi_tiet_loai_phong/{id}', [ChiTietLoaiPhongController::class, 'detail'])->name('client.pages.loai_phong.chitietloaiphong');
+Route::get('loai_phong', [ChiTietLoaiPhongController::class, 'allRoom'])->name('clients.pages.loai_phong.loai_phong');
+
+Route::get('tin_tuc', [App\Http\Controllers\Frontend\BaiVietController::class, 'list'])->name('client.pages.bai_viet.danh_sach');
+Route::get('/chi_tiet_tin_tuc/{id}', [App\Http\Controllers\Frontend\BaiVietController::class, 'detailNews'])->name('client.pages.bai_viet.chi_tiet');
+
+Route::get('lien-he', [LienHeController::class,'contact'])->name('client.pages.lien_he');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -66,6 +75,7 @@ require __DIR__ . '/auth.php';
 Route::prefix('admin')
     ->as('admin.')
     ->group(function () {
+        Route::resource('tong_quan', ThongKeController::class);
         Route::resource('loai_phong', LoaiPhongController::class);
         Route::resource('phong', PhongController::class);
         Route::resource('anh_phong', AnhPhongController::class);
@@ -73,7 +83,7 @@ Route::prefix('admin')
         Route::resource('bai_viet', BaiVietController::class);
         Route::resource('user', RegisteredUserController::class);
         Route::resource('banners', BannerController::class);
-		Route::resource('danh_gia', DanhGiaController::class);
+        Route::resource('danh_gia', DanhGiaController::class);
         Route::resource('vai_tro', VaiTroController::class);
         Route::resource('dat_phong', DatPhongController::class);
         Route::resource('chi_tiet_dat_phong', ChiTietDatPhongController::class);
@@ -81,8 +91,6 @@ Route::prefix('admin')
         Route::get('exportUser', [ExportController::class, 'exportUser']);
         Route::resource('khuyen_mai', KhuyenMaiController::class);
         Route::resource('dich_vu', DichVuController::class);
-
-
     });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
