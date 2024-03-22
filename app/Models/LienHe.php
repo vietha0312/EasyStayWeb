@@ -10,10 +10,14 @@ class LienHe extends Model
 {
     use HasFactory, SoftDeletes;
 
+    const DA_PHAN_HOI = 1;
+    const CHO_PHAN_HOI = 0;
+
     protected $fillable = [
         'name',
         'email',
         'subject',
-        'comments'
+        'comments',
+        'trang_thai'
     ];
 }

@@ -7,7 +7,7 @@ use App\Models\Hotel;
 use App\Models\LienHe;
 use App\Models\Loai_phong;
 use Illuminate\Http\Request;
-
+use Illuminate\Validation\Rule;
 
 class LienHeController extends Controller
 {
@@ -32,7 +32,14 @@ class LienHeController extends Controller
             'name' => 'required|max:225',
             'email' => 'required|max:225',
             'subject' => 'required|max:225',
-            'comments' => 'nullable|max:225'
+            'comments' => 'nullable|max:225',
+            'trang_thai' => [
+                'require',
+                Rule::in([
+                    LienHe::DA_PHAN_HOI,
+                    LienHe::CHO_PHAN_HOI
+                ])
+            ]
         ]);
 
         LienHe::query()->create($request->all());

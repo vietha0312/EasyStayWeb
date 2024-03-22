@@ -21,6 +21,7 @@
                         <th>Email</th>
                         <th>Câu hỏi</th>
                         <th>Comment</th>
+                        <th>Trạng thái</th>
                     </thead>
 
                     @foreach ($lienhe as $item )
@@ -30,6 +31,7 @@
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->subject }}</td>
                         <td>{{ $item->comments }}</td>
+                        <td>{{ $item->trang_thai ? 'Đã phản hồi' : 'Chờ phản hồi' }}</td>
                     </tbody>
                         
                     @endforeach

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('subject');
             $table->string('comments');
+            $table->boolean('trang_thai')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
