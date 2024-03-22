@@ -15,7 +15,7 @@
     <input type="radio" name="trang_thai" id="trang_thai1" value="{{\App\Models\VaiTro::HOAT_DONG}}">
     <label for="trang_thai1">Hoạt động</label>
 
-    <input type="radio" name="trang_thai" id="trang_thai2" value="{{\App\Models\VaiTro::Dung_HOAT_DONG}}">
+    <input type="radio" name="trang_thai" id="trang_thai2" value="{{\App\Models\VaiTro::DUNG_HOAT_DONG}}">
     <label for="trang_thai2">Dừng hoạt động</label> <br><br>
 
     <button class="btn btn-success">GỬI</button>
