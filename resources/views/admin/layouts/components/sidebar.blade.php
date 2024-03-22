@@ -151,25 +151,23 @@
 
                 <li class="nav-item"><a href="{{ route('admin.banners.index') }}" class="nav-link"><i class="bi bi-images"></i>
                         <p>
-                            Quản Bý Banner
+                            Quản lý Banner
 
                             <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
 
                         </p>
                     </a>
-                    <!-- <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Danh sách</p>
-                            </a></li>
-                        <li class="nav-item"><a href="" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Tạo mới</p>
-                            </a></li>
-
-
-                    </ul> -->
                 </li>
+
+                <li class="nav-item"><a href="{{ route('admin.lien_he.index') }}" class="nav-link"><i class="fa-regular fa-id-card"></i>
+                    <p>
+                        Quản lý liên hệ
+
+                        <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
+
+                    </p>
+                </a>
+            </li>
 
                 <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-box-arrow-down"></i>
                         <p>
