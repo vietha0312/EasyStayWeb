@@ -21,10 +21,7 @@ class DatPhongController extends Controller
     }
     public function create()
     {
-        // $loai_phong = Loai_phong::query()->pluck('ten','id')->toArray();
-        // $user = User::query()->pluck('ten_nguoi_dung','id')->toArray();
-        // $dich_vu= DichVu::query()->pluck('ten','id')->toArray();
-        // return view(self::PATH_VIEW . __FUNCTION__, compact('loai_phong','user','dich_vu'));
+        return view(self::PATH_VIEW . __FUNCTION__);
     }
 
     /**

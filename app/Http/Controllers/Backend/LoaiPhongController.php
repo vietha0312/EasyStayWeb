@@ -28,6 +28,10 @@ class LoaiPhongController extends Controller
         ->join('Loai_phongs', 'Phongs.loai_phong_id', '=', 'Loai_phongs.id')
         ->groupBy('Loai_phongs.ten')
         ->get();
+
+        // $phong_trong = Phong::select('Loai_phongs.ten', DB::raw('COUNT(phongs.trang_thai = 1) as phong_trong'));
+        // $phong_trong = Phong::select('loai_phongs.trang_thai',DB::raw('COUNT(trang_thai) as phong_trong'))
+        // Select trang_thai. count(phongs.trang_thai) as phong_trong From phongs Group By trang_thai Having trang_thai = N'1'
         return $datatable->with('so_luong',$so_luong)->render('admin.loai_phong.index');
     }
 
