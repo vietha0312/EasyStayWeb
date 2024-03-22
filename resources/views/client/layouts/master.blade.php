@@ -260,13 +260,13 @@
                         </ul>
                     </li> -->
 
-                    <li><a href="{{'loai_phong'}}" class="sub-menu-item">Loại phòng</a></li>
+                    <li><a href="<?= env('APP_URL') ?>/loai_phong" class="sub-menu-item">Loại phòng</a></li>
 
                     <li><a href="" class="sub-menu-item">Đặt phòng</a></li>
 
-                    <li><a href="{{'tin_tuc'}}" class="sub-menu-item">Tin tức</a></li>
+                    <li><a href="<?= env('APP_URL') ?>/tin_tuc" class="sub-menu-item">Tin tức</a></li>
 
-                    <li><a href="{{'lien_he'}}" class="sub-menu-item">Liên hệ</a></li>
+                    <li><a href="<?= env('APP_URL') ?>/lien_he" class="sub-menu-item">Liên hệ</a></li>
                 </ul><!--end navigation menu-->
             </div><!--end navigation-->
         </div><!--end container-->
