@@ -179,7 +179,7 @@
     </div>
 
     <!-- Google Map -->
-    <div class="container-fluid relative ">
+    {{-- <div class="container-fluid relative ">
         <div class="grid grid-cols-1">
             <div class="w-full leading-[0] border-0">
                 <iframe
@@ -188,7 +188,7 @@
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div><!--end grid-->
-    </div><!--end container-->
+    </div><!--end container--> --}}
     <!-- Google Map -->
 
 
