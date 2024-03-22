@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class BaiVietFEController extends Controller
 {
     public function index(){
-        $tintuc = Bai_viet::all();
+        $tintuc = Bai_viet::where('trang_thai',1)->get();
         return view('client.pages.bai_viet.index', compact('tintuc'));
     }
 

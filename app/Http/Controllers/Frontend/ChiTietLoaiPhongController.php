@@ -18,7 +18,7 @@ class ChiTietLoaiPhongController extends Controller{
     }
 
     public function allRoom(){
-        $rooms = Loai_phong::all();
+        $rooms = Loai_phong::where('trang_thai',1)->get();
         return view('client.pages.loai_phong.loai_phong',compact('rooms'));
     }
 }
