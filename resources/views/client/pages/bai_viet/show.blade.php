@@ -17,11 +17,9 @@
 
     <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
         <ul class="tracking-[0.5px] mb-0 inline-block">
-            @foreach ($khach_sans as $khach_san )
-            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="">{{$khach_san->ten}}</a></li>
+            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="<?= env('APP_URL') ?>/">EasyStay</a></li>
             <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="mdi mdi-chevron-right"></i></li>
             <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">Chi tiết tin tức</li>
-            @endforeach
         </ul>
     </div>
 </section><!--end section-->
@@ -82,25 +80,25 @@
 
     <div class="container lg:mt-24 mt-16">
         <div class="grid grid-cols-1 mb-6 text-center">
-            <h3 class="font-semibold text-3xl leading-normal">Bài viết liên quan</h3>
+            <h3 class="font-semibold text-3xl leading-normal">Tin tức liên quan</h3>
         </div><!--end grid-->
 
         <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6 pt-6">
-            @foreach ($baiviets as $baiviet )
+            @foreach ($bai_viets as $bai_viet )
 
             <div class="group relative overflow-hidden">
                 <div class="relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                    <img src="{{Storage::url($baiviet->anh)}}" class="group-hover:scale-110 group-hover:rotate-3 duration-500" alt="">
+                    <img src="{{Storage::url($bai_viet->anh)}}" class="group-hover:scale-110 group-hover:rotate-3 duration-500" alt="">
                 </div>
 
                 <div class="mt-6">
                     <div class="flex mb-4">
-                        <span class="flex items-center text-slate-400 text-sm"><i data-feather="clock" class="size-4 text-slate-900 dark:text-white me-1.5"></i>{{$baiviet->created_at}}</span>
+                        <span class="flex items-center text-slate-400 text-sm"><i data-feather="clock" class="size-4 text-slate-900 dark:text-white me-1.5"></i>{{$bai_viet->created_at}}</span>
                         <!-- <span class="text-slate-400 text-sm ms-3">by <a href="#" class="text-slate-900 dark:text-white hover:text-red-500 dark:hover:text-red-500 font-medium">Travosy</a></span> -->
                     </div>
 
-                    <a href="blog-detail.html" class="text-lg font-semibold hover:text-red-500 duration-500 ease-in-out">{{$baiviet->tieu_de}}</a>
-                    <p class="text-slate-400 mt-2">{{$baiviet->mo_ta_ngan}}</p>
+                    <a href="blog-detail.html" class="text-lg font-semibold hover:text-red-500 duration-500 ease-in-out">{{$bai_viet->tieu_de}}</a>
+                    <p class="text-slate-400 mt-2">{{$bai_viet->mo_ta_ngan}}</p>
 
                     <!-- <div class="mt-3">
                         <span class="text-slate-400">by <a href="#" class="text-slate-900 dark:text-white hover:text-red-500 dark:hover:text-red-500 font-medium">Travosy</a></span>
