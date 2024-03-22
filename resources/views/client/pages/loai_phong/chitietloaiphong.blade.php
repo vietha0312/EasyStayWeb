@@ -6,13 +6,13 @@
     <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/80 to-slate-900"></div>
     <div class="container relative">
         <div class="grid grid-cols-1 pb-8 text-center mt-10">
-            <h3 class="text-3xl leading-normal tracking-wider font-semibold text-white">{{$detail->ten }}</h3>
+            <h3 class="text-3xl leading-normal tracking-wider font-semibold text-white">Loại phòng: {{$detail->ten }}</h3>
         </div><!--end grid-->
     </div><!--end container-->
 
     <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
         <ul class="tracking-[0.5px] mb-0 inline-block">
-            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="index.html">EasyStay</a></li>
+            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="<?= env('APP_URL') ?>/">EasyStay</a></li>
             <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="mdi mdi-chevron-right"></i></li>
             <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">Chi tiết loại phòng</li>
         </ul>
