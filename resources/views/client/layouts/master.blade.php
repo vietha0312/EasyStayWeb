@@ -83,12 +83,12 @@
         <div class="container relative">
             <!-- Logo container-->
 
-            <a class="logo" href="#">
+            <a class="logo" href="<?= env('APP_URL') ?>/">
                 <span class="inline-block dark:hidden">
-                    <img src="{{'/'}}" class="h-7 l-dark" alt="ảnh logo">
-                    <img src="{{'/'}}" class="h-7 l-light" alt="ảnh logo">
+                    <img src="#" class="h-7 l-dark" alt="ảnh logo">
+                    <img src="#" class="h-7 l-light" alt="ảnh logo">
                 </span>
-                <img src="{{'/'}}" class="hidden dark:inline-block" alt="ảnh logo">
+                <img src="#" class="hidden dark:inline-block" alt="ảnh logo">
             </a>
            
             <!-- End Logo container-->

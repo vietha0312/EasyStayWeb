@@ -38,6 +38,15 @@ class DatPhongDataTable extends DataTable
             // ->addColumn('dich_vu_id', function($query){
             //     return $query->dich_vu->ten_dich_vu;
             // })
+            ->addColumn('trang_thai', function ($query) {
+                $active = "<span class='badge text-bg-success'>Đã xác nhận</span>";
+                $inActive = "<span class='badge text-bg-danger'>Chờ xác nhận</span>";
+                if ($query->trang_thai == 1) {
+                    return $active;
+                } else {
+                    return $inActive;
+                }
+            })
             ->addColumn('action', function ($query) {
                 $editBtn = "<a href='" . route('admin.dat_phong.edit', $query->id) . "' class='btn btn-primary'>
                 <i class='bi bi-pen'></i>
@@ -67,7 +76,7 @@ class DatPhongDataTable extends DataTable
                 return $editBtn . $deleteBtn . $detailBtn ;
             })
 
-            ->rawColumns(['ten_khach_hang','loai_phong_id','email','so_dien_thoai','action'])
+            ->rawColumns(['ten_khach_hang','loai_phong_id','email','so_dien_thoai','trang_thai','action'])
             ->setRowId('id');
     }
 

@@ -187,7 +187,8 @@
                         <div class="mt-4 pt-4 flex justify-between items-center border-t border-slate-100 dark:border-gray-800">
                             <h5 class="text-lg font-medium text-red-500">{{$loai_phong->gia}}</h5>
 
-                            <a href="{{'chi_tiet_loai_phong',$loai_phong->id}}" class="text-slate-400 hover:text-red-500">Khám phá ngay<i class="mdi mdi-arrow-right"></i></a>
+                            <a href="<?= env('APP_URL') ?>/chi_tiet_loai_phong/<?= $loai_phong->id ?>" class="text-slate-400 hover:text-red-500">Khám phá ngay<i class="mdi mdi-arrow-right"></i></a>
+
                         </div>
                     </div>
                 </div>
@@ -223,7 +224,7 @@
                     <p class="text-slate-400 mt-2">{{$bai_viet->mo_ta_ngan}}</p>
 
                     <div class="mt-3">
-                        <a href="blog-detail.html" class="hover:text-red-500 inline-flex items-center">Đọc tiếp <i data-feather="chevron-right" class="size-4 ms-1"></i></a>
+                        <a href="<?= env('APP_URL') ?>/chi_tiet_tin_tuc/<?= $bai_viet->id ?>" class="hover:text-red-500 inline-flex items-center">Đọc tiếp <i data-feather="chevron-right" class="size-4 ms-1"></i></a>
                     </div>
                 </div>
             </div><!--end content-->

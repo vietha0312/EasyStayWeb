@@ -47,7 +47,6 @@ Route::get('loai_phong', [ChiTietLoaiPhongController::class, 'allRoom'])->name('
 
 Route::get('tin_tuc', [App\Http\Controllers\Frontend\BaiVietFEController::class, 'index'])->name('client.pages.bai_viet.index');
 Route::get('chi_tiet_tin_tuc/{id}', [App\Http\Controllers\Frontend\BaiVietFEController::class, 'show'])->name('client.pages.bai_viet.show');
-// Route::resource('tin_tuc',App\Http\Controllers\Frontend\BaiVietFEController::class);
 
 Route::get('lien_he', [LienHeController::class,'contact'])->name('client.pages.lien_he');
 
@@ -66,8 +65,6 @@ Route::middleware('auth')->group(function () {
     //     }
     // });
 });
-
-
 
 
 require __DIR__ . '/auth.php';
