@@ -263,7 +263,7 @@
                         </ul>
                     </li> -->
 
-                    <li><a href="<?= env('APP_URL') ?>/loai_phong" class="sub-menu-item">Loại phòng</a></li   
+                    <li><a href="<?= env('APP_URL') ?>/loai_phong" class="sub-menu-item">Loại phòng</a></li>
 
 
                     <li><a href="" class="sub-menu-item">Đặt phòng</a></li>
