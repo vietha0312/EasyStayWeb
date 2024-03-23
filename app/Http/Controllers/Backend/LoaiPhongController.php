@@ -25,14 +25,19 @@ class LoaiPhongController extends Controller
     public function index(LoaiPhongDataTable $datatable)
     {
         $so_luong = Phong::select('Loai_phongs.ten', DB::raw('COUNT(phongs.id) as so_luong'))
-        ->join('Loai_phongs', 'Phongs.loai_phong_id', '=', 'Loai_phongs.id')
-        ->groupBy('Loai_phongs.ten')
-        ->get();
+            ->join('Loai_phongs', 'Phongs.loai_phong_id', '=', 'Loai_phongs.id')
+            ->groupBy('Loai_phongs.ten')
+            ->get();
 
-        // $phong_trong = Phong::select('Loai_phongs.ten', DB::raw('COUNT(phongs.trang_thai = 1) as phong_trong'));
-        // $phong_trong = Phong::select('loai_phongs.trang_thai',DB::raw('COUNT(trang_thai) as phong_trong'))
-        // Select trang_thai. count(phongs.trang_thai) as phong_trong From phongs Group By trang_thai Having trang_thai = N'1'
-        return $datatable->with('so_luong',$so_luong)->render('admin.loai_phong.index');
+        $phong_trong = Loai_phong::select('loai_phongs.*', DB::raw('COUNT(phongs.id) as phong_trong'))
+            ->leftJoin('phongs', function ($join) {
+                $join->on('loai_phongs.id', '=', 'phongs.loai_phong_id')
+                    ->where('phongs.trang_thai', '=', '1'); 
+            })
+            ->groupBy('loai_phongs.id', 'loai_phongs.ten') 
+            ->get();
+
+        return $datatable->with('so_luong', $so_luong)->with('phong_trong', $phong_trong)->render('admin.loai_phong.index');
     }
 
     /**
@@ -50,7 +55,7 @@ class LoaiPhongController extends Controller
     {
         $request->validate([
             'ten' => 'required|unique:loai_phongs',
-            'anh' => 'nullable','image',
+            'anh' => 'nullable', 'image',
             'gia' => 'required',
             'gia_ban_dau' => 'nullable',
             'gioi_han_nguoi' => 'required',
@@ -77,11 +82,11 @@ class LoaiPhongController extends Controller
         // return back()->with('msg','Thêm thành công');
 
         $data = $request->except('anh');
-        if($request->hasFile('anh')){
+        if ($request->hasFile('anh')) {
             $data['anh'] = Storage::put(self::PATH_UPLOAD, $request->file('anh'));
         }
         Loai_phong::query()->create($data);
-        return back()->with('success','Thêm thành công');
+        return back()->with('success', 'Thêm thành công');
         // toastr('Thêm thành công', 'success');
     }
 
@@ -113,7 +118,7 @@ class LoaiPhongController extends Controller
     {
         $request->validate([
             'ten' => 'required|unique:loai_phongs,ten,' . $loai_phong->id,
-            'anh' => 'nullable','image',
+            'anh' => 'nullable', 'image',
             'gia' => 'required',
             'gia_ban_dau' => 'nullable',
             'gioi_han_nguoi' => 'required',
@@ -124,15 +129,15 @@ class LoaiPhongController extends Controller
 
         ]);
         $data = $request->except('anh');
-        if($request->hasFile('anh')){
+        if ($request->hasFile('anh')) {
             $data['anh'] = Storage::put(self::PATH_UPLOAD, $request->file('anh'));
         }
         $oldAnh = $loai_phong->anh;
-        if($request->hasFile('anh') && Storage::exists($oldAnh)){
+        if ($request->hasFile('anh') && Storage::exists($oldAnh)) {
             Storage::delete($oldAnh);
         }
         $loai_phong->update($data);
-        return back()->with('msg','Sửa thành công');
+        return back()->with('msg', 'Sửa thành công');
     }
 
     /**
@@ -144,7 +149,7 @@ class LoaiPhongController extends Controller
 
         $this->deleteImage($loai_phong->anh);
         $anh_phong = Anh_phong::where('loai_phong_id', $loai_phong->id)->get();
-        foreach($anh_phong as $anh){
+        foreach ($anh_phong as $anh) {
             $this->deleteImage($anh->anh);
             $anh->delete();
         }
@@ -158,7 +163,8 @@ class LoaiPhongController extends Controller
         // return back()->with('msg','Xóa thành công');
     }
 
-    public function changeStatus(Request $request){
+    public function changeStatus(Request $request)
+    {
         $loai_phong = Loai_phong::findOrFail($request->id);
         $loai_phong->trang_thai = $request->trang_thai == 'true' ? 0 : 1;
         $loai_phong->save();

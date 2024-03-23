@@ -36,8 +36,9 @@ class LoaiPhongDataTable extends DataTable
                 return  "<img src='" . Storage::url($query->anh) . "' width='100px' alt='ảnh phòng'>";
                 
             })
-            ->addColumn('phong_trong', function(){
-                
+            ->addColumn('phong_trong', function($query){
+                $phong_trong = Phong::where('loai_phong_id', $query->id)->where('trang_thai', '1')->count();
+                return $phong_trong;            
             })
             ->addColumn('trang_thai', function ($query) {
                 if ($query->trang_thai == 1) {
