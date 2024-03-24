@@ -36,6 +36,10 @@ class LoaiPhongDataTable extends DataTable
                 return  "<img src='" . Storage::url($query->anh) . "' width='100px' alt='ảnh phòng'>";
                 
             })
+            ->addColumn('phong_trong', function($query){
+                $phong_trong = Phong::where('loai_phong_id', $query->id)->where('trang_thai', '1')->count();
+                return $phong_trong;            
+            })
             ->addColumn('trang_thai', function ($query) {
                 if ($query->trang_thai == 1) {
                     $button = "<div class='form-check form-switch'>
@@ -95,7 +99,7 @@ class LoaiPhongDataTable extends DataTable
                 return $editBtn . $deleteBtn . $moreBtn ;
             })
             
-            ->rawColumns(['so_luong','anh','trang_thai', 'action'])
+            ->rawColumns(['so_luong','anh','phong_trong','trang_thai', 'action'])
             ->setRowId('id');
     }
     /**
@@ -142,6 +146,7 @@ class LoaiPhongDataTable extends DataTable
             Column::make('gia_ban_dau'),
             // Column::make('gioi_han_nguoi'),
             Column::make('so_luong'),
+            Column::make('phong_trong'),
             // Column::make('mo_ta_ngan'),
             // Column::make('mo_ta_dai'),
             Column::make('trang_thai'),

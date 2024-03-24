@@ -1,6 +1,6 @@
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"><!--begin::Sidebar Brand-->
     <div class="sidebar-brand"><!--begin::Brand Link-->
-        <a href="../index.html" class="brand-link"><!--begin::Brand Image-->
+        <a href="<?= env('APP_URL') ?>/" class="brand-link"><!--begin::Brand Image-->
             <img src="/adminlte/assets/img/AdminLTELogo.png" alt="EasyStay Logo" class="brand-image opacity-75 shadow"><!--end::Brand Image--><!--begin::Brand Text-->
             <span class="brand-text fw-light">EasyStay</span><!--end::Brand Text-->
         </a><!--end::Brand Link-->
@@ -71,7 +71,7 @@
                     </a>
 
                 </li>
-
+                
                 <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-ticket-perforated"></i>
                         <p>
                             Quản Lý Vai Trò
@@ -93,9 +93,20 @@
                 <li class="nav-item"><a href="{{ route('admin.dat_phong.index') }}" class="nav-link"><i class="bi bi-house-check"></i>
                         <p>
                             Quản Lý Đặt Phòng
-                            <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
+                            <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a href="{{ route('admin.dat_phong.index') }}" class="nav-link"><i
+                                    class="nav-icon bi bi-circle"></i>
+                                <p>Danh sách</p>
+                            </a></li>
+                        <li class="nav-item"><a href="{{ route('admin.dat_phong.create') }}" class="nav-link"><i
+                                    class="nav-icon bi bi-circle"></i>
+                                <p>Tạo mới</p>
+                            </a></li>
+
+                    </ul>
                 </li>
 
                 <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-ticket-perforated"></i>
@@ -169,25 +180,23 @@
 
                 <li class="nav-item"><a href="{{ route('admin.banners.index') }}" class="nav-link"><i class="bi bi-images"></i>
                         <p>
-                            Quản Bý Banner
+                            Quản lý Banner
 
                             <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
 
                         </p>
                     </a>
-                    <!-- <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Danh sách</p>
-                            </a></li>
-                        <li class="nav-item"><a href="" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Tạo mới</p>
-                            </a></li>
-
-
-                    </ul> -->
                 </li>
+
+                <li class="nav-item"><a href="{{ route('admin.lien_he.index') }}" class="nav-link"><i class="fa-regular fa-id-card"></i>
+                    <p>
+                        Quản lý liên hệ
+
+                        <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
+
+                    </p>
+                </a>
+            </li>
 
                 <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-box-arrow-down"></i>
                         <p>

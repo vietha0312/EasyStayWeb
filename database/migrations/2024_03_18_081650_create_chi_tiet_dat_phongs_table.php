@@ -21,6 +21,12 @@ return new class extends Migration
             $table->unsignedBigInteger('dich_vu_id');
             $table->foreign('dich_vu_id')->references('id')->on('dich_vus');
             $table->decimal('thanh_tien');
+            $table->integer('so_luong_nguoi');
+            $table->integer('so_luong_phong');
+            $table->dateTime('thoi_gian_den');
+            $table->dateTime('thoi_gian_di');
+            $table->string('payment');
+            $table->string('ghi_chu')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

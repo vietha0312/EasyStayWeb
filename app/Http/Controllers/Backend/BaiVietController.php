@@ -34,6 +34,18 @@ class BaiVietController extends Controller
 
     public function store(Request $request , User $user): RedirectResponse
     {
+        $request->validate([
+            'tieu_de' => 'required|max:225',
+            'anh' => 'nullable|image|max:1080',
+            'mo_ta_ngan' => 'nullable|max:225',
+            'noi_dung' => 'required',
+            'trang_thai' => [
+                Rule::in([
+                    Bai_viet::XUAT_BAN,
+                    Bai_viet::NHAP
+                ])
+            ],
+        ]);
         $data = $request->except('anh');
 
         if ($request->hasFile('anh')) {
@@ -52,6 +64,19 @@ class BaiVietController extends Controller
 
     public function update(Request $request, Bai_viet $bai_viet , User $user): RedirectResponse
     {
+        $request->validate([
+            'tieu_de' => 'required|max:225',
+            'anh' => 'nullable|image|max:1080',
+            'mo_ta_ngan' => 'nullable|max:225',
+            'noi_dung' => 'required',
+            'trang_thai' => [
+                Rule::in([
+                    Bai_viet::XUAT_BAN,
+                    Bai_viet::NHAP
+                ])
+            ],
+        ]);
+
         $data = $request->except('anh');
 
         if ($request->hasFile('anh')) {

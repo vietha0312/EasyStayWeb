@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bai_viets', function (Blueprint $table) {
+        Schema::create('lien_hes', function (Blueprint $table) {
             $table->id();
-            $table->string('tieu_de');
-            $table->string('anh');
-            $table->string('mo_ta_ngan');
-            $table->text('noi_dung');
+            $table->string('name');
+            $table->string('email');
+            $table->string('subject');
+            $table->string('comments');
             $table->boolean('trang_thai')->default(0);
             $table->softDeletes();
             $table->timestamps();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bai_viets');
+        Schema::dropIfExists('lien_hes');
     }
 };

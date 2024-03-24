@@ -15,16 +15,20 @@
     <meta name="version" content="1.0.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+     <!-- favicon -->
+     <link rel="shortcut icon" href="{{ asset('adminlte/assets/images/favicon.ico') }}">
 
-    <!-- Css -->
-    <link href="assets/libs/swiper/css/swiper.min.css" rel="stylesheet">
-    <link href="assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
-    <link href="assets/libs/js-datepicker/datepicker.min.css" rel="stylesheet">
-    <!-- Main Css -->
-    <link href="assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/tailwind.min.css" rel="stylesheet" type="text/css">
+     <!-- Css -->
+     <link href="/assets/libs/swiper/css/swiper.min.css" rel="stylesheet">
+     <link href="/assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
+     <link href="/assets/libs/js-datepicker/datepicker.min.css" rel="stylesheet">
+     <!-- Main Css -->
+     <link href="/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+     <link href="/assets/css/tailwind.min.css" rel="stylesheet" type="text/css">
+
+
+
+ 
 
 </head>
 
@@ -79,12 +83,12 @@
         <div class="container relative">
             <!-- Logo container-->
 
-            <a class="logo" href="#">
+            <a class="logo" href="<?= env('APP_URL') ?>/">
                 <span class="inline-block dark:hidden">
-                    <img src="{{'/'}}" class="h-7 l-dark" alt="ảnh logo">
-                    <img src="{{'/'}}" class="h-7 l-light" alt="ảnh logo">
+                    <img src="#" class="h-7 l-dark" alt="ảnh logo">
+                    <img src="#" class="h-7 l-light" alt="ảnh logo">
                 </span>
-                <img src="{{'/'}}" class="hidden dark:inline-block" alt="ảnh logo">
+                <img src="#" class="hidden dark:inline-block" alt="ảnh logo">
             </a>
            
             <!-- End Logo container-->
@@ -179,7 +183,6 @@
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu justify-end nav-light">
 
-
                     <!-- <li class="has-submenu parent-parent-menu-item"><a href="javascript:void(0)"> Listing </a><span class="menu-arrow"></span>
                         <ul class="submenu">
                             <li class="has-submenu parent-menu-item">
@@ -272,13 +275,14 @@
                         </ul>
                     </li> -->
 
-                    <li><a href="{{'loai_phong'}}" class="sub-menu-item">Loại phòng</a></li>
+                    <li><a href="<?= env('APP_URL') ?>/loai_phong" class="sub-menu-item">Loại phòng</a></li>
+
 
                     <li><a href="" class="sub-menu-item">Đặt phòng</a></li>
 
-                    <li><a href="{{'tin_tuc'}}" class="sub-menu-item">Tin tức</a></li>
+                    <li><a href="<?= env('APP_URL') ?>/tin_tuc" class="sub-menu-item">Tin tức</a></li>
 
-                    <li><a href="{{'lien-he'}}" class="sub-menu-item">Liên hệ</a></li>
+                    <li><a href="<?= env('APP_URL') ?>/lien_he" class="sub-menu-item">Liên hệ</a></li>
                 </ul><!--end navigation menu-->
             </div><!--end navigation-->
         </div><!--end container-->
@@ -423,12 +427,12 @@
 
 
     <!-- JAVASCRIPTS -->
-    <script src="assets/libs/swiper/js/swiper.min.js"></script>
-    <script src="assets/libs/tiny-slider/min/tiny-slider.js"></script>
-    <script src="assets/libs/js-datepicker/datepicker.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/plugins.init.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="/assets/libs/swiper/js/swiper.min.js"></script>
+    <script src="/assets/libs/tiny-slider/min/tiny-slider.js"></script>
+    <script src="/assets/libs/js-datepicker/datepicker.min.js"></script>
+    <script src="/assets/libs/feather-icons/feather.min.js"></script>
+    <script src="/assets/js/plugins.init.js"></script>
+    <script src="/assets/js/app.js"></script>
     <!-- JAVASCRIPTS -->
 </body>
 

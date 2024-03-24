@@ -25,12 +25,11 @@ class BaiVietDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', 'baiviet.action')
 
-            ->addColumn('anh', function($query){
-                return  "<img src='" . Storage::url($query->anh) . "' width='100px' alt='ảnh bài viết'>";
-                
+            ->addColumn('anh', function ($query) {
+                return  "<img src='"  . Storage::url($query->anh) .  "' width='100px' alt='ảnh bài viết'>";
             })
 
-            
+
             ->addColumn('trang_thai', function ($query) {
                 $active = "<span class='badge text-bg-success'>Xuất bản</span>";
                 $inActive = "<span class='badge text-bg-danger'>Nháp</span>";
@@ -71,20 +70,20 @@ class BaiVietDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('baiviet-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        // Button::make('excel'),
-                        // Button::make('csv'),
-                        // Button::make('pdf'),
-                        // Button::make('print'),
-                        // Button::make('reset'),
-                        // Button::make('reload')
-                    ]);
+            ->setTableId('baiviet-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(1)
+            ->selectStyleSingle()
+            ->buttons([
+                // Button::make('excel'),
+                // Button::make('csv'),
+                // Button::make('pdf'),
+                // Button::make('print'),
+                // Button::make('reset'),
+                // Button::make('reload')
+            ]);
     }
 
     /**
@@ -102,10 +101,10 @@ class BaiVietDataTable extends DataTable
             // Column::make('created_at'),
             // Column::make('updated_at'),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(120)
-                  ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(120)
+                ->addClass('text-center'),
         ];
     }
 
