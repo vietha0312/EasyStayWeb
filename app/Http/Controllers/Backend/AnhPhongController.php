@@ -20,11 +20,8 @@ class AnhPhongController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, AnhPhongDataTable $datatables, User $user): RedirectResponse
+    public function index(Request $request, AnhPhongDataTable $datatables)
     {
-        if (! Gate::allows('view', $user)) {
-                return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
-            }
         $loai_phong = Loai_phong::findOrFail($request->loai_phong);
         // return view('admin.loai_phong.anh_phong.index',compact('loai_phong'));
         return $datatables->render('admin.loai_phong.anh_phong.index', compact('loai_phong'));

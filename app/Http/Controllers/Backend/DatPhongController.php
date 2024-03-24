@@ -18,11 +18,9 @@ class DatPhongController extends Controller
 {
     const PATH_VIEW = 'admin.dat_phong.';
 
-    public function index(Request $request, DatPhongDataTable $datatables , User $user): RedirectResponse
+    public function index(Request $request, DatPhongDataTable $datatables )
     {
-        if (! Gate::allows('view-A&NV', $user)) {
-            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
-        }
+
         // $datphong = DatPhong::query()->latest()->paginate(7);
         return $datatables->render(self::PATH_VIEW. __FUNCTION__);
     }

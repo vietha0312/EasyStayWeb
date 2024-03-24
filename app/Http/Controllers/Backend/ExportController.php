@@ -11,11 +11,8 @@ use Illuminate\Support\Facades\Redirect;
 
 class ExportController extends Controller
 {
-    public function exportUser(User $user): RedirectResponse
+    public function exportUser()
     {
-        if (! Gate::allows('view-A&NV', $user)) {
-            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
-        }
         return Excel::download(new UsersExport, 'users.xlsx');
     }
 

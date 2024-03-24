@@ -16,11 +16,8 @@ class DichVuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, DichVuDataTable $datatable, User $user): RedirectResponse
+    public function index(Request $request, DichVuDataTable $datatable)
     {
-        if (! Gate::allows('view-A&NV', $user)) {
-                return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
-            }
         return $datatable->render('admin.dich_vu.index');
         // $dichVuList = DichVu::all();
         // return view('admin.dich_vu.index', compact('dichVuList'));
