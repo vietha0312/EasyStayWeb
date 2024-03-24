@@ -82,7 +82,6 @@ Route::prefix('admin')
         Route::resource('khach_san', hotelController::class);
         Route::resource('bai_viet', BaiVietController::class);
         Route::resource('user', RegisteredUserController::class);
-        // Route::resource('danh_gia',DanhGiaController::class);
         Route::resource('banners', BannerController::class);
         Route::resource('danh_gia', DanhGiaController::class);
         Route::resource('vai_tro', VaiTroController::class);
@@ -90,12 +89,10 @@ Route::prefix('admin')
         Route::resource('chi_tiet_dat_phong', ChiTietDatPhongController::class);
         Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
         Route::get('exportUser', [ExportController::class, 'exportUser']);
-
         Route::resource('khuyen_mai', KhuyenMaiController::class);
         Route::resource('dich_vu', DichVuController::class);
 
         Route::resource('lien_he', LienHeController::class);
     });
-
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

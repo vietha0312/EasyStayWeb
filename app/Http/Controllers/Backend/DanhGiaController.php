@@ -4,17 +4,23 @@ namespace App\Http\Controllers\Backend;
 
 use App\DataTables\DanhGiaDataTable;
 use App\Models\DanhGia;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Loai_phong;
-
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Redirect;
 class DanhGiaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, DanhGiaDataTable $datatable)
+    public function index(Request $request, DanhGiaDataTable $datatable, User $user): RedirectResponse
     {
+        if (! Gate::allows('vỉew', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $loai_phong = Loai_phong::findOrFail($request->loai_phong);
         return $datatable->render('admin.danh_gia.index', compact('loai_phong'));
         // $data = DanhGia::all();
@@ -64,8 +70,11 @@ class DanhGiaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, User $user): RedirectResponse
     {
+        if (! Gate::allows('delete', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $deleteData = DanhGia::findOrFail($id);
 		$deleteData->delete();
 

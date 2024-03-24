@@ -1,5 +1,9 @@
 @extends('admin.layouts.master')
-
+@if(session('error'))
+<script>
+    alert("{{ session('error') }}");
+</script>
+@endif
 @section('content')
     <main class="app-main">
         <div class="app-content-header">
