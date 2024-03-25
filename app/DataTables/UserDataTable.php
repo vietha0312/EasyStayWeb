@@ -37,6 +37,7 @@ class UserDataTable extends DataTable
                 $deleteBtn = "<a href='" . route('admin.user.destroy', $query->id) . "' class='btn btn-danger delete-item ms-2'>
                 <i class='bi bi-archive'></i>
                 </a>";
+
                 return $editBtn . $deleteBtn;
             })
 

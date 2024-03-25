@@ -9,9 +9,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Anh_phong;
 use App\Models\Phong;
+use App\Models\User;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 
 use function Termwind\render;
 
@@ -51,8 +55,11 @@ class LoaiPhongController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user): RedirectResponse
     {
+        if (! Gate::allows('create', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $request->validate([
             'ten' => 'required|unique:loai_phongs',
             'anh' => 'nullable', 'image',
@@ -114,8 +121,11 @@ class LoaiPhongController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Loai_phong $loai_phong)
+    public function update(Request $request, Loai_phong $loai_phong, User $user): RedirectResponse
     {
+        if (! Gate::allows('update', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $request->validate([
             'ten' => 'required|unique:loai_phongs,ten,' . $loai_phong->id,
             'anh' => 'nullable', 'image',
@@ -143,8 +153,11 @@ class LoaiPhongController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, User $user): RedirectResponse
     {
+        if (! Gate::allows('delete', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $loai_phong = Loai_phong::findOrFail($id);
 
         $this->deleteImage($loai_phong->anh);

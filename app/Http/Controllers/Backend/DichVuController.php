@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\DataTables\DichVuDataTable;
 use App\Models\DichVu;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Redirect;
 
 class DichVuController extends Controller
 {
@@ -32,9 +36,12 @@ class DichVuController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user): RedirectResponse
     {
-        
+        if (! Gate::allows('create', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
+        //
         $data=$request->all();
          $request->validate([
             'ten_dich_vu' => 'required',
@@ -42,7 +49,7 @@ class DichVuController extends Controller
             'so_luong' => 'required|numeric',
             'trang_thai' => 'required|numeric',
         ]);
-       
+
 
         DichVu::create($data);
 
@@ -69,8 +76,11 @@ class DichVuController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id , User $user): RedirectResponse
     {
+        if (! Gate::allows('update', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         //
         $dichVu = DichVu::findOrFail($id);
         $data = $request->validate([
@@ -88,11 +98,14 @@ class DichVuController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DichVu $dichVu)
+    public function destroy(DichVu $dichVu, User $user): RedirectResponse
     {
+        if (! Gate::allows('delete', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         //
         $dichVu->delete();
-      
+
         return response(['trang_thai' => 'success']);
 
     }

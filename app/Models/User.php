@@ -24,6 +24,9 @@ class User extends Authenticatable
         'email',
         'password',
         'dia_chi',
+        'gioi_tinh',
+        'anh',
+        'ngay_sinh',
         'so_dien_thoai',
         'id_vai_tro',
     ];

@@ -4,12 +4,20 @@ namespace App\Http\Controllers\Backend;
 
 use App\DataTables\BannerDataTable;
 use App\Http\Requests\BannerRequest;
+use Illuminate\Http\RedirectResponse;
 use App\Models\Banner;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\VaiTro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Contracts\Cache\Store;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Redirect;
+
+
+use function Laravel\Prompts\alert;
 
 class BannerController extends Controller
 {
@@ -35,8 +43,12 @@ class BannerController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 */
-	public function store(Request $request)
+	public function store(Request $request, User $user): RedirectResponse
 	{
+        if (! Gate::allows('create', $user)) {
+            // abort(403);
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
 		$request->validate([
             'anh.*' => ['required', 'image'],
         ]);
@@ -50,7 +62,8 @@ class BannerController extends Controller
         }
 
         return redirect()->back();
-		
+
+
 		//Lưu hình ảnh vào thư mục storage
 
 		// $anh = $request->file('anh');
@@ -88,8 +101,9 @@ class BannerController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 */
-	public function update(Request $request, $id)
+	public function update(Request $request, $id )
 	{
+
 		// Lấy bản ghi cần cập nhật
 		$record = Banner::findOrFail($id);
 
@@ -118,13 +132,16 @@ class BannerController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 */
-	public function destroy(Banner $banner)
+	public function destroy(Banner $banner, User $user): RedirectResponse
 	{
+        if (! Gate::allows('delete', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
 		if(Storage::exists($banner->anh)){
 			Storage::delete($banner->anh);
 		}
 		$banner->delete();
-		return response(['trang_thai' => 'success']);
+		return response(['trang_ thai' => 'success']);
 
 
 		// $deleteData = Banner::find($id);

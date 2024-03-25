@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\ChiTietDatPhongDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\ChiTietDatPhong;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Redirect;
 
 class ChiTietDatPhongController extends Controller
 {
@@ -14,7 +18,11 @@ class ChiTietDatPhongController extends Controller
      */
     const PATH_VIEW = 'admin.chi_tiet_dat_phong.';
 
-    public function index(Request $request, ChiTietDatPhongDataTable $datatables){
+    public function index(Request $request, ChiTietDatPhongDataTable $datatables, User $user): RedirectResponse
+    {
+        if (! Gate::allows('view-A&NV', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         // $chi_tiet_dat_phong = ChiTietDatPhong::query()->latest()->paginate(7);
         return $datatables->render(self::PATH_VIEW. __FUNCTION__    );
     }

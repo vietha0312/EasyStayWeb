@@ -13,20 +13,11 @@ return new class extends Migration
     {
         Schema::create('chi_tiet_dat_phongs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('phong_id');
-            $table->foreign('phong_id')->references('id')->on('phongs');
             $table->unsignedBigInteger('dat_phong_id');
             $table->foreign('dat_phong_id')->references('id')->on('dat_phongs');
-            $table->decimal('don_gia');
             $table->unsignedBigInteger('dich_vu_id');
             $table->foreign('dich_vu_id')->references('id')->on('dich_vus');
             $table->decimal('thanh_tien');
-            $table->integer('so_luong_nguoi');
-            $table->integer('so_luong_phong');
-            $table->dateTime('thoi_gian_den');
-            $table->dateTime('thoi_gian_di');
-            $table->string('payment');
-            $table->string('ghi_chu')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

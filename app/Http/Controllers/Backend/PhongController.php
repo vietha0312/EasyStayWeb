@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Backend;
 
 use App\DataTables\PhongDataTable;
 use App\Models\Phong;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Loai_phong;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Redirect;
 
 class PhongController extends Controller
 {
@@ -35,8 +39,11 @@ class PhongController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user): RedirectResponse
     {
+        if (! Gate::allows('create', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         // $request->validate([
         //     'ten_phong' => 'required|unique::phongs',
         //     'loai_phong_id' => [
@@ -73,13 +80,16 @@ class PhongController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Phong $phong)
+    public function update(Request $request, Phong $phong, User $user): RedirectResponse
     {
+        if (! Gate::allows('update', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         // $request->validate([
         //     'ten_phong' => 'required|unique::phongs,ten_phong,' . $phong->id,
         //     'loai_phong_id' => [
         //         Rule::exists('phongs','id')
-        //     ],  
+        //     ],
         //     'mo_ta' => 'required',
         //     'trang_thai' => 'required',
         //     'trang_thai' => [
@@ -93,8 +103,11 @@ class PhongController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Phong $phong)
+    public function destroy(Phong $phong, User $user): RedirectResponse
     {
+        if (! Gate::allows('delete', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        }
         $phong->delete();
         return response(['trang_thai' => 'success']);
     }

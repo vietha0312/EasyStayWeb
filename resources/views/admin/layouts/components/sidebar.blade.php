@@ -72,6 +72,24 @@
 
                 </li>
 
+                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-ticket-perforated"></i>
+                        <p>
+                            Quản Lý Vai Trò
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><a href="{{ route('admin.vai_tro.index') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                                <p>Danh sách</p>
+                            </a></li>
+                        <li class="nav-item"><a href="{{ route('admin.vai_tro.create') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                                <p>Tạo mới</p>
+                            </a></li>
+
+                    </ul>
+                </li>
+
+
                 <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-house-check"></i>
                         <p>
                             Quản Lý Đặt Phòng

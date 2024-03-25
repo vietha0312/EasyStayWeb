@@ -13,17 +13,10 @@ class ChiTietDatPhong extends Model
     protected $table = 'chi_tiet_dat_phongs';
     protected $fillable =
     [
-        'phong_id',
         'dat_phong_id',
-        'don_gia',
         'dich_vu_id',
         'thanh_tien',
     ];
-    protected function phong()
-    {
-        // return $this->belongsTo('App\Models\Loai_phong','loai_phong_id','id');
-        return $this->belongsTo(Phong::class);
-    }
     protected function dat_phong()
     {
         // return $this->belongsTo('App\Models\Loai_phong','loai_phong_id','id');
