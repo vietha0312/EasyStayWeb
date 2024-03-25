@@ -10,18 +10,29 @@ use Illuminate\Http\Request;
 use App\Models\DichVu;
 use App\Models\User;
 use App\Models\Loai_phong;
+use App\Models\Phong;
 
 class DatPhongController extends Controller
 {
     const PATH_VIEW = 'admin.dat_phong.';
 
-    public function index(Request $request, DatPhongDataTable $datatables){
-        // $datphong = DatPhong::query()->latest()->paginate(7);
-        return $datatables->render(self::PATH_VIEW. __FUNCTION__);
-    }
-    public function create()
+    public function index(Request $request, DatPhongDataTable $datatables)
     {
-        return view(self::PATH_VIEW . __FUNCTION__);
+        // $datphong = DatPhong::query()->latest()->paginate(7);
+        return $datatables->render(self::PATH_VIEW . __FUNCTION__);
+    }
+    public function create(Request $request)
+    {
+        // $loai_phongs = Loai_phong::where('trang_thai',1)->with('phongs')->get();
+        $loai_phongs = Loai_phong::where('trang_thai',1)->get();
+    
+        // $phongs = Phong::where('trang_thai',1)->get();
+        // $loai_phongs = $request->input('loai_phongs', []);
+        // $loai_phongs = Phong::whereIn('loai_phong_id', $loai_phongs)
+        //             ->where('trang_thai', 1)
+        //             ->get();
+        return response()->json(['loai_phongs' => $loai_phongs]);
+        // return view(self::PATH_VIEW . __FUNCTION__, ['loai_phongs'=>$loai_phongs]);
     }
 
     /**
@@ -29,8 +40,7 @@ class DatPhongController extends Controller
      */
     public function store(Request $request)
     {
-        // DatPhong::query()->create($request->all());
-        // return back()->with('msg','Thêm thành công');
+        //
     }
 
     /**
@@ -47,10 +57,10 @@ class DatPhongController extends Controller
      */
     public function edit(DatPhong $datPhong)
     {
-        $loai_phong = Loai_phong::query()->pluck('ten','id')->toArray();
-        $user = User::query()->pluck('ten_nguoi_dung','id')->toArray();
-        $dich_vu= DichVu::query()->pluck('ten','id')->toArray();
-        return view(self::PATH_VIEW . __FUNCTION__, compact('loai_phong','datPhong','user','dich_vu'));
+        $loai_phong = Loai_phong::query()->pluck('ten', 'id')->toArray();
+        $user = User::query()->pluck('ten_nguoi_dung', 'id')->toArray();
+        $dich_vu = DichVu::query()->pluck('ten', 'id')->toArray();
+        return view(self::PATH_VIEW . __FUNCTION__, compact('loai_phong', 'datPhong', 'user', 'dich_vu'));
     }
 
     /**
@@ -70,7 +80,7 @@ class DatPhongController extends Controller
         //     ],
         // ]);
         $datPhong->update($request->all());
-        return back()->with('msg','Cập nhật thành công');
+        return back()->with('msg', 'Cập nhật thành công');
     }
 
     /**
@@ -81,5 +91,4 @@ class DatPhongController extends Controller
         $datPhong->delete();
         return response(['trang_thai' => 'success']);
     }
-
 }

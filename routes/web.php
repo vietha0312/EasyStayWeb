@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\KhuyenMaiController;
 use App\Http\Controllers\Backend\DichVuController;
 use App\Http\Controllers\Backend\ThongKeController;
 use App\Http\Controllers\Frontend\ChiTietLoaiPhongController;
+use App\Http\Controllers\Frontend\KiemTraPhongController;
 use App\Http\Controllers\Frontend\LienHeController;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,6 +50,8 @@ Route::get('tin_tuc', [App\Http\Controllers\Frontend\BaiVietFEController::class,
 Route::get('chi_tiet_tin_tuc/{id}', [App\Http\Controllers\Frontend\BaiVietFEController::class, 'show'])->name('client.pages.bai_viet.show');
 
 Route::get('lien_he', [LienHeController::class,'contact'])->name('client.pages.lien_he');
+
+Route::post('kiem_tra_phong',[KiemTraPhongController::class,'checkPhong'])->name('kiem_tra_phong');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

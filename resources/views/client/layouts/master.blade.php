@@ -16,7 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
      <!-- favicon -->
-     <link rel="shortcut icon" href="{{ asset('adminlte/assets/images/favicon.ico') }}">
+     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
      <!-- Css -->
      <link href="/assets/libs/swiper/css/swiper.min.css" rel="stylesheet">
@@ -85,10 +85,10 @@
 
             <a class="logo" href="<?= env('APP_URL') ?>/">
                 <span class="inline-block dark:hidden">
-                    <img src="#" class="h-7 l-dark" alt="ảnh logo">
-                    <img src="#" class="h-7 l-light" alt="ảnh logo">
+                    <img src="assets/images/favicon.ico" class="h-7 l-dark" alt="ảnh logo">
+                    <img src="assets/images/favicon.ico" class="h-7 l-light" alt="ảnh logo">
                 </span>
-                <img src="#" class="hidden dark:inline-block" alt="ảnh logo">
+                <img src="assets/images/favicon.ico" class="hidden dark:inline-block" alt="ảnh logo">
             </a>
            
             <!-- End Logo container-->
@@ -263,10 +263,9 @@
                         </ul>
                     </li> -->
 
+                    <li><a href="<?= env('APP_URL') ?>/" class="sub-menu-item">Đặt phòng</a></li>
+
                     <li><a href="<?= env('APP_URL') ?>/loai_phong" class="sub-menu-item">Loại phòng</a></li>
-
-
-                    <li><a href="" class="sub-menu-item">Đặt phòng</a></li>
 
                     <li><a href="<?= env('APP_URL') ?>/tin_tuc" class="sub-menu-item">Tin tức</a></li>
 
