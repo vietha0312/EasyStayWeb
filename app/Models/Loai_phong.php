@@ -28,4 +28,8 @@ class Loai_phong extends Model
     public function anhPhong(){
         return $this->hasMany('App\Models\Anh_phong');
     }
+
+    public function Phong(){
+        return $this->hasMany(Phong::class);
+    }
 }

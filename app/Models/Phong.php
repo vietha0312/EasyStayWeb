@@ -11,6 +11,7 @@ class Phong extends Model
 {
     use HasFactory,
         SoftDeletes;
+    protected $table = 'phongs';
 
     const CON_PHONG = 1;
     const HET_PHONG = 0;
@@ -27,5 +28,15 @@ class Phong extends Model
     {
         // return $this->belongsTo('App\Models\Loai_phong','loai_phong_id','id');
         return $this->belongsTo(Loai_phong::class);
+    }
+
+    // protected function dat_phong(){
+    //     return $this->hasMany(DatPhong::class);
+    // }
+
+
+    public function chiTietDatPhong()
+    {
+        return $this->hasMany(ChiTietDatPhong::class, 'phong_id', 'id');
     }
 }
