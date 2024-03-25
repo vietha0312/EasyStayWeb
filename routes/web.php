@@ -41,21 +41,6 @@ Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'home'])->
 
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware(['auth', 'admin'])->group(function () {
-//     Route::get('/admin', function () {
-//         // Logic để hiển thị trang quản trị
-//     })->name('admin');
-// });
-
-Route::get('/home', function () {
-    return view('home');
-})->middleware(['auth', 'verified'])->name('home');
-
-
 
 
 Route::get('chi_tiet_loai_phong/{id}', [ChiTietLoaiPhongController::class, 'detail'])->name('client.pages.loai_phong.chitietloaiphong');
@@ -87,8 +72,16 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 
-// Route::as('admin.')->group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
-//     Route::resource('loai_phong', LoaiPhongController::class);
+
+
+
+
+
+// Route::middleware('block.user')->as('admin')->prefix('admin')
+//     ->group( function (){
+//         // Route::resource('tong_quan', ThongKeController::class);
+
+//         Route::resource('loai_phong', LoaiPhongController::class);
 //         Route::resource('phong', PhongController::class);
 //         Route::resource('anh_phong', AnhPhongController::class);
 //         Route::resource('khach_san', hotelController::class);
@@ -100,19 +93,19 @@ require __DIR__ . '/auth.php';
 //         Route::resource('dat_phong', DatPhongController::class);
 //         Route::resource('chi_tiet_dat_phong', ChiTietDatPhongController::class);
 //         Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
-//         Route::get('exportUser', [ExportController::class, 'exportUser']);
+//         Route::get('export/user', [ExportController::class, 'exportUser']);
 //         Route::resource('khuyen_mai', KhuyenMaiController::class);
 //         Route::resource('dich_vu', DichVuController::class);
 
 //         Route::resource('lien_he', LienHeController::class);
-// });
+//     });
 
 
+// ->middleware(['auth', 'verified'])
+    Route::middleware(['auth','verified','block.user'])->prefix('admin')
+    ->as('admin.')
+    ->group(function () {
 
-
-
-Route::middleware('block.user')->as('admin')->prefix('admin')
-    ->group( function (){
         // Route::resource('tong_quan', ThongKeController::class);
 
         Route::resource('loai_phong', LoaiPhongController::class);
@@ -133,5 +126,3 @@ Route::middleware('block.user')->as('admin')->prefix('admin')
 
         Route::resource('lien_he', LienHeController::class);
     });
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

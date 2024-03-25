@@ -17,11 +17,8 @@ class BaiVietController extends Controller
     const PATH_VIEW = 'admin.bai_viet.';
     const PATH_UPLOAD = 'bai_viet';
 
-    public function index( Request $request, BaiVietDataTable $datatable , User $user): RedirectResponse
+    public function index( Request $request, BaiVietDataTable $datatable )
     {
-        if (! Gate::allows('view', $user)) {
-            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
-        }
         return $datatable->render('admin.bai_viet.index');
         // $data = Bai_viet::latest()->paginate(5);
         // return view(self::PATH_VIEW . 'index', compact('data'));
