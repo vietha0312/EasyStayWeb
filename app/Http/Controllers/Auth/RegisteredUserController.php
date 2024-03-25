@@ -27,6 +27,8 @@ class RegisteredUserController extends Controller
 
     public function index(Request $request, UserDataTable $datatable)
     {
+        // var_dump(Auth::user()->id_vai_tro);
+        //     die;
         return $datatable->render('admin.user.index');
         // $data=User::query()->latest()->paginate(10);
         // return view('admin.user.' . __FUNCTION__,compact('data'));
