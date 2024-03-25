@@ -17,8 +17,16 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('loai_phong_id');
             $table->foreign('loai_phong_id')->references('id')->on('loai_phongs');
+            $table->integer('so_luong_nguoi');
+            $table->integer('so_luong_phong');
+            $table->dateTime('thoi_gian_den');
+            $table->dateTime('thoi_gian_di');
+            $table->decimal('don_gia');
             $table->decimal('tong_tien');
+            $table->decimal('thanh_tien');
+            $table->string('payment');
             $table->boolean('trang_thai')->default(0);
+            $table->string('ghi_chu')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
