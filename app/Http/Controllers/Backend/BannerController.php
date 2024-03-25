@@ -25,11 +25,8 @@ class BannerController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 */
-	public function index(Request $request, BannerDataTable $datatable, User $user): RedirectResponse
+	public function index(Request $request, BannerDataTable $datatable)
 	{
-        if (! Gate::allows('delete', $user)) {
-                return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
-            }
 		return $datatable->render('admin.banner.index');
 		// $data = Banner::all();
 		// return view('admin.banner.index', compact('data'));

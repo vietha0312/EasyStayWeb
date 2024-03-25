@@ -3,9 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
-use App\Models\Banner;
 use App\Models\User;
-use App\Models\VaiTro;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Livewire\Attributes\Validate;
 
@@ -38,9 +36,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('view', function (User $user) {
             return $user->id_vai_tro === 2;
         });
-        // Gate::define('update-', function (User $user) {
-        //     return $user->id_vai_tro === 2 || $user->id_vai_tro === 3;
-        // });
         Gate::define('update-A&NV', function (User $user) {
             return $user->id_vai_tro === 2 || $user->id_vai_tro === 3;
         });

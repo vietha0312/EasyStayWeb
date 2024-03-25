@@ -28,7 +28,7 @@
 
 
 
- 
+
 
 </head>
 
@@ -90,7 +90,7 @@
                 </span>
                 <img src="#" class="hidden dark:inline-block" alt="ảnh logo">
             </a>
-           
+
             <!-- End Logo container-->
 
             <!-- Start Mobile Toggle -->
@@ -98,6 +98,7 @@
                 <div class="menu-item">
                     <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
                         <div class="lines">
+                            <span></span>
                             <span></span>
                             <span></span>
                             <span></span>
@@ -125,8 +126,6 @@
 
                 <?php
                     if (auth()->check()) {
-                        $user = auth()->user();
-                        $vai_tro = $user->vai_tro;
                                 // Người dùng đã đăng nhập, trả về view của trang profile
                                 echo'<li class="dropdown inline-block relative ps-0.5">
                                 <button data-dropdown-toggle="dropdown" class="dropdown-toggle items-center" type="button">
@@ -146,15 +145,6 @@
                                         </li>
                                         <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
 
-                                        <?php
-                                            if ($vai_tro->ten_chuc_vu === "Admin") {
-                                                ?>
-                                                <li>
-                                                    <a href="'. url('admin') .'" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white"><i data-feather="settings" class="size-4 me-2"></i>Cài đặt Admin</a>
-                                                </li>
-                                                <?php
-                                            }
-                                            ?>
                                         <li>
                                         <form method="POST" action="' . url('logout') . '">
                                             ' . csrf_field() . '
@@ -275,8 +265,16 @@
                         </ul>
                     </li> -->
 
+                                        <?php
+                                        if(auth()->check()){
+                                            if(auth()->user()->id_vai_tro === 2 || auth()->user()->id_vai_tro === 3) {
+                                                echo '<li>
+                                                        <a href="' . url('admin') . '" class="sub-menu-item">Admin</a>
+                                                    </li>';
+                                            }
+                                        }
+                                        ?>
                     <li><a href="<?= env('APP_URL') ?>/loai_phong" class="sub-menu-item">Loại phòng</a></li>
-
 
                     <li><a href="" class="sub-menu-item">Đặt phòng</a></li>
 

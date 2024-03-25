@@ -71,7 +71,7 @@
                     </a>
 
                 </li>
-                
+
                 <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-ticket-perforated"></i>
                         <p>
                             Quản Lý Vai Trò
@@ -90,7 +90,7 @@
                 </li>
 
 
-                <li class="nav-item"><a href="{{ route('admin.dat_phong.index') }}" class="nav-link"><i class="bi bi-house-check"></i>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-house-check"></i>
                         <p>
                             Quản Lý Đặt Phòng
                             <i class="nav-arrow bi bi-chevron-right"></i>
