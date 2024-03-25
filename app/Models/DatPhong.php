@@ -15,31 +15,37 @@ class DatPhong extends Model
 
     protected $table = 'dat_phongs';
     protected $fillable = [
-        'id_khach_hang',
-        'id_loai_phong',
-        'thoi_gian_den',
-        'thoi_gian_di',
-        'so_dien_thoai',
+        'user_id',
+        'loai_phong_id',
+        'phong_id',
+        'don_gia',
         'so_luong_nguoi',
         'so_luong_phong',
-        'id_dich_vu',
+        'thoi_gian_den',
+        'thoi_gian_di',
+        'khuyen_mai_id',
         'tong_tien',
         'payment',
+        'trang_thai',
         'ghi_chu',
-        'trang_thai'
     ];
     protected function user()
     {
         return $this->belongsTo(User::class);
     }
-    protected function dich_vu()
+    protected function phong()
     {
         // return $this->belongsTo('App\Models\Loai_phong','loai_phong_id','id');
-        return $this->belongsTo(DichVu::class);
+        return $this->belongsTo(Phong::class);
     }
     protected function loai_phong()
     {
         // return $this->belongsTo('App\Models\Loai_phong','loai_phong_id','id');
         return $this->belongsTo(Loai_phong::class);
+    }
+    protected function khuyen_mai()
+    {
+        // return $this->belongsTo('App\Models\Loai_phong','loai_phong_id','id');
+        return $this->belongsTo(KhuyenMai::class);
     }
 }
