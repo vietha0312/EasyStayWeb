@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller{
     public function home(){
-        $loai_phongs = Loai_phong::where('trang_thai',1)->get();
+        $loai_phongs = Loai_phong::all();
         $khach_sans = Hotel::all();
         $banners = Banner::where('trang_thai',1)->get();
         $bai_viets = Bai_viet::where('trang_thai',1)->get();

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class KhuyenMai extends Model
 {
@@ -29,6 +30,18 @@ protected $fillable = [
     'ngay_ket_thuc',
     'trang_thai',
 ];
+
+protected $dates = ['ngay_bat_dau', 'ngay_ket_thuc'];
+
+public function getTrangThaiAttribute($value)
+    {
+        if ($this->ngay_ket_thuc < Carbon::now()) {
+            return 1; // Kết thúc
+        } else {
+            return $value; // Đang áp dụng
+        }
+    }
+
 
 public function loai_phong()
 {

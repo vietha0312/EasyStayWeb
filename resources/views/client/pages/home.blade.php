@@ -58,7 +58,8 @@
                             <label class="form-label font-medium text-slate-900 dark:text-white">Lựa chọn ngày đến:</label>
                             <div class="relative mt-2">
                                 <i data-feather="calendar" class="size-[18px] absolute top-[10px] start-3"></i>
-                                <input name="thoi_gian_den" required type="date" id="thoi_gian_den" class="w-full py-2 px-3 ps-10 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-md outline-none border border-gray-100 dark:border-gray-800 focus:ring-0 start" placeholder="Lựa chọn ngày đến">
+                                <!-- <input name="thoi_gian_den" required type="text" id="thoi_gian_den" class="w-full py-2 px-3 ps-10 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-md outline-none border border-gray-100 dark:border-gray-800 focus:ring-0 start" placeholder="Lựa chọn ngày đến"> -->
+                                <input name="thoi_gian_den" required type="date" id="thoi_gian_den" class="w-full py-2 px-3 ps-10 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-md outline-none border border-gray-100 dark:border-gray-800 focus:ring-0 " placeholder="Lựa chọn ngày đến">
                             </div>
                         </div>
 
@@ -66,6 +67,7 @@
                             <label class="form-label font-medium text-slate-900 dark:text-white">Lựa chọn ngày đi:</label>
                             <div class="relative mt-2">
                                 <i data-feather="calendar" class="size-[18px] absolute top-[10px] start-3"></i>
+                                <!-- <input name="thoi_gian_di" required type="text" id="thoi_gian_di" class="w-full py-2 px-3 ps-10 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-md outline-none border border-gray-100 dark:border-gray-800 focus:ring-0 end" placeholder="Lựa chọn ngày đi"> -->
                                 <input name="thoi_gian_di" required type="date" id="thoi_gian_di" class="w-full py-2 px-3 ps-10 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-md outline-none border border-gray-100 dark:border-gray-800 focus:ring-0 end" placeholder="Lựa chọn ngày đi">
                             </div>
                         </div>
@@ -95,6 +97,7 @@
     </div><!--end container-->
 </section><!--end section-->
 <!-- End -->
+
 
 <!-- Start -->
 <section class="relative md:py-24 py-16 overflow-hidden">
