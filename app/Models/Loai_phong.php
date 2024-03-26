@@ -32,4 +32,19 @@ class Loai_phong extends Model
     public function Phong(){
         return $this->hasMany(Phong::class);
     }
+
+    // protected static function boot(){
+    //     parent::boot();
+    //     static::saved(function($loaiphongs){
+    //         //Kiem tra so luong phong trong cua loai phong
+    //         if($loaiphongs->available_phongs == 0){
+    //             //Cap nhat trang thai cua loai phong thanh het phong
+    //             $loaiphongs->trang_thai = 0;
+    //             $loaiphongs->save();
+    //         }
+    //     });
+    // }
+
+   
+
 }

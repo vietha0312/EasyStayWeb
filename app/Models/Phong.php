@@ -30,13 +30,21 @@ class Phong extends Model
         return $this->belongsTo(Loai_phong::class);
     }
 
-    // protected function dat_phong(){
-    //     return $this->hasMany(DatPhong::class);
-    // }
-
-
     public function datPhong()
     {
         return $this->hasMany(datPhong::class, 'phong_id', 'id');
+    }
+
+    protected static function boot(){
+        parent::boot();
+        static::updating(function($phong){
+            //Kiểm tra trạng thái của phòng đang được cập nhật từ 1 sang
+
+            if($phong->isDirty('trang_thai') && $phong->trang_thai == 0){
+                //
+            }
+        });
+
+        
     }
 }
