@@ -15,16 +15,16 @@
     <meta name="version" content="1.0.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-     <!-- favicon -->
-     <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-     <!-- Css -->
-     <link href="/assets/libs/swiper/css/swiper.min.css" rel="stylesheet">
-     <link href="/assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
-     <link href="/assets/libs/js-datepicker/datepicker.min.css" rel="stylesheet">
-     <!-- Main Css -->
-     <link href="/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
-     <link href="/assets/css/tailwind.min.css" rel="stylesheet" type="text/css">
+    <!-- Css -->
+    <link href="/assets/libs/swiper/css/swiper.min.css" rel="stylesheet">
+    <link href="/assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
+    <link href="/assets/libs/js-datepicker/datepicker.min.css" rel="stylesheet">
+    <!-- Main Css -->
+    <link href="/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet" type="text/css">
 
 
 
@@ -125,9 +125,9 @@
                 </li>
 
                 <?php
-                    if (auth()->check()) {
-                                // Người dùng đã đăng nhập, trả về view của trang profile
-                                echo'<li class="dropdown inline-block relative ps-0.5">
+                if (auth()->check()) {
+                    // Người dùng đã đăng nhập, trả về view của trang profile
+                    echo '<li class="dropdown inline-block relative ps-0.5">
                                 <button data-dropdown-toggle="dropdown" class="dropdown-toggle items-center" type="button">
                                     <span class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md border border-red-500 bg-red-500 text-white"><img src="assets/images/client/16.jpg" class="rounded-md" alt=""></span>
                                 </button>
@@ -156,13 +156,13 @@
                                     </ul>
                                 </div>
                             </li>';
-                            } else {
-                                        // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
-                                        echo '<li class="inline-block">
-                                        <button style="color:rgb(255 255 255 / .5);" type="button"><a href="'. url('login') .'"> Đăng nhập</a></button>
-                                        <button style="color:rgb(255 255 255 / .5); padding-left:30px"  type="button"><a href="'. url('register') .'">Đăng kí</a></button>
+                } else {
+                    // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                    echo '<li class="inline-block">
+                                        <button style="color:rgb(255 255 255 / .5);" type="button"><a href="' . url('login') . '"> Đăng nhập</a></button>
+                                        <button style="color:rgb(255 255 255 / .5); padding-left:30px"  type="button"><a href="' . url('register') . '">Đăng kí</a></button>
                                     </li>';
-                                    }
+                }
                 ?>
 
                 <!--end dropdown-->
@@ -268,23 +268,23 @@
 
 
 
+                    <li><a href="<?= env('APP_URL') ?>" class="sub-menu-item">Đặt phòng</a></li>
                     <li><a href="<?= env('APP_URL') ?>/loai_phong" class="sub-menu-item">Loại phòng</a></li>
-                                        <?php
-                                        if(auth()->check()){
-                                            if(auth()->user()->id_vai_tro === 2 || auth()->user()->id_vai_tro === 3) {
-                                                echo '<li>
-                                                        <a href="' . url('admin') . '" class="sub-menu-item">Admin</a>
-                                                    </li>';
-                                            }
-                                        }
-                                        ?>
-                    <li><a href="<?= env('APP_URL') ?>/loai_phong" class="sub-menu-item">Loại phòng</a></li>
-
-                    <li><a href="" class="sub-menu-item">Đặt phòng</a></li>
 
                     <li><a href="<?= env('APP_URL') ?>/tin_tuc" class="sub-menu-item">Tin tức</a></li>
 
                     <li><a href="<?= env('APP_URL') ?>/lien_he" class="sub-menu-item">Liên hệ</a></li>
+                    <?php
+                    if (auth()->check()) {
+                        if (auth()->user()->id_vai_tro === 2 || auth()->user()->id_vai_tro === 3) {
+                            echo '<li>
+                                                        <a href="' . url('admin') . '" class="sub-menu-item">Admin</a>
+                                                    </li>';
+                        }
+                    }
+                    ?>
+
+
                 </ul><!--end navigation menu-->
             </div><!--end navigation-->
         </div><!--end container-->
