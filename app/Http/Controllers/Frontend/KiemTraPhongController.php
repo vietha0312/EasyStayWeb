@@ -37,7 +37,7 @@ class KiemTraPhongController extends Controller
             //Kiểm tra mỗi phòng có trống không trong khoảng thời gian đó
             $phongsTrong = [];
             foreach($phongs as $phong){
-                $phongTrong = $phong->chiTietDatPhong()->where(function($query) use ($thoiGianDen, $thoiGianDi){
+                $phongTrong = $phong->datPhong()->where(function($query) use ($thoiGianDen, $thoiGianDi){
                     $query->where('thoi_gian_den', '>=', $thoiGianDi)
                         ->orWhere('thoi_gian_di', '<=', $thoiGianDen);
                 })->doesntExist();

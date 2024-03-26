@@ -35,8 +35,8 @@ class Phong extends Model
     // }
 
 
-    public function chiTietDatPhong()
+    public function datPhong()
     {
-        return $this->hasMany(ChiTietDatPhong::class, 'phong_id', 'id');
+        return $this->hasMany(datPhong::class, 'phong_id', 'id');
     }
 }
