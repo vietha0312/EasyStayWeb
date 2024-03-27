@@ -40,17 +40,7 @@
                 <p class="flex items-center text-slate-400 font-medium mb-2"><i data-feather="map-pin" class="text-red-500 size-4 me-1"></i> Hà Nội, Việt Nam</p>
                 <a href="tour-detail-one.html" class="text-lg font-medium hover:text-red-500 duration-500 ease-in-out">{{$room->ten}}</a>
 
-                <!-- <div class="flex items-center mt-2">
-                            <span class="text-slate-400">Rating:</span>
-                            <ul class="text-lg font-medium text-amber-400 list-none ms-2">
-                                <li class="inline"><i class="mdi mdi-star align-middle"></i></li>
-                                <li class="inline"><i class="mdi mdi-star align-middle"></i></li>
-                                <li class="inline"><i class="mdi mdi-star align-middle"></i></li>
-                                <li class="inline"><i class="mdi mdi-star align-middle"></i></li>
-                                <li class="inline"><i class="mdi mdi-star align-middle"></i></li>
-                                <li class="inline text-black dark:text-white text-sm">5.0(30)</li>
-                            </ul>
-                        </div> -->
+            
 
                 <div class="mt-4 pt-4 flex justify-between items-center border-t border-slate-100 dark:border-gray-800">
                     <h5 class="text-lg font-medium text-red-500">{{$room->gia}}</h5>

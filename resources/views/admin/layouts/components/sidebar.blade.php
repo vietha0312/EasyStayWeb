@@ -176,6 +176,10 @@
 
                 </li>
 
+            
+
+            </li>
+
                 <li class="nav-item"><a href="{{ route('admin.banners.index') }}" class="nav-link"><i class="bi bi-images"></i>
                         <p>
                             Quản lý Banner

@@ -11,20 +11,20 @@ use App\Models\Loai_phong;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
+
 class DanhGiaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, DanhGiaDataTable $datatable, User $user): RedirectResponse
+    public function index(Request $request, DanhGiaDataTable $datatable, User $user)
     {
-        if (! Gate::allows('vỉew', $user)) {
+        if (!Gate::allows('view', $user)) {
             return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        } else {
+            $loai_phong = Loai_phong::findOrFail($request->loai_phong);
+            return $datatable->render('admin.danh_gia.index', compact('loai_phong'));
         }
-        $loai_phong = Loai_phong::findOrFail($request->loai_phong);
-        return $datatable->render('admin.danh_gia.index', compact('loai_phong'));
-        // $data = DanhGia::all();
-		// return view('admin.danh_gia.index', compact('data'));
     }
 
     /**
@@ -40,7 +40,9 @@ class DanhGiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DanhGia::query()->create($request->all());
+
+        return view('client.pages.loai_phong.chitietloaiphong');
     }
 
     /**
@@ -72,13 +74,13 @@ class DanhGiaController extends Controller
      */
     public function destroy(string $id, User $user): RedirectResponse
     {
-        if (! Gate::allows('delete', $user)) {
+        if (!Gate::allows('delete', $user)) {
             return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
         }
         $deleteData = DanhGia::findOrFail($id);
-		$deleteData->delete();
+        $deleteData->delete();
 
         return response(['trang_thai' => 'success']);
-		// return redirect(route('admin.danh_gia.index'))->with('success', 'Ẩn bản ghi thành công.');
+        // return redirect(route('admin.danh_gia.index'))->with('success', 'Ẩn bản ghi thành công.');
     }
 }

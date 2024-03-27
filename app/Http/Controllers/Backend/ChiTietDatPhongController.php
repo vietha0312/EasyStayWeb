@@ -98,4 +98,6 @@ class ChiTietDatPhongController extends Controller
         $chiTietDatPhong->delete();
         return response(['trang_thai' => 'success']);
     }
+
+    
 }
