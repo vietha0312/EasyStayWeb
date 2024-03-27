@@ -26,7 +26,7 @@
     <link href="/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/tailwind.min.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.tailwindcss.com"></script>
-   
+
 
 </head>
 
@@ -122,46 +122,55 @@
                     </div>
                 </li>
 
-                <?php
-                if (auth()->check()) {
-                    // Người dùng đã đăng nhập, trả về view của trang profile
-                    echo '<li class="dropdown inline-block relative ps-0.5">
-                                <button data-dropdown-toggle="dropdown" class="dropdown-toggle items-center" type="button">
-                                    <span class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md border border-red-500 bg-red-500 text-white"><img src="{{ Auth::user()->anh }}" class="rounded-md" alt=""></span>
-                                </button>
-                                <!-- Dropdown menu -->
-                                <div class="dropdown-menu absolute end-0 m-0 mt-4 z-10 w-48 rounded-md overflow-hidden bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 hidden" onclick="event.stopPropagation();">
-                                    <ul class="py-2 text-start">
-                                        <li>
-                                            <a href="user-profile.html" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white"><i data-feather="user" class="size-4 me-2"></i>Hồ sơ</a>
-                                        </li>
-                                        <li>
-                                            <a href="helpcenter.html" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white"><i data-feather="help-circle" class="size-4 me-2"></i>Trung tâm trợ giúp</a>
-                                        </li>
-                                        <li>
-                                            <a href="user-setting.html" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white"><i data-feather="settings" class="size-4 me-2"></i>Cài đặt</a>
-                                        </li>
-                                        <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
+                @if (auth()->check())
+                <li class="dropdown inline-block relative ps-0.5">
+                    <button data-dropdown-toggle="dropdown" class="dropdown-toggle items-center" type="button">
+                        <span class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md text-white">
+                            <img  src="{{ Auth::user()->anh }}" class="rounded-md" alt="">
+                        </span>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div class="dropdown-menu absolute end-0 m-0 mt-4 z-10 w-48 rounded-md overflow-hidden bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 hidden" onclick="event.stopPropagation();">
+                        <ul class="py-2 text-start">
+                            <li>
+                                <a href="" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white">
+                                    <i data-feather="user" class="size-4 me-2"></i>Hồ sơ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white">
+                                    <i data-feather="help-circle" class="size-4 me-2"></i>Trung tâm trợ giúp
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white">
+                                    <i data-feather="settings" class="size-4 me-2"></i>Cài đặt
+                                </a>
+                            </li>
+                            <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
 
-                                        <li>
-                                        <form method="POST" action="' . url('logout') . '">
-                                            ' . csrf_field() . '
-                                            <button type="submit" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white">
-                                            <i data-feather="log-out" class="size-4 me-2"></i>Đăng xuất
-                                            </button>
-                                        </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>';
-                } else {
-                    // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
-                    echo '<li class="inline-block">
-                                        <button style="color:rgb(255 255 255 / .5);" type="button"><a href="' . url('login') . '"> Đăng nhập</a></button>
-                                        <button style="color:rgb(255 255 255 / .5); padding-left:30px"  type="button"><a href="' . url('register') . '">Đăng kí</a></button>
-                                    </li>';
-                }
-                ?>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white">
+                                        <i data-feather="log-out" class="size-4 me-2"></i>Đăng xuất
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                @else
+                <li class="inline-block">
+                    <button style="color:rgb(255 255 255 / .5);" type="button">
+                        <a href="{{ route('login') }}"> Đăng nhập</a>
+                    </button>
+                    <button style="color:rgb(255 255 255 / .5); padding-left:30px" type="button">
+                        <a href="{{ route('register') }}">Đăng kí</a>
+                    </button>
+                </li>
+                @endif
+
 
                 <!--end dropdown-->
             </ul>

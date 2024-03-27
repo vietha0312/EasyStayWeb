@@ -38,11 +38,18 @@ class DanhGiaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, DanhGia $danhGia)
     {
-        DanhGia::query()->create($request->all());
-
-        return view('client.pages.loai_phong.chitietloaiphong');
+        if (auth()->check()) {
+            $danhgia = new DanhGia();
+            $danhgia->noi_dung = $request->input('noi_dung');
+            $danhgia->loai_phong_id = $request->loai_phong_id;
+            $danhgia->user_id = auth()->id();
+            $danhgia->save();
+            return back();
+        } else {
+            return redirect('login');
+        }
     }
 
     /**
