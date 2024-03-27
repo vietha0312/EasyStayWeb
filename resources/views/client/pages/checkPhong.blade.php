@@ -50,43 +50,6 @@
                                 <h5 class="text-lg font-medium text-red-500">{{$loaiPhong->gia}}</h5> <br>
 
                                 <!-- <a href="<?= env('APP_URL') ?>/chi_tiet_loai_phong/<?= $loaiPhong->id ?>" class="text-slate-400 hover:text-red-500">Khám phá ngay<i class="mdi mdi-arrow-right"></i></a> -->
-                                <!-- <div>
-                                    <div>
-                                        <button id="button">Creat new articles</button>
-                                    </div>
-                                    <div id="popup">
-                                        <form id="btn-popup" class="show">
-                                            <h2>Create new article</h2>
-                                            <div class="group">
-                                                <label for="title">Title</label>
-                                                <input id="title" name="title" type="text" />
-                                                <div class="error hidden"></div>
-                                            </div>
-                                            <div class="group">
-                                                <label for="image">Image</label>
-                                                <input id="btn-image" name="btn-image" type="text">
-                                                <div class="error hidden"></div>
-                                            </div>
-                                            <div class="group">
-                                                <label for="composer">Composer</label>
-                                                <input id="composer" name="composer" type="text">
-                                                <div class="error hidden"></div>
-                                            </div>
-                                            <div class="group">
-                                                <label for="btn-email">Email</label>
-                                                <input id="btn-email" name="btn-email" type="text">
-                                                <div class="error hidden"></div>
-                                            </div>
-                                            <div class="group">
-                                                <label for="description">Description</label>
-                                                <textarea name="description" id="description" cols="30" rows="10"></textarea>
-                                                <div class="error hidden"></div>
-                                            </div>
-                                            <button id="close">Đóng</button>
-                                            <button id="create">Tạo mới</button>
-                                        </form>
-                                    </div>
-                                </div> -->
                             </div>
 
                             <div>
@@ -98,6 +61,7 @@
 
                             <!-- <button class="mt-3 py-1 px-3 h-10 inline-block tracking-wide align-middle duration-500 text-base text-center bg-red-500 text-white rounded-md cursor-pointer hover:bg-slate-800">Chọn phòng</button> -->
                             <a class="mt-3 py-1 px-3 h-10 inline-block tracking-wide align-middle duration-500 text-base text-center bg-red-500 text-white rounded-md cursor-pointer hover:bg-slate-800" href="#">Chọn phòng</a>
+                           
                         </div>
                     </div>
                 </div>
