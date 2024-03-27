@@ -10,8 +10,8 @@ use Illuminate\Http\Request;
 
 class ChiTietLoaiPhongController extends Controller{
     public function detail(string $id){
-        $detail = Loai_phong::where('trang_thai',1)->where('id',$id)->first();
-        // $anhphongs = Anh_phong::where('trang_thai',1)->where('id',$id);
+        $detail = Loai_phong::all()->where('id',$id)->first();
+        // $detail = Loai_phong::where('trang_thai',1)->where('id',$id)->first();
         $khach_sans = Hotel::all();
         // dd($detail);
         return view('client.pages.loai_phong.chitietloaiphong', compact('detail','khach_sans'));
