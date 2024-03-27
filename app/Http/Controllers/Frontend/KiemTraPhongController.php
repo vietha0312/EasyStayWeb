@@ -14,18 +14,18 @@ use Exception;
 
 class KiemTraPhongController extends Controller
 {
-   
+
     function checkPhong(Request $request)
     {
-        // try {
-            $ngayBatDau = Carbon::parse($request->input('thoi_gian_den'));
-            $ngayKetThuc = Carbon::parse($request->input('thoi_gian_di'));
-        // } catch (Exception $e) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => 'Lỗi định dạng ngày tháng.'
-        //     ], 400);
-        // }
+        try {
+        $ngayBatDau = Carbon::parse($request->input('thoi_gian_den'));
+        $ngayKetThuc = Carbon::parse($request->input('thoi_gian_di'));
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Lỗi định dạng ngày tháng.'
+            ], 400);
+        }
 
         $loaiPhongs = Loai_phong::all();
 
@@ -37,16 +37,82 @@ class KiemTraPhongController extends Controller
                         ->where('thoi_gian_di', '>', $ngayBatDau);
                 })
                 ->exists();
-
             return $availableRooms;
+            
         });
 
-        // dd($availableLoaiPhongs->toArray());
-        return view('client.pages.checkPhong', compact('availableLoaiPhongs','ngayBatDau','ngayKetThuc'));
+        $phongs = $availableLoaiPhongs->map(function ($loaiPhong) use ($ngayBatDau, $ngayKetThuc) {
+            $availableRooms = Phong::where('loai_phong_id', $loaiPhong->id)
+                ->whereDoesntHave('datPhong', function ($query) use ($ngayBatDau, $ngayKetThuc) {
+                    $query->where('thoi_gian_den', '<', $ngayKetThuc)
+                        ->where('thoi_gian_di', '>', $ngayBatDau);
+                })
+                ->get();
 
+            return [
+                'loai_phong' => $loaiPhong,
+                'available_rooms' => $availableRooms
+            ];
+        });
+
+        // dd($phongs);
         // return response()->json([
-        //     'success' => true,
-        //     'available_loai_phongs' => $availableLoaiPhongs
-        // ]);
+        //                 'success' => true,
+        //                 'available_loai_phongs' => $phongs,
+        //                 'ngay_bat_dau' => $ngayBatDau,
+        //                 'ngay_ket_thuc' => $ngayKetThuc
+        //             ]);
+        return view('client.pages.checkPhong', compact('availableLoaiPhongs', 'ngayBatDau', 'ngayKetThuc'));
+
+        
     }
 }
+
+// use Illuminate\Http\Request;
+// use App\Models\Loai_phong;
+// use App\Models\Phong;
+// use Carbon\Carbon;
+
+// class KiemTraPhongController extends Controller
+// {
+//     function checkPhong(Request $request)
+//     {
+//         $ngayBatDau = Carbon::parse($request->input('thoi_gian_den'));
+//         $ngayKetThuc = Carbon::parse($request->input('thoi_gian_di'));
+
+//         $loaiPhongs = Loai_phong::all();
+
+//         $availableLoaiPhongs = $loaiPhongs->filter(function ($loaiPhong) use ($ngayBatDau, $ngayKetThuc) {
+//             $availableRooms = Phong::where('loai_phong_id', $loaiPhong->id)
+//                 ->whereDoesntHave('datPhong', function ($query) use ($ngayBatDau, $ngayKetThuc) {
+//                     $query->where('thoi_gian_den', '<', $ngayKetThuc)
+//                         ->where('thoi_gian_di', '>', $ngayBatDau);
+//                 })
+//                 ->exists();
+//             return $availableRooms;
+//         });
+
+//         // Tạo một mảng chứa thông tin về các loại phòng có sẵn và giá trị $availableRooms tương ứng
+//         $result = $availableLoaiPhongs->map(function ($loaiPhong) use ($ngayBatDau, $ngayKetThuc) {
+//             $availableRooms = Phong::where('loai_phong_id', $loaiPhong->id)
+//                 ->whereDoesntHave('datPhong', function ($query) use ($ngayBatDau, $ngayKetThuc) {
+//                     $query->where('thoi_gian_den', '<', $ngayKetThuc)
+//                         ->where('thoi_gian_di', '>', $ngayBatDau);
+//                 })
+//                 ->get();
+//             return [
+//                 'loai_phong' => $loaiPhong,
+//                 'available_rooms' => $availableRooms
+//             ];
+//         });
+
+//         // Trả về JSON chứa thông tin về các loại phòng có sẵn và giá trị $availableRooms tương ứng
+//         return response()->json([
+//             'success' => true,
+//             'available_loai_phongs' => $result,
+//             'ngay_bat_dau' => $ngayBatDau,
+//             'ngay_ket_thuc' => $ngayKetThuc
+//         ]);
+//     }
+// }
+
