@@ -91,14 +91,17 @@
 
                     <div class="mt-6">
                         <h5 class="text-lg font-semibold">Mô tả phòng:</h5>
-
                         <p class="text-slate-400 mt-6">{{ $detail->mo_ta_dai }}</p>
                         <!-- <p class="text-slate-400 mt-3">The advantage of its Latin origin and the relative meaninglessness of Lorum Ipsum is that the text does not attract attention to itself or distract the viewer's attention from the layout.</p> -->
                     </div>
 
-                    <form action="{{ route('admin.danh_gia.store') }}" method="post" >
-                        @csrf
+                    <div>
                         
+                    </div>
+
+                    <form action="{{ route('admin.danh_gia.store',$detail) }}" method="post" >
+                        @csrf
+                        <input type="text" value="{{$detail->id}}" name="loai_phong_id" hidden>
                         <div class="mt-6  ">
                             <span class="input-group-text text-lg font-semibold">Bình luận:</span>
                             <div class="input-group ">
