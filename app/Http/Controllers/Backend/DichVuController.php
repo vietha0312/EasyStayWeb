@@ -43,7 +43,7 @@ class DichVuController extends Controller
         }
         //
         $data=$request->all();
-         $request->validate([
+        $request->validate([
             'ten_dich_vu' => 'required',
             'gia' => 'required|numeric',
             'so_luong' => 'required|numeric',

@@ -16,15 +16,14 @@ class DanhGiaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, DanhGiaDataTable $datatable, User $user): RedirectResponse
+    public function index(Request $request, DanhGiaDataTable $datatable, User $user)
     {
-        if (! Gate::allows('vỉew', $user)) {
-            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
-        }
+    if (!Gate::allows('view', $user)) {
+        return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+    } else {
         $loai_phong = Loai_phong::findOrFail($request->loai_phong);
         return $datatable->render('admin.danh_gia.index', compact('loai_phong'));
-        // $data = DanhGia::all();
-		// return view('admin.danh_gia.index', compact('data'));
+    }
     }
 
     /**

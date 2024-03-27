@@ -24,7 +24,7 @@ class ChiTietDatPhongController extends Controller
             return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
         }
         // $chi_tiet_dat_phong = ChiTietDatPhong::query()->latest()->paginate(7);
-        return $datatables->render(self::PATH_VIEW. __FUNCTION__    );
+        return $datatables->render(self::PATH_VIEW. __FUNCTION__);
     }
     public function create()
     {

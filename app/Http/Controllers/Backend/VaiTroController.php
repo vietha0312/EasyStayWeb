@@ -13,11 +13,8 @@ class VaiTroController extends Controller
 {
     //
     const PATH_VIEW = 'admin.vai_tro.';
-    public function index(User $user): RedirectResponse
+    public function index()
     {
-        if (! Gate::allows('create', $user)) {
-            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
-        }
         $data = VaiTro::query()->latest()->paginate(10);
         return view(self::PATH_VIEW . __FUNCTION__, compact('data'));
     }

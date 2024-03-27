@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chi_tiet_dat_phongs', function (Blueprint $table) {
+        Schema::create('dat_phong_noi_phongs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('dat_phong_id');
-            $table->foreign('dat_phong_id')->references('id')->on('dat_phongs');
-            $table->decimal('thanh_tien')->nullable();
-            $table->softDeletes();
+            $table->unsignedBigInteger('phong_id');
+            $table->foreign('dat_phong_id')->references('id')->on('dat_phongs')->onDelete('cascade');
+            $table->foreign('phong_id')->references('id')->on('phongs')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chi_tiet_dat_phongs');
+        Schema::dropIfExists('dat_phong_noi_phongs');
     }
 };
