@@ -179,6 +179,15 @@
                     </p>
                 </a>
             </li>
+            <li class="nav-item"><a href="{{ route('admin.thong_ke.index') }}" class="nav-link"><i class="fa-regular fa-chart-bar"></i>
+                <p>
+                    Thống kê
+
+                    <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
+
+                </p>
+            </a>
+        </li>
 
                 <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-box-arrow-down"></i>
                         <p>
