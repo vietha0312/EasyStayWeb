@@ -109,7 +109,7 @@ require __DIR__ . '/auth.php';
     ->as('admin.')
     ->group(function () {
 
-        Route::resource('thong_ke', ThongKeController::class);
+        Route::resource('dashboard', ThongKeController::class);
      
         Route::resource('loai_phong', LoaiPhongController::class);
         Route::resource('phong', PhongController::class);
