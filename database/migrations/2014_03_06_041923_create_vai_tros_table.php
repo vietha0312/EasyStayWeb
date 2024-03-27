@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -19,7 +20,30 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        DB::table('vai_tros')->insert([
+            'ten_chuc_vu' => 'Người dùng',
+            'mo_ta' => '',
+            'trang_thai' => true,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('vai_tros')->insert([
+            'ten_chuc_vu' => 'Admin',
+            'mo_ta' => '',
+            'trang_thai' => true,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('vai_tros')->insert([
+            'ten_chuc_vu' => 'Nhân viên',
+            'mo_ta' => '',
+            'trang_thai' => true,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
+    
 
     /**
      * Reverse the migrations.

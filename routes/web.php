@@ -76,34 +76,6 @@ require __DIR__ . '/auth.php';
 
 
 
-
-
-
-
-// Route::middleware('block.user')->as('admin')->prefix('admin')
-//     ->group( function (){
-//         // Route::resource('tong_quan', ThongKeController::class);
-
-//         Route::resource('loai_phong', LoaiPhongController::class);
-//         Route::resource('phong', PhongController::class);
-//         Route::resource('anh_phong', AnhPhongController::class);
-//         Route::resource('khach_san', hotelController::class);
-//         Route::resource('bai_viet', BaiVietController::class);
-//         Route::resource('user', RegisteredUserController::class);
-//         Route::resource('banners', BannerController::class);
-//         Route::resource('danh_gia', DanhGiaController::class);
-//         Route::resource('vai_tro', VaiTroController::class);
-//         Route::resource('dat_phong', DatPhongController::class);
-//         Route::resource('chi_tiet_dat_phong', ChiTietDatPhongController::class);
-//         Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
-//         Route::get('export/user', [ExportController::class, 'exportUser']);
-//         Route::resource('khuyen_mai', KhuyenMaiController::class);
-//         Route::resource('dich_vu', DichVuController::class);
-
-//         Route::resource('lien_he', LienHeController::class);
-//     });
-
-
 // ->middleware(['auth', 'verified'])
     Route::middleware(['auth','verified','block.user'])->prefix('admin')
     ->as('admin.')
@@ -126,6 +98,7 @@ require __DIR__ . '/auth.php';
         Route::get('exportUser', [ExportController::class, 'exportUser']);
         Route::resource('khuyen_mai', KhuyenMaiController::class);
         Route::resource('dich_vu', DichVuController::class);
+        
 
         Route::resource('lien_he', LienHeController::class);
     });

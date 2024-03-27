@@ -95,55 +95,6 @@
 </section>
 
 
-<!-- <div>
-    <div>
-        <button id="button">Creat new articles</button>
-    </div>
-    <div id="popup">
-        <form id="btn-popup" class="show">
-            <h2>Create new article</h2>
-            <div class="group">
-                <label for="title">Title</label>
-                <input id="title" name="title" type="text" />
-                <div class="error hidden"></div>
-            </div>
-            <div class="group">
-                <label for="image">Image</label>
-                <input id="btn-image" name="btn-image" type="text">
-                <div class="error hidden"></div>
-            </div>
-            <div class="group">
-                <label for="composer">Composer</label>
-                <input id="composer" name="composer" type="text">
-                <div class="error hidden"></div>
-            </div>
-            <div class="group">
-                <label for="btn-email">Email</label>
-                <input id="btn-email" name="btn-email" type="text">
-                <div class="error hidden"></div>
-            </div>
-            <div class="group">
-                <label for="description">Description</label>
-                <textarea name="description" id="description" cols="30" rows="10"></textarea>
-                <div class="error hidden"></div>
-            </div>
-            <button id="close">Đóng</button>
-            <button id="create">Tạo mới</button>
-        </form>
-    </div>
-</div> -->
-<!-- <script>
-    var button = document.getElementById('button');
-    var close = document.getElementById('close');
-    var popup = document.getElementById('popup');
 
-    button.addEventListener('click', () => {
-        popup.classList.add('show');
-    });
-
-    close.addEventListener('click', () => {
-        popup.classList.remove('show');
-    });
-</script> -->
 
 @endsection
