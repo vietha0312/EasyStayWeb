@@ -8,7 +8,7 @@
     <div class="sidebar-wrapper">
         <nav class="mt-2"><!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
-                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-speedometer2"></i>
+                <li class="nav-item"><a href="{{ route('admin.dashboard.index') }}" class="nav-link"><i class="bi bi-speedometer2"></i>
                         <p>
                             Tổng Quan
                             <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
@@ -97,12 +97,10 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"><a href="{{ route('admin.dat_phong.index') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="{{ route('admin.dat_phong.index') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
                                 <p>Danh sách</p>
                             </a></li>
-                        <li class="nav-item"><a href="{{ route('admin.dat_phong.create') }}" class="nav-link"><i
-                                    class="nav-icon bi bi-circle"></i>
+                        <li class="nav-item"><a href="{{ route('admin.dat_phong.create') }}" class="nav-link"><i class="nav-icon bi bi-circle"></i>
                                 <p>Tạo mới</p>
                             </a></li>
 
@@ -189,23 +187,21 @@
                 </li>
 
                 <li class="nav-item"><a href="{{ route('admin.lien_he.index') }}" class="nav-link"><i class="fa-regular fa-id-card"></i>
-                    <p>
-                        Quản lý liên hệ
+                        <p>
+                            Quản lý liên hệ
 
-                        <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
+                            <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
 
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item"><a href="{{ route('admin.thong_ke.index') }}" class="nav-link"><i class="fa-regular fa-chart-bar"></i>
-                <p>
-                    Thống kê
+                        </p>
+                    </a>
+                </li>
+                <!-- <li class="nav-item"><a href="{{ route('admin.dashboard.index') }}" class="nav-link"><i class="fa-regular fa-chart-bar"></i>
+                        <p>
+                            Thống kê
 
-                    <!-- <i class="nav-arrow bi bi-chevron-right"></i> -->
-
-                </p>
-            </a>
-        </li>
+                        </p>
+                    </a>
+                </li> -->
 
                 <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-box-arrow-down"></i>
                         <p>
