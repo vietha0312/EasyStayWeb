@@ -96,7 +96,5 @@ require __DIR__ . '/auth.php';
         Route::put('searchKhuyenMai', [DatPhongController::class, 'searchKhuyenMai'])->name('searchKhuyenMai');
         Route::resource('khuyen_mai', KhuyenMaiController::class);
         Route::resource('dich_vu', DichVuController::class);
-        
-
         Route::resource('lien_he', LienHeController::class);
     });
