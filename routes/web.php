@@ -98,7 +98,5 @@ require __DIR__ . '/auth.php';
         Route::get('exportUser', [ExportController::class, 'exportUser']);
         Route::resource('khuyen_mai', KhuyenMaiController::class);
         Route::resource('dich_vu', DichVuController::class);
-        
-
         Route::resource('lien_he', LienHeController::class);
     });

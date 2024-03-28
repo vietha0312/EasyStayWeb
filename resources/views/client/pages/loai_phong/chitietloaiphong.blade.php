@@ -47,15 +47,15 @@
 
 
                     <!-- <div class="carousel-inner">
-                                                <div class="carousel-item active">
-                                                    <img src="{{ asset($detail->anh) }}" alt="..." class="w-100">
-                                                </div>
-                                                @foreach ($detail->anhPhong as $image)
+                                                                                                        <div class="carousel-item active">
+                                                                                                            <img src="{{ asset($detail->anh) }}" alt="..." class="w-100">
+                                                                                                        </div>
+                                                                                                        @foreach ($detail->anhPhong as $image)
     <div class="carousel-item">
-                                                        <img src="{{ asset($image->anh) }}" class="d-block w-100" alt="...">
-                                                    </div>
+                                                                                                                <img src="{{ asset($image->anh) }}" class="d-block w-100" alt="...">
+                                                                                                            </div>
     @endforeach
-                                            </div> -->
+                                                                                                    </div> -->
 
                     <!-- </div> -->
                     <!-- </div> -->
@@ -96,25 +96,39 @@
                     </div>
 
                     <div>
-                        
+
                     </div>
 
-                    <form action="{{ route('admin.danh_gia.store',$detail) }}" method="post" >
+                    {{-- <form action="{{ route('admin.danh_gia.store', $detail) }}" method="post">
                         @csrf
-                        <input type="text" value="{{$detail->id}}" name="loai_phong_id" hidden>
+                        <input type="text" value="{{ $detail->id }}" name="loai_phong_id" hidden>
                         <div class="mt-6  ">
                             <span class="input-group-text text-lg font-semibold">Bình luận:</span>
                             <div class="input-group ">
-                                <textarea class="form-control border border-gray-300" aria-label="With textarea" rows="8" cols="60" placeholder="Nhập phần bình luận của bạn ở đây"
-                                    name="noi_dung"></textarea>
+                                <textarea class="form-control border border-gray-300" aria-label="With textarea" rows="8" cols="60"
+                                    placeholder="Nhập phần bình luận của bạn ở đây" name="noi_dung"></textarea>
                             </div>
                         </div>
-                    
-                        <button class="py-2 px-5 inline-block tracking-wide align-middle duration-500 text-base text-center bg-red-500 text-white rounded-md w-25 ">
+
+                        <button
+                            class="py-2 px-5 inline-block tracking-wide align-middle duration-500 text-base text-center bg-red-500 text-white rounded-md w-25 ">
                             Gửi
-                          </button>
-                    
-                    </form>
+                        </button>
+
+                    </form> --}}
+
+                    <div class="card mt-1.5">
+                        <div class="card-header text-lg font-semibold">
+                            Thông tin Đánh giá
+                        </div>
+                        @foreach ($danhGia as $item)
+                            <div class="card-body">
+                                <p>
+                                    <{{ $item->noi_dung }}< /p>
+                            </div>
+                        @endforeach
+                    </div>
+
                 </div>
 
                 <div class="lg:col-span-4 md:col-span-5">
@@ -201,8 +215,8 @@
     </div>
 
     <!-- <div class="fixed top-1/2 -right-11 z-50 hidden sm:block">
-                                <a href="https://1.envato.market/travosy" target="_blank" class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold"><i class="mdi mdi-cart-outline me-1"></i> Download</a>
-                            </div> -->
+                                                                                        <a href="https://1.envato.market/travosy" target="_blank" class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold"><i class="mdi mdi-cart-outline me-1"></i> Download</a>
+                                                                                    </div> -->
     <!-- Switcher -->
 
     <!-- LTR & RTL Mode Code -->
