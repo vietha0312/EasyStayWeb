@@ -125,7 +125,7 @@
                 @if (auth()->check())
                 <li class="dropdown inline-block relative ps-0.5">
                     <button data-dropdown-toggle="dropdown" class="dropdown-toggle items-center" type="button">
-                        <span class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md text-white">
+                        <span class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md border border-red-500 bg-red-500 text-white">
                             <img  src="{{ Auth::user()->anh }}" class="rounded-md" alt="">
                         </span>
                     </button>
