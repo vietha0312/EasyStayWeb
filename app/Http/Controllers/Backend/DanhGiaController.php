@@ -60,14 +60,7 @@ class DanhGiaController extends Controller
      */
     public function show(string $id)
     {
-        $danhGia = DanhGia::findOrFail($id);
-        return view('client.pages.loai_phong.chitietloaiphong', compact('danhGia'));
-
-        // $danhGia = DanhGia::findOrFail();
-        // return $datatable->render('client.pages.loai_phong.chitietloaiphong', compact('danhGia'));
-
-        // $loai_phong = Loai_phong::findOrFail($request->loai_phong);
-        //     return $datatable->render('client.pages.loai_phong.chitietloaiphong', compact('loai_phong'));
+        
     }
 
     /**

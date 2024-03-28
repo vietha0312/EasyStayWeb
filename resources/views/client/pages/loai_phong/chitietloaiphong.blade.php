@@ -117,17 +117,7 @@
 
                     </form> --}}
 
-                    <div class="card mt-1.5">
-                        <div class="card-header text-lg font-semibold">
-                            Thông tin Đánh giá
-                        </div>
-                        @foreach ($danhGia as $item)
-                            <div class="card-body">
-                                <p>
-                                    <{{ $item->noi_dung }}< /p>
-                            </div>
-                        @endforeach
-                    </div>
+                    
 
                 </div>
 
