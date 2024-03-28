@@ -133,8 +133,8 @@
                     <div class="dropdown-menu absolute end-0 m-0 mt-4 z-10 w-48 rounded-md overflow-hidden bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 hidden" onclick="event.stopPropagation();">
                         <ul class="py-2 text-start">
                             <li>
-                                <a href="" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white">
-                                    <i data-feather="user" class="size-4 me-2"></i>Hồ sơ
+                                <a href="{{ route('client.pages.hoso') }}" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white">
+                                    <i data-feather="user" class="size-4 me-2"></i>Quản lí tài khoản
                                 </a>
                             </li>
                             <li>
@@ -159,6 +159,8 @@
                             </li>
                         </ul>
                     </div>
+
+                    
                 </li>
                 @else
                 <li class="inline-block">

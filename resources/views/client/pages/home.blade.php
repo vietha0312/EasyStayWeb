@@ -72,20 +72,7 @@
                             </div>
                         </div>
 
-                        <!-- <div>
-                            <label class="form-label font-medium text-slate-900 dark:text-white">Số người:</label>
-                            <div class="relative mt-2">
-                                <i data-feather="users" class="size-[18px] absolute top-[10px] start-3"></i>
-                                <select class="form-select w-full py-2 px-3 ps-10 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded-md outline-none border border-gray-100 dark:border-gray-800 focus:ring-0">
-                                    <option disabled selected>Số người</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div> -->
+                        
 
                         <div class="lg:mt-[35px]">
                             <input type="submit" id="search-buy" name="search" class="py-1 px-5 h-10 inline-block tracking-wide align-middle duration-500 text-base text-center bg-red-500 text-white rounded-md w-full cursor-pointer" value="Tìm kiếm">
@@ -177,17 +164,7 @@
                         <p class="flex items-center text-slate-400 font-medium mb-2"><i data-feather="map-pin" class="text-red-500 size-4 me-1"></i> Hà Nội, Việt Nam</p>
                         <a href="tour-detail-one.html" class="text-lg font-medium hover:text-red-500 duration-500 ease-in-out">{{$loai_phong->ten}}</a>
 
-                        <!-- <div class="flex items-center mt-2">
-                            <span class="text-slate-400">Rating:</span>
-                            <ul class="text-lg font-medium text-amber-400 list-none ms-2">
-                                <li class="inline"><i class="mdi mdi-star align-middle"></i></li>
-                                <li class="inline"><i class="mdi mdi-star align-middle"></i></li>
-                                <li class="inline"><i class="mdi mdi-star align-middle"></i></li>
-                                <li class="inline"><i class="mdi mdi-star align-middle"></i></li>
-                                <li class="inline"><i class="mdi mdi-star align-middle"></i></li>
-                                <li class="inline text-black dark:text-white text-sm">5.0(30)</li>
-                            </ul>
-                        </div> -->
+                    
 
                         <div class="mt-4 pt-4 flex justify-between items-center border-t border-slate-100 dark:border-gray-800">
                             <h5 class="text-lg font-medium text-red-500">{{$loai_phong->gia}}</h5>
