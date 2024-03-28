@@ -11,6 +11,7 @@ use App\Models\Loai_phong;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
+
 class DanhGiaController extends Controller
 {
     /**
@@ -18,12 +19,12 @@ class DanhGiaController extends Controller
      */
     public function index(Request $request, DanhGiaDataTable $datatable, User $user)
     {
-    if (!Gate::allows('view', $user)) {
-        return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
-    } else {
-        $loai_phong = Loai_phong::findOrFail($request->loai_phong);
-        return $datatable->render('admin.danh_gia.index', compact('loai_phong'));
-    }
+        if (!Gate::allows('view', $user)) {
+            return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
+        } else {
+            $loai_phong = Loai_phong::findOrFail($request->loai_phong);
+            return $datatable->render('admin.danh_gia.index', compact('loai_phong'));
+        }
     }
 
     /**
@@ -37,9 +38,18 @@ class DanhGiaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, DanhGia $danhGia)
     {
-        //
+        if (auth()->check()) {
+            $danhgia = new DanhGia();
+            $danhgia->noi_dung = $request->input('noi_dung');
+            $danhgia->loai_phong_id = $request->loai_phong_id;
+            $danhgia->user_id = auth()->id();
+            $danhgia->save();
+            return back();
+        } else {
+            return redirect('login');
+        }
     }
 
     /**
@@ -71,13 +81,13 @@ class DanhGiaController extends Controller
      */
     public function destroy(string $id, User $user): RedirectResponse
     {
-        if (! Gate::allows('delete', $user)) {
+        if (!Gate::allows('delete', $user)) {
             return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
         }
         $deleteData = DanhGia::findOrFail($id);
-		$deleteData->delete();
+        $deleteData->delete();
 
         return response(['trang_thai' => 'success']);
-		// return redirect(route('admin.danh_gia.index'))->with('success', 'Ẩn bản ghi thành công.');
+        // return redirect(route('admin.danh_gia.index'))->with('success', 'Ẩn bản ghi thành công.');
     }
 }

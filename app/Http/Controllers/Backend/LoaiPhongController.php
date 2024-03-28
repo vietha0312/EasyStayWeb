@@ -36,9 +36,9 @@ class LoaiPhongController extends Controller
         $phong_trong = Loai_phong::select('loai_phongs.*', DB::raw('COUNT(phongs.id) as phong_trong'))
             ->leftJoin('phongs', function ($join) {
                 $join->on('loai_phongs.id', '=', 'phongs.loai_phong_id')
-                    ->where('phongs.trang_thai', '=', '1'); 
+                    ->where('phongs.trang_thai', '=', '1');
             })
-            ->groupBy('loai_phongs.id', 'loai_phongs.ten') 
+            ->groupBy('loai_phongs.id', 'loai_phongs.ten')
             ->get();
 
         return $datatable->with('so_luong', $so_luong)->with('phong_trong', $phong_trong)->render('admin.loai_phong.index');
@@ -57,7 +57,7 @@ class LoaiPhongController extends Controller
      */
     public function store(Request $request, User $user): RedirectResponse
     {
-        if (! Gate::allows('create', $user)) {
+        if (!Gate::allows('create', $user)) {
             return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
         }
         $request->validate([
@@ -72,21 +72,7 @@ class LoaiPhongController extends Controller
             'trang_thai' => 'required',
 
         ]);
-        // $anh = $this->uploadImage($request, 'anh', 'upload');
 
-        // $loai_phong = new Loai_phong();
-        // $loai_phong->ten = $request->ten;
-        // $loai_phong->anh = $anh;
-        // $loai_phong->gia = $request->gia;
-        // $loai_phong->gia_ban_dau = $request->gia_ban_dau;
-        // $loai_phong->gioi_han_nguoi = $request->gioi_han_nguoi;
-        // $loai_phong->so_luong = $request->so_luong;
-        // $loai_phong->mo_ta_ngan = $request->mo_ta_ngan;
-        // $loai_phong->mo_ta_dai = $request->mo_ta_dai;
-        // $loai_phong->trang_thai = $request->trang_thai;
-        // $loai_phong->deleted_at = $request->delete_at;
-        // $loai_phong->save();
-        // return back()->with('msg','Thêm thành công');
 
         $data = $request->except('anh');
         if ($request->hasFile('anh')) {
@@ -123,7 +109,7 @@ class LoaiPhongController extends Controller
      */
     public function update(Request $request, Loai_phong $loai_phong, User $user): RedirectResponse
     {
-        if (! Gate::allows('update', $user)) {
+        if (!Gate::allows('update', $user)) {
             return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
         }
         $request->validate([
@@ -155,7 +141,7 @@ class LoaiPhongController extends Controller
      */
     public function destroy(string $id, User $user): RedirectResponse
     {
-        if (! Gate::allows('delete', $user)) {
+        if (!Gate::allows('delete', $user)) {
             return Redirect::back()->with('error', 'Bạn không có quyền thực hiện thao tác này.');
         }
         $loai_phong = Loai_phong::findOrFail($id);

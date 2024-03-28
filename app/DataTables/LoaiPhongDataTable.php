@@ -40,17 +40,22 @@ class LoaiPhongDataTable extends DataTable
                 $phong_trong = Phong::where('loai_phong_id', $query->id)->where('trang_thai', '1')->count();
                 return $phong_trong;            
             })
+            // ->addColumn('trang_thai', function ($query) {
+            //     if ($query->phong_trong == 0) {
+            //         $query->trang_thai = 0;
+            //         $query->save();
+            //     }
+            //     return $query->trang_thai == 1 ? "<span class='badge text-bg-success'>Còn phòng</span>" : "<span class='badge text-bg-danger'>Hết phòng</span>";
+
+            // })
+
             ->addColumn('trang_thai', function ($query) {
-                if ($query->trang_thai == 1) {
-                    $button = "<div class='form-check form-switch'>
-                    <input class='form-check-input change-status' data-id='" . $query->id . "'  type='checkbox' role='switch' id='flexSwitchCheckDefault' name='trang_thai' checked>
-                  </div>";
+                $phong_trong = Phong::where('loai_phong_id', $query->id)->where('trang_thai', '1')->count();
+                if ($phong_trong == 0) {
+                    return "<span class='badge text-bg-danger'>Hết phòng</span>";
                 } else {
-                    $button = "<div class='form-check form-switch'>
-                    <input class='form-check-input change-status' data-id='" . $query->id . "'  type='checkbox' role='switch' id='flexSwitchCheckDefault' name='trang_thai'>
-                  </div>";
+                    return "<span class='badge text-bg-success'>Còn phòng</span>";
                 }
-                return $button;
             })
 
             ->addColumn('action', function ($query) {

@@ -3,9 +3,22 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use App\Console\Commands\UpdatePromotionStatus;
+use Illuminate\Console\Scheduling\Schedule; // Import Schedule
+
 
 class Kernel extends HttpKernel
 {
+
+    protected $commands = [
+        UpdatePromotionStatus::class,
+    ];
+
+    protected function schedule(Schedule $schedule)
+{
+    $schedule->command('promotion:update')->daily(); // Chạy command này mỗi ngày
+}
+
     /**
      * The application's global HTTP middleware stack.
      *

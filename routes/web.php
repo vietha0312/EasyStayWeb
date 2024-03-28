@@ -74,16 +74,12 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-
-
-
-// ->middleware(['auth', 'verified'])
     Route::middleware(['auth','verified','block.user'])->prefix('admin')
     ->as('admin.')
     ->group(function () {
 
-        // Route::resource('tong_quan', ThongKeController::class);
-
+        Route::resource('dashboard', ThongKeController::class);
+     
         Route::resource('loai_phong', LoaiPhongController::class);
         Route::resource('phong', PhongController::class);
         Route::resource('anh_phong', AnhPhongController::class);
@@ -100,6 +96,7 @@ require __DIR__ . '/auth.php';
         Route::put('searchKhuyenMai', [DatPhongController::class, 'searchKhuyenMai'])->name('searchKhuyenMai');
         Route::resource('khuyen_mai', KhuyenMaiController::class);
         Route::resource('dich_vu', DichVuController::class);
+        
 
         Route::resource('lien_he', LienHeController::class);
     });

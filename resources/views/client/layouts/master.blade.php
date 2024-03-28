@@ -15,19 +15,17 @@
     <meta name="version" content="1.0.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-     <!-- favicon -->
-     <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-     <!-- Css -->
-     <link href="/assets/libs/swiper/css/swiper.min.css" rel="stylesheet">
-     <link href="/assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
-     <link href="/assets/libs/js-datepicker/datepicker.min.css" rel="stylesheet">
-     <!-- Main Css -->
-     <link href="/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
-     <link href="/assets/css/tailwind.min.css" rel="stylesheet" type="text/css">
-
-
-
+    <!-- Css -->
+    <link href="/assets/libs/swiper/css/swiper.min.css" rel="stylesheet">
+    <link href="/assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
+    <link href="/assets/libs/js-datepicker/datepicker.min.css" rel="stylesheet">
+    <!-- Main Css -->
+    <link href="/assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/tailwind.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
 
 </head>
@@ -124,46 +122,55 @@
                     </div>
                 </li>
 
-                <?php
-                    if (auth()->check()) {
-                                // Người dùng đã đăng nhập, trả về view của trang profile
-                                echo'<li class="dropdown inline-block relative ps-0.5">
-                                <button data-dropdown-toggle="dropdown" class="dropdown-toggle items-center" type="button">
-                                    <span class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md border border-red-500 bg-red-500 text-white"><img src="assets/images/client/16.jpg" class="rounded-md" alt=""></span>
-                                </button>
-                                <!-- Dropdown menu -->
-                                <div class="dropdown-menu absolute end-0 m-0 mt-4 z-10 w-48 rounded-md overflow-hidden bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 hidden" onclick="event.stopPropagation();">
-                                    <ul class="py-2 text-start">
-                                        <li>
-                                            <a href="user-profile.html" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white"><i data-feather="user" class="size-4 me-2"></i>Hồ sơ</a>
-                                        </li>
-                                        <li>
-                                            <a href="helpcenter.html" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white"><i data-feather="help-circle" class="size-4 me-2"></i>Trung tâm trợ giúp</a>
-                                        </li>
-                                        <li>
-                                            <a href="user-setting.html" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white"><i data-feather="settings" class="size-4 me-2"></i>Cài đặt</a>
-                                        </li>
-                                        <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
+                @if (auth()->check())
+                <li class="dropdown inline-block relative ps-0.5">
+                    <button data-dropdown-toggle="dropdown" class="dropdown-toggle items-center" type="button">
+                        <span class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md text-white">
+                            <img  src="{{ Auth::user()->anh }}" class="rounded-md" alt="">
+                        </span>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div class="dropdown-menu absolute end-0 m-0 mt-4 z-10 w-48 rounded-md overflow-hidden bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 hidden" onclick="event.stopPropagation();">
+                        <ul class="py-2 text-start">
+                            <li>
+                                <a href="" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white">
+                                    <i data-feather="user" class="size-4 me-2"></i>Hồ sơ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white">
+                                    <i data-feather="help-circle" class="size-4 me-2"></i>Trung tâm trợ giúp
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white">
+                                    <i data-feather="settings" class="size-4 me-2"></i>Cài đặt
+                                </a>
+                            </li>
+                            <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
 
-                                        <li>
-                                        <form method="POST" action="' . url('logout') . '">
-                                            ' . csrf_field() . '
-                                            <button type="submit" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white">
-                                            <i data-feather="log-out" class="size-4 me-2"></i>Đăng xuất
-                                            </button>
-                                        </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>';
-                            } else {
-                                        // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
-                                        echo '<li class="inline-block">
-                                        <button style="color:rgb(255 255 255 / .5);" type="button"><a href="'. url('login') .'"> Đăng nhập</a></button>
-                                        <button style="color:rgb(255 255 255 / .5); padding-left:30px"  type="button"><a href="'. url('register') .'">Đăng kí</a></button>
-                                    </li>';
-                                    }
-                ?>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-red-500 dark:hover:text-white">
+                                        <i data-feather="log-out" class="size-4 me-2"></i>Đăng xuất
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                @else
+                <li class="inline-block">
+                    <button style="color:rgb(255 255 255 / .5);" type="button">
+                        <a href="{{ route('login') }}"> Đăng nhập</a>
+                    </button>
+                    <button style="color:rgb(255 255 255 / .5); padding-left:30px" type="button">
+                        <a href="{{ route('register') }}">Đăng kí</a>
+                    </button>
+                </li>
+                @endif
+
 
                 <!--end dropdown-->
             </ul>
@@ -173,118 +180,25 @@
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu justify-end nav-light">
 
-                    <!-- <li class="has-submenu parent-parent-menu-item"><a href="javascript:void(0)"> Listing </a><span class="menu-arrow"></span>
-                        <ul class="submenu">
-                            <li class="has-submenu parent-menu-item">
-                                <a href="javascript:void(0)">Tour Grid </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="grid.html" class="sub-menu-item">Grid</a></li>
-                                    <li><a href="grid-left-sidebar.html" class="sub-menu-item">Grid Left Sidebar</a></li>
-                                    <li><a href="grid-right-sidebar.html" class="sub-menu-item">Grid Right Sidebar</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has-submenu parent-menu-item">
-                                <a href="javascript:void(0)">Tour List </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="list.html" class="sub-menu-item">List</a></li>
-                                    <li><a href="list-left-sidebar.html" class="sub-menu-item">List Left Sidebar</a></li>
-                                    <li><a href="list-right-sidebar.html" class="sub-menu-item">List Right Sidebar</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has-submenu parent-menu-item">
-                                <a href="javascript:void(0)"> Tour Detail </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="tour-detail-one.html" class="sub-menu-item">Tour Detail One</a></li>
-                                    <li><a href="tour-detail-two.html" class="sub-menu-item">Tour Detail Two</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li> -->
-
-                    <!-- <li class="has-submenu parent-parent-menu-item">
-                        <a href="javascript:void(0)">Pages</a><span class="menu-arrow"></span>
-                        <ul class="submenu">
-                            <li><a href="aboutus.html" class="sub-menu-item">Về chúng tôi</a></li>
-
-                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> My Account</a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="user-profile.html" class="sub-menu-item">User Account</a></li>
-                                    <li><a href="user-billing.html" class="sub-menu-item">Billing</a></li>
-                                    <li><a href="user-payment.html" class="sub-menu-item">Payment</a></li>
-                                    <li><a href="user-invoice.html" class="sub-menu-item">Invoice</a></li>
-                                    <li><a href="user-social.html" class="sub-menu-item">Social</a></li>
-                                    <li><a href="user-notification.html" class="sub-menu-item">Notification</a></li>
-                                    <li><a href="user-setting.html" class="sub-menu-item">Setting</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has-submenu parent-menu-item">
-                                <a href="javascript:void(0)"> Helpcenter </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="helpcenter.html" class="sub-menu-item">Overview</a></li>
-                                    <li><a href="helpcenter-faqs.html" class="sub-menu-item">FAQs</a></li>
-                                    <li><a href="helpcenter-guides.html" class="sub-menu-item">Guides</a></li>
-                                    <li><a href="helpcenter-support.html" class="sub-menu-item">Support</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Auth Pages </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="login.html" class="sub-menu-item"> Login</a></li>
-                                    <li><a href="signup.html" class="sub-menu-item"> Signup</a></li>
-                                    <li><a href="forgot-password.html" class="sub-menu-item"> Forgot Password</a></li>
-                                    <li><a href="lock-screen.html" class="sub-menu-item"> Lock Screen</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Utility </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="terms.html" class="sub-menu-item">Terms of Services</a></li>
-                                    <li><a href="privacy.html" class="sub-menu-item">Privacy Policy</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Special </a><span class="submenu-arrow"></span>
-                                <ul class="submenu">
-                                    <li><a href="comingsoon.html" class="sub-menu-item"> Coming Soon</a></li>
-                                    <li><a href="maintenance.html" class="sub-menu-item"> Maintenance</a></li>
-                                    <li><a href="404.html" class="sub-menu-item"> 404!</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li> -->
-
-                    <!-- <li class="has-submenu parent-menu-item">
-                        <a href="javascript:void(0)">Blog</a><span class="menu-arrow"></span>
-                        <ul class="submenu">
-                            <li><a href="blogs.html" class="sub-menu-item"> Blogs</a></li>
-                            <li><a href="blog-standard.html" class="sub-menu-item"> Blog Standard</a></li>
-                            <li><a href="blog-detail.html" class="sub-menu-item"> Blog Detail</a></li>
-                        </ul>
-                    </li> -->
 
 
-
-
+                    <li><a href="<?= env('APP_URL') ?>" class="sub-menu-item">Đặt phòng</a></li>
                     <li><a href="<?= env('APP_URL') ?>/loai_phong" class="sub-menu-item">Loại phòng</a></li>
-                                        <?php
-                                        if(auth()->check()){
-                                            if(auth()->user()->id_vai_tro === 2 || auth()->user()->id_vai_tro === 3) {
-                                                echo '<li>
-                                                        <a href="' . url('admin') . '" class="sub-menu-item">Admin</a>
-                                                    </li>';
-                                            }
-                                        }
-                                        ?>
-                    <li><a href="<?= env('APP_URL') ?>/loai_phong" class="sub-menu-item">Loại phòng</a></li>
-
-                    <li><a href="" class="sub-menu-item">Đặt phòng</a></li>
 
                     <li><a href="<?= env('APP_URL') ?>/tin_tuc" class="sub-menu-item">Tin tức</a></li>
 
                     <li><a href="<?= env('APP_URL') ?>/lien_he" class="sub-menu-item">Liên hệ</a></li>
+                    <?php
+                    if (auth()->check()) {
+                        if (auth()->user()->id_vai_tro === 2 || auth()->user()->id_vai_tro === 3) {
+                            echo '<li>
+                                                        <a href="' . url('admin/dashboard') . '" class="sub-menu-item">Admin</a>
+                                                    </li>';
+                        }
+                    }
+                    ?>
+
+
                 </ul><!--end navigation menu-->
             </div><!--end navigation-->
         </div><!--end container-->
