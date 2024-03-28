@@ -25,7 +25,7 @@ class DanhGiaDataTable extends DataTable
             ->addColumn('action', 'danhgia.action')
 
             ->addColumn('user_id', function($query){
-                return $query->user->ten_nguoi_dung;
+                return $query->user->email;
             })
 
             ->addColumn('action', function ($query) {
@@ -78,10 +78,10 @@ class DanhGiaDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('noi_dung'),
-            Column::make('anh'),
+            // Column::make('anh'),
             Column::make('user_id'),
             // Column::make('loai_phong_id'),
-            // Column::make('created_at'),
+            Column::make('created_at'),
             // Column::make('updated_at'),
             Column::computed('action')
                   ->exportable(false)

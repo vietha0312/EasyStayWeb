@@ -50,9 +50,9 @@ Route::get('loai_phong', [ChiTietLoaiPhongController::class, 'allRoom'])->name('
 Route::get('tin_tuc', [App\Http\Controllers\Frontend\BaiVietFEController::class, 'index'])->name('client.pages.bai_viet.index');
 Route::get('chi_tiet_tin_tuc/{id}', [App\Http\Controllers\Frontend\BaiVietFEController::class, 'show'])->name('client.pages.bai_viet.show');
 
-Route::get('lien_he', [LienHeController::class,'contact'])->name('client.pages.lien_he');
+Route::get('lien_he', [LienHeController::class, 'contact'])->name('client.pages.lien_he');
 
-Route::post('kiem_tra_phong',[KiemTraPhongController::class,'checkPhong'])->name('kiem_tra_phong');
+Route::post('kiem_tra_phong', [KiemTraPhongController::class, 'checkPhong'])->name('kiem_tra_phong');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -74,12 +74,13 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
+
     Route::middleware(['auth','verified','block.user'])->prefix('admin')
     ->as('admin.')
     ->group(function () {
 
         Route::resource('dashboard', ThongKeController::class);
-     
+
         Route::resource('loai_phong', LoaiPhongController::class);
         Route::resource('phong', PhongController::class);
         Route::resource('anh_phong', AnhPhongController::class);
@@ -87,7 +88,7 @@ require __DIR__ . '/auth.php';
         Route::resource('bai_viet', BaiVietController::class);
         Route::resource('user', RegisteredUserController::class);
         Route::resource('banners', BannerController::class);
-        Route::resource('danh_gia', DanhGiaController::class);
+        // Route::resource('danh_gia', DanhGiaController::class);
         Route::resource('vai_tro', VaiTroController::class);
         Route::resource('dat_phong', DatPhongController::class);
         Route::resource('chi_tiet_dat_phong', ChiTietDatPhongController::class);
@@ -96,5 +97,13 @@ require __DIR__ . '/auth.php';
         Route::put('searchKhuyenMai', [DatPhongController::class, 'searchKhuyenMai'])->name('searchKhuyenMai');
         Route::resource('khuyen_mai', KhuyenMaiController::class);
         Route::resource('dich_vu', DichVuController::class);
+
         Route::resource('lien_he', LienHeController::class);
+    });
+
+Route::middleware(['auth', 'verified'])->prefix('admin')
+    ->as('admin.')
+    ->group(function () {
+
+        Route::resource('danh_gia', DanhGiaController::class);
     });
