@@ -41,6 +41,7 @@ class Phong extends Model
     public function chiTietDatPhong()
     {
         return $this->hasMany(ChiTietDatPhong::class, 'phong_id', 'id');
+    }
     protected static function boot(){
         parent::boot();
         static::updating(function($phong){
