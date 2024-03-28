@@ -26,13 +26,28 @@ class ChiTietDatPhongDataTable extends DataTable
             ->addColumn('dat_phong_id', function($query){
                 return $query->dat_phong->id;
             })
-            ->addColumn('phong_id', function($query){
-                return $query->phong->ten_phong;
-            })
             ->addColumn('dich_vu_id', function($query){
                 return $query->dich_vu->ten_dich_vu;
             })
-            ->rawColumns(['phong_id','dich_vu_id'])
+            ->addColumn('so_luong_nguoi', function($query){
+                return $query->dat_phong->so_luong_nguoi;
+            })
+            ->addColumn('so_luong_phong', function($query){
+                return $query->dat_phong->so_luong_phong;
+            })
+            ->addColumn('thoi_gian_den', function($query){
+                return $query->dat_phong->thoi_gian_den;
+            })
+            ->addColumn('thoi_gian_di', function($query){
+                return $query->dat_phong->thoi_gian_di;
+            })
+            ->addColumn('payment', function($query){
+                return $query->dat_phong->payment;
+            })
+            ->addColumn('ghi_chu', function($query){
+                return $query->dat_phong->ghi_chu;
+            })
+            ->rawColumns(['phong_id','dich_vu_id','so_luong_nguoi','so_luong_phong','thoi_gian_den','thoi_gian_di','payment','ghi_chu'])
             ->setRowId('id');
     }
 
@@ -74,8 +89,6 @@ class ChiTietDatPhongDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('dat_phong_id'),
-            Column::make('phong_id'),
-            Column::make('don_gia'),
             Column::make('dich_vu_id'),
             Column::make('so_luong_nguoi'),
             Column::make('so_luong_phong'),

@@ -34,7 +34,13 @@ class Phong extends Model
     {
         return $this->hasMany(datPhong::class, 'phong_id', 'id');
     }
-
+    public function datPhongs()
+    {
+        return $this->belongsToMany(DatPhong::class, 'dat_phong_noi_phongs', 'phong_id', 'dat_phong_id');
+    }
+    public function chiTietDatPhong()
+    {
+        return $this->hasMany(ChiTietDatPhong::class, 'phong_id', 'id');
     protected static function boot(){
         parent::boot();
         static::updating(function($phong){
@@ -44,7 +50,5 @@ class Phong extends Model
                 //
             }
         });
-
-        
     }
 }

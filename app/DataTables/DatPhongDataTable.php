@@ -35,8 +35,8 @@ class DatPhongDataTable extends DataTable
             ->addColumn('so_dien_thoai', function($query){
                 return $query->user->so_dien_thoai;
             })
-            // ->addColumn('dich_vu_id', function($query){
-            //     return $query->dich_vu->ten_dich_vu;
+            // ->addColumn('don_gia', function($query){
+            //     return $query->loai_phong->gia;
             // })
             ->addColumn('trang_thai', function ($query) {
                 $active = "<span class='badge text-bg-success'>Đã xác nhận</span>";
@@ -76,7 +76,7 @@ class DatPhongDataTable extends DataTable
                 return $editBtn . $deleteBtn . $detailBtn ;
             })
 
-            ->rawColumns(['ten_khach_hang','loai_phong_id','email','so_dien_thoai','trang_thai','action'])
+            ->rawColumns(['ten_khach_hang','loai_phong_id','email','so_dien_thoai', 'phong_id','trang_thai','action'])
             ->setRowId('id');
     }
 
@@ -122,12 +122,14 @@ class DatPhongDataTable extends DataTable
             Column::make('email'),
             Column::make('so_dien_thoai'),
             Column::make('loai_phong_id'),
+            // Column::make('phong_id'),
+            // Column::make('don_gia'),
             // Column::make('so_luong_nguoi'),
             // Column::make('so_luong_phong'),
             // Column::make('thoi_gian_den'),
             // Column::make('thoi_gian_di'),
             // Column::make('dich_vu_id'),
-            Column::make('tong_tien'),
+            // Column::make('tong_tien'),
             // Column::make('payment'),
             // Column::make('ghi_chu'),
             Column::make('trang_thai'),
