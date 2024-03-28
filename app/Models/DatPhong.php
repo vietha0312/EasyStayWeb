@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
+
 
 class DatPhong extends Model
 {
@@ -18,11 +20,13 @@ class DatPhong extends Model
         'user_id',
         'loai_phong_id',
         'phong_id',
+        'phong_ids',
         'don_gia',
         'so_luong_nguoi',
         'so_luong_phong',
         'thoi_gian_den',
         'thoi_gian_di',
+        'dich_vu_id',
         'khuyen_mai_id',
         'tong_tien',
         'payment',
@@ -33,10 +37,13 @@ class DatPhong extends Model
     {
         return $this->belongsTo(User::class);
     }
-    protected function phong()
+    public function phongs()
     {
-        // return $this->belongsTo('App\Models\Loai_phong','loai_phong_id','id');
-        return $this->belongsTo(Phong::class);
+        return $this->belongsToMany(Phong::class, 'dat_phong_noi_phongs', 'dat_phong_id', 'phong_id');
+    }
+    public function dichvus()
+    {
+        return $this->belongsToMany(Phong::class, 'dat_phong_dich_vus', 'dat_phong_id', 'dich_vu_id');
     }
     protected function loai_phong()
     {
@@ -48,4 +55,49 @@ class DatPhong extends Model
         // return $this->belongsTo('App\Models\Loai_phong','loai_phong_id','id');
         return $this->belongsTo(KhuyenMai::class);
     }
+    protected function dich_vu()
+    {
+        // return $this->belongsTo('App\Models\Loai_phong','loai_phong_id','id');
+        return $this->belongsTo(DichVu::class);
+    }
+
+    protected $phongIdTemp;
+
+    // Phương thức để gán phong_id tạm thời
+    public function setPhongIdTemp($phongId)
+    {
+        $this->phongIdTemp = $phongId;
+        return $this;
+    }
+
+    // Phương thức để lấy phong_id tạm thời
+    public function getPhongIdTemp()
+    {
+        return $this->phongIdTemp;
+    }
+    protected $dichVuIdTemp;
+
+    // Phương thức để gán phong_id tạm thời
+    public function setDichVuIdTemp($dichVuId)
+    {
+        $this->dichVuIdTemp = $dichVuId;
+        return $this;
+    }
+
+    // Phương thức để lấy phong_id tạm thời
+    public function getDichVuIdTemp()
+    {
+        return $this->dichVuIdTemp;
+    }
+
+
+    // public function getPhongIdsAttribute($value)
+    // {
+    //     return explode(',', $value);
+    // }
+
+    // public function setPhongIdsAttribute($value)
+    // {
+    //     $this->attributes['phongIds'] = implode(',', $value);
+    // }
 }

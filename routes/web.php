@@ -74,9 +74,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-
-
-// ->middleware(['auth', 'verified'])
     Route::middleware(['auth','verified','block.user'])->prefix('admin')
     ->as('admin.')
     ->group(function () {
@@ -95,7 +92,8 @@ require __DIR__ . '/auth.php';
         Route::resource('dat_phong', DatPhongController::class);
         Route::resource('chi_tiet_dat_phong', ChiTietDatPhongController::class);
         Route::put('loai_phong/change-status', [LoaiPhongController::class, 'changeStatus'])->name('loai_phong.change-status');
-        Route::get('exportUser', [ExportController::class, 'exportUser']);
+        Route::get('exportUser', [ExportController::class, 'exportUser'])->name('exportUser');
+        Route::put('searchKhuyenMai', [DatPhongController::class, 'searchKhuyenMai'])->name('searchKhuyenMai');
         Route::resource('khuyen_mai', KhuyenMaiController::class);
         Route::resource('dich_vu', DichVuController::class);
         

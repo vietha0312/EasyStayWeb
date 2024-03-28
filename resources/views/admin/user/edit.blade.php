@@ -47,7 +47,7 @@
                     <input type="text" id="dia_chi" name="dia_chi" class="form-control" value="{{$user->dia_chi}}">
 
                     <label class="mt-3"  for="gioi_tinh">Giới tính</label>
-                    <select name="gioi_tinh" id="gioi_tinh" value="{{$user->ngay_sinh}}" class="form-control">
+                    <select name="gioi_tinh" id="gioi_tinh" value="{{$user->gioi_tinh}}" class="form-control">
                         <option value="Nam">Nam</option>
                         <option value="Nữ">Nữ</option>
                     </select>
