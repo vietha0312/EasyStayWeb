@@ -132,9 +132,10 @@
                         <button class="py-2 px-5 mb-2 inline-block tracking-wide align-middle duration-500 text-base text-center bg-red-500 text-white rounded-md w-25 ">
                             Gửi
                         </button>
-                    </form>
-                </div>
 
+                    </form> 
+
+                    
 
             </div>
 

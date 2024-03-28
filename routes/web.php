@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\KhuyenMaiController;
 use App\Http\Controllers\Backend\DichVuController;
 use App\Http\Controllers\Backend\ThongKeController;
 use App\Http\Controllers\Frontend\ChiTietLoaiPhongController;
+use App\Http\Controllers\Frontend\HoSoController;
 use App\Http\Controllers\Frontend\KiemTraPhongController;
 use App\Http\Controllers\Frontend\LienHeController;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +42,7 @@ Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'home'])->
 
 
 
-
+Route::get('ho_so', [HoSoController::class, 'index'])->name('client.pages.hoso');
 
 
 Route::get('chi_tiet_loai_phong/{id}', [ChiTietLoaiPhongController::class, 'detail'])->name('client.pages.loai_phong.chitietloaiphong');
