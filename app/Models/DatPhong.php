@@ -41,6 +41,10 @@ class DatPhong extends Model
     {
         return $this->belongsToMany(Phong::class, 'dat_phong_noi_phongs', 'dat_phong_id', 'phong_id');
     }
+    public function dichvus()
+    {
+        return $this->belongsToMany(Phong::class, 'dat_phong_dich_vus', 'dat_phong_id', 'dich_vu_id');
+    }
     protected function loai_phong()
     {
         // return $this->belongsTo('App\Models\Loai_phong','loai_phong_id','id');
@@ -71,9 +75,21 @@ class DatPhong extends Model
     {
         return $this->phongIdTemp;
     }
-    public function datPhongNoiPhong(){
-        return $this->hasMany(DatPhongNoiPhong::class);
+    protected $dichVuIdTemp;
+
+    // Phương thức để gán phong_id tạm thời
+    public function setDichVuIdTemp($dichVuId)
+    {
+        $this->dichVuIdTemp = $dichVuId;
+        return $this;
     }
+
+    // Phương thức để lấy phong_id tạm thời
+    public function getDichVuIdTemp()
+    {
+        return $this->dichVuIdTemp;
+    }
+
 
     // public function getPhongIdsAttribute($value)
     // {

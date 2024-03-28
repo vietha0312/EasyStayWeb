@@ -57,15 +57,6 @@
                                 <span class="text-danger error-loai_phong_id"></span>
                             </div>
                             <div class="form-group mt-3 mx-auto ">
-                                <label for="phong_id">Số Phòng</label>
-                                <select name="phong_id" id="phong_id" class="form-control">
-                                    @foreach ($phong as $id => $ten_phong)
-                                        <option value="{{$id}}">{{$ten_phong}}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger error-trn_phong"></span>
-                            </div>
-                            <div class="form-group mt-3 mx-auto ">
                                 <label for="so_luong_phong">Số Lượng phòng</label>
                                 <input type="number" class="form-control" id="so_luong_phong" name="so_luong_phong">
                                 <span class="text-danger error-so_luong_phong"></span>
@@ -94,12 +85,6 @@
                                 </select>
                                 <span class="text-danger error-trn_khuyen_mai_id"></span>
                             </div>
-                            <!-- <div class="form-group mt-3 mx-auto ">
-                                <label for="khuyen_mai_id">Khuyến mãi</label>
-                                <input type="text" id="ten_khuyen_mai" name="ten_khuyen_mai" class="form-control" >
-                                <input type="hidden" id="khuyen_mai_id" name="khuyen_mai_id" class="form-control">
-                                <span class="text-danger error-trn_khuyen_mai_id"></span>
-                            </div> -->
                             <div class="form-group mt-3 mx-auto ">
                                 <label for="payment">Payment</label>
                                 <select name="payment" id="payment" class="form-control">

@@ -35,12 +35,9 @@ class DatPhongDataTable extends DataTable
             ->addColumn('so_dien_thoai', function($query){
                 return $query->user->so_dien_thoai;
             })
-            ->addColumn('phong_id', function($query){
-                return $query->datPhongNoiPhong->phong_id;
-            })
-            ->addColumn('don_gia', function($query){
-                return $query->loai_phong->gia;
-            })
+            // ->addColumn('don_gia', function($query){
+            //     return $query->loai_phong->gia;
+            // })
             ->addColumn('trang_thai', function ($query) {
                 $active = "<span class='badge text-bg-success'>Đã xác nhận</span>";
                 $inActive = "<span class='badge text-bg-danger'>Chờ xác nhận</span>";
@@ -125,8 +122,8 @@ class DatPhongDataTable extends DataTable
             Column::make('email'),
             Column::make('so_dien_thoai'),
             Column::make('loai_phong_id'),
-            Column::make('phong_id'),
-            Column::make('don_gia'),
+            // Column::make('phong_id'),
+            // Column::make('don_gia'),
             // Column::make('so_luong_nguoi'),
             // Column::make('so_luong_phong'),
             // Column::make('thoi_gian_den'),
